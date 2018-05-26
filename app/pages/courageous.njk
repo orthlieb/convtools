@@ -1,0 +1,39 @@
+<!-- courageous.njk -->
+{% extends "layout.njk" %}
+
+{% block content %}
+  <!-- Adds the header partial -->
+  {% include "partials/header.njk" %}
+  <!-- Adds the nav macro -->
+  {% import 'macros/nav.njk' as nav %}
+  {{nav.active('courageous')}}
+  <!--- Content for this page -->
+  <div class="content">
+    <h1>
+      <i class="fa fa-crown"></i>&nbsp;
+      Courageous Conversation
+    </h1>
+    <div class="tabs">
+      <a href="#" class="tab-but tab-but-1 tab-active">Introduction</a>
+      <a href="#" class="tab-but tab-but-2">Agreements</a>
+      <a href="#" class="tab-but tab-but-3">Prayer</a>
+      <a href="#" class="tab-but tab-but-4">Questions</a>
+      <a href="#" class="tab-but tab-but-5">Emotions</a>
+    </div>
+    <div class="tab-content tab-content-1">
+      {% include "partials/courageous-intro.njk" %}
+    </div>
+    <div class="tab-content tab-content-2">
+      {% include "partials/courageous-agreements.njk" %}
+    </div>
+    <div class="tab-content tab-content-3">
+      {% include "partials/courageous-prayer.njk" %}
+    </div>
+    <div class="tab-content tab-content-4">
+      {% include "partials/courageous-questions.njk" %}
+    </div>
+    <div class="tab-content tab-content-5">
+      {% include "partials/courageous-emotions.njk" %}
+    </div>
+  </div>
+{% endblock %}

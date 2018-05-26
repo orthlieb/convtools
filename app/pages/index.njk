@@ -1,0 +1,70 @@
+<!-- index.njk -->
+{% extends "layout.njk" %}
+
+{% block content %}
+
+  <div id="preloader">
+    <div id="status">
+      <p class="center-text">
+        Loading the content...
+        <em>Loading depends on your connection speed!</em>
+      </p>
+    </div>
+  </div>
+
+  <div class="sticky-deco-top"></div>
+
+  <div class="homepage-section">
+    <div class="animate fadeInDownBig homepage-logo" data-wow-duration="1.5s">
+      <img class="logo-mobile" src="images/logo.png" alt="logo">
+    </div>
+
+    <div class="homepage-navigation">
+      <a id="courageous" class="animate fadeIn" data-wow-delay="1.05s" href="courageous.html">
+        <i class="fas fa-crown courageous"></i>
+        <em>Courageous</em>
+      </a>
+      <a class="animate fadeIn" data-wow-duration="1s" data-wow-delay="1.10s" href="comforting.html">
+        <i class="fas fa-hand-holding-heart comforting"></i>
+        <em>Comforting</em>
+      </a>
+      <a class="animate fadeIn" data-wow-duration="1s" data-wow-delay="1.15s" href="jquery.html">
+        <i class="fa fa-plug connecting"></i>
+        <em>Connecting</em>
+      </a>
+      <a class="animate fadeIn" data-wow-duration="1s" data-wow-delay="1.20s" href="gallery.html">
+        <i class="fa fa-users collaborating"></i>
+        <em>Collaborating</em>
+      </a>
+      <a class="animate fadeIn" data-wow-duration="1s" data-wow-delay="1.25s" href="portfolio.html">
+        <i class="fa fa-dove conciliatory"></i>
+        <em>Conciliatory</em>
+      </a>
+      <a class="animate fadeIn" data-wow-duration="1s" data-wow-delay="1.30s" href="contact.html">
+        <i class="fa fa-envelope"></i>
+        <em>Contact</em>
+      </a>
+    </div>
+
+    <div class="footer">
+      <a href="#" class="facebook-footer animate fadeIn" data-wow-delay="1.35s">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="#" class="google-footer   animate fadeIn" data-wow-delay="1.40s">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="#" class="twitter-footer  animate fadeIn" data-wow-delay="1.45s">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <em class="animate fadeInUpBig">Copyright 2017.
+        <br>
+        All rights reserved</em>
+    </div>
+
+  </div>
+
+  <div class="white-decoration"></div>
+  <div class="body-background"></div>
+  <div class="sticky-deco-bottom"></div>
+
+{% endblock %}

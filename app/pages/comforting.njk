@@ -1,0 +1,32 @@
+<!-- comforting.njk -->
+{% extends "layout.njk" %}
+
+{% block content %}
+  <!-- Adds the header partial -->
+  {% include "partials/header.njk" %}
+  <!-- Adds the nav macro -->
+  {% import 'macros/nav.njk' as nav %}
+  {{nav.active('comforting')}}
+  <!--- Content for this page -->
+  <div class="content">
+    <h1>
+      <i class="fas fa-hand-holding-heart"></i>&nbsp;
+      Comforting Conversation
+    </h1>
+    <div class="tabs">
+      <a href="#" class="tab-but tab-but-1 tab-active">Introduction</a>
+      <a href="#" class="tab-but tab-but-2">Questions</a>
+      <a href="#" class="tab-but tab-but-3">Great Response</a>
+    </div>
+    <div class="tab-content tab-content-1">
+      {% include "partials/comforting-intro.njk" %}
+    </div>
+    <div class="tab-content tab-content-2">
+      {% include "partials/comforting-questions.njk" %}
+    </div>
+    <div class="tab-content tab-content-3">
+      {% include "partials/comforting-great.njk" %}
+    </div>
+
+  </div>
+{% endblock %}
