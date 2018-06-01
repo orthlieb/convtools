@@ -1,0 +1,51 @@
+$courageous-color: #F91628;
+$comforting-color: #5977B5;
+$collaborating-color: #B37354;
+$connecting-color: #B37354;
+$connecting-color: #5C8334;
+$conciliatory-color: #30388E;
+
+.courageous-button{
+  color: $courageous-color !important;
+  border-color: $courageous-color !important;
+}
+
+.courageous-text {
+  color: $courageous-color;
+}
+
+.comforting-button {
+  color: $comforting-color !important;
+  border-color: $comforting-color !important;
+}
+
+.comforting-text {
+  color: $comforting-color;
+}
+
+.collaborating-button {
+  color: $collaborating-color !important;
+  border-color: $collaborating-color !important;
+}
+
+.collaborating-text {
+  color: $collaborating-color;
+}
+
+.connecting-button {
+  color: $connecting-color !important;
+  border-color: $connecting-color !important;
+}
+
+.connecting-text {
+  color: $connecting-color;
+}
+
+.conciliatory-button {
+  color: $conciliatory-color !important;
+  border-color: $conciliatory-color !important;
+}
+
+.conciliatory-text {
+  color: $conciliatory-color;
+}

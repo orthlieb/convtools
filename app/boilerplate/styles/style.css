@@ -100,32 +100,6 @@ body{
   background-color:#f7e39b !important;
 }
 
-.courageous {
-  color:#F91628 !important;
-  border-color:#F91628 !important;
-}
-
-.comforting {
-  color:#5977B5 !important;
-  border-color:#5977B5 !important;
-}
-
-.collaborating {
-  color:#B37354 !important;
-  border-color:#B37354 !important;
-}
-
-.connecting {
-  color:#5C8334 !important;
-  border-color:#5C8334 !important;
-}
-
-.conciliatory {
-  color:#30388E !important;
-  border-color:#30388E !important;
-}
-
-
 .homepage-navigation a i{
 	text-align:center;
 	display:block;
@@ -218,7 +192,7 @@ body{
 
 }
 
-.google-footer:hover{
+.instagram-footer:hover{
 	color:#FFFFFF;
 	background-color:#d34836;
 	border:solid 1px rgba(255,255,255,0);
