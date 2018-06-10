@@ -8,16 +8,6 @@ const gutil = require('gulp-util');
 const sass = require('gulp-sass');
 const sftp = require('gulp-sftp');
 
-gulp.task('default', function () {
-    gulp.run('build');
-});
-
-gulp.task('build', function(callback) {
-  return runSequence('clean',
-      ['nunjucks', 'boilerplate', 'sass'],
-      callback);
-});
-
 gulp.task('clean', function() {
   return del(['out/**/*']);
 });
@@ -43,10 +33,14 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./out/css'));
 });
 
+gulp.task('build', gulp.series('clean', gulp.parallel('boilerplate', 'nunjucks', 'sass')));
+
+gulp.task('default', gulp.series('build'));
+
 gulp.task('watch', function() {
-  gulp.watch('app/**/*.njk', ['nunjucks']);
-  gulp.watch('app/css/**/*.scss', ['sass']);
-  gulp.watch('app/boilerplate/**/*', ['boilerplate']);
+  gulp.watch('app/**/*.njk', gulp.series('nunjucks'));
+  gulp.watch('app/**/*.scss', gulp.series('sass'));
+  gulp.watch('app/boilerplate/**/*', gulp.series('boilerplate'));
 });
 
 gulp.task( 'deploy', function () {

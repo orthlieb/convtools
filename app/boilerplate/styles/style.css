@@ -96,10 +96,6 @@ body{
 	margin-bottom:40px;
 }
 
-.active a{
-  background-color:#f7e39b !important;
-}
-
 .homepage-navigation a i{
 	text-align:center;
 	display:block;
@@ -616,6 +612,10 @@ body{
 
 .submenu-items a{
 	font-size:12px;
+}
+
+.active {
+  background-color:#f7e39b;
 }
 
 /*////////////*/

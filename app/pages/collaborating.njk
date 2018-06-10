@@ -7,26 +7,21 @@
   {% include "partials/header.njk" %}
   <!-- Adds the nav macro -->
   {% import 'macros/nav.njk' as nav %}
-  {{nav.active('comforting')}}
+  {{nav.active('collaborating')}}
   <!--- Content for this page -->
-  <div class="content">
-    <h1 class="comforting-text">
-      <i class="fas fa-hand-holding-heart"></i>&nbsp; Comforting Conversation
+  <div id="page" class="content">
+    <h1 class="collaborating-text">
+      <i class="fas fa-users"></i>&nbsp; Collaborating Conversation
     </h1>
     <div class="tabs">
-      <a href="#" class="tab-but tab-but-1 tab-active">Introduction</a>
+      <a href="#" class="tab-but tab-but-1 tab-active">Intro</a>
       <a href="#" class="tab-but tab-but-2">Questions</a>
-      <a href="#" class="tab-but tab-but-3">Great Response</a>
     </div>
     <div class="tab-content tab-content-1">
-      {% include "partials/comforting-intro.njk" %}
+      {% include "partials/collaborating-intro.njk" %}
     </div>
     <div class="tab-content tab-content-2">
-      {% include "partials/comforting-questions.njk" %}
+      {% include "partials/collaborating-questions.njk" %}
     </div>
-    <div class="tab-content tab-content-3">
-      {% include "partials/comforting-great.njk" %}
-    </div>
-
   </div>
 {% endblock %}
