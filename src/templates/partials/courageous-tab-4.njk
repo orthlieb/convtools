@@ -1,0 +1,22 @@
+<!-- courageous-questions.njk -->
+<div>
+  <h4>The Ten Questions</h4>
+
+  <!-- params = { cards: 'comforting-great', titles: [ '1. What can you be grateful for', ...] } -->
+  {% import 'macros/accordian.njk' as accordian %}
+  {{ accordian.build({
+    cards: 'courageous-questions',
+    titles: [
+      '1. What is your most pressing issue?',
+      '2. In addition to this, is there something else?',
+      '3. How is this affecting you? When you feel that way how do you act?',
+      '4. What will the future be like if nothing changes?',
+      '5. What do you see as my responsibility for this issue?',
+      '6. What do you see as your responsibility for this issue?',
+      '7. What does the preferable future look like to you? If and when I fail, what is your preferable way to restore and reconnect our relationship?',
+      '8. What is the most powerful thing we can agree to ask God for?',
+      '9. Based on the above, what is the one thing we cannot fail to do?',
+      '10. What practical steps must we take to make this happen?'
+    ]
+  }) }}
+</div>

@@ -1,0 +1,21 @@
+<div>
+  <h4>Connecting Questions</h4>
+
+  <!-- params = { cards: 'comforting-great', titles: [ '1. What can you be grateful for', ...] } -->
+  {% import 'macros/accordian.njk' as accordian %}
+  {{ accordian.build({
+    cards: 'connecting-questions',
+    titles: [
+      '1. Greeting',
+      '2. What are the facts about the situation?',
+      '3. What are your ideas or opinions about this?',
+      '4. What are your hopes and dreams for the situation?',
+      '5. How do you feel about this?',
+      '6. What are you fears about this?',
+      '7. What do you need?',
+      '8. What insights have you received from God about this?',
+      '9. What can we pray for?'
+    ]
+  }) }}
+
+</div>

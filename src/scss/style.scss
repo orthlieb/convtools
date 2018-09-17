@@ -1,0 +1,83 @@
+.grid-container {
+  margin: 50px 1% 1% 1%;
+  padding: 2%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.courageous-button {
+  background: red;
+  border: 5px solid darkred;
+  text-shadow: 1px 1px 1px darkred;
+}
+
+.normal-to-noble-button {
+  background: DarkGray;
+  border: 5px solid gray;
+  text-shadow: 1px 1px 1px gray;
+}
+
+.comforting-button {
+  background: blue;
+  border: 5px solid darkblue;
+  text-shadow: 1px 1px 1px darkblue;
+}
+
+.connecting-button {
+  background: green;
+  border: 5px solid darkgreen;
+  text-shadow: 1px 1px 1px darkgreen;
+}
+
+.collaborating-button {
+  background: sienna;
+  border: 5px solid saddlebrown;
+  text-shadow: 1px 1px 1px saddlebrown;
+}
+
+.conciliatory-button {
+  background: aqua;
+  border: 5px solid turquoise;
+  text-shadow: 1px 1px 1px turquoise;
+}
+
+.bg-relate-purple {
+  background: #5961A8 !important;
+}
+
+.bg-relate-red {
+  background: #9C000D;
+}
+
+.flex-item {
+  margin: 5px;
+  padding: 10px;
+  width: 125px;
+  height: 125px;
+  line-height: 1.25em;
+  color: white !important;
+  font-size: 1em;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.nav {
+  flex-wrap: nowrap;
+}
+
+@media (min-width: 62rem) {
+  .classic-tabs {
+    overflow-x: auto;
+  }
+}
+
+.classic-tabs ul.tabs-white li.nav-item a.nav-link {
+  color: #5961A8;
+  font-weight: 500;
+  border-right: 1px solid #F8F8F8 !important;
+}
+
+.classic-tabs ul.tabs-white li.nav-item a.nav-link.active {
+  color: #6A72B9;
+  border-bottom: 2px solid #6A72B9 !important;
+}

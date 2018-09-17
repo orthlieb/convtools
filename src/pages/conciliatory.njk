@@ -1,0 +1,28 @@
+<!-- conciliatory.njk -->
+{% set title = 'Conciliatory Conversation' %}
+{% set id = "conciliatory" %}
+
+{% extends "layout.njk" %}
+
+{% block content %}
+  <!-- Adds the nav macro -->
+  {% import 'macros/nav.njk' as nav %}
+  {{ nav.build({ icon: 'fas fa-dove', title: title, id: id }) }}
+
+  <!--- Content for this page -->
+  {% import 'macros/tabs.njk' as tabs %}
+  {{ tabs.build({
+    tabfile: id,
+    tabs: [{
+      icon: 'fas fa-star-of-life',
+      title: 'Intro'
+    }, {
+      icon: 'fas fa-user-md',
+      title: 'Diagnosis'
+    }, {
+      icon: 'fas fa-frown',
+      title: 'Apology'
+    }]
+  }) }}
+
+{% endblock %}

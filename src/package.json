@@ -1,0 +1,9 @@
+{
+  "name": "r2020-convtools",
+  "version": "0.0.9",
+  "description": "Relate 20/20 Conversation Tools",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-pro": "^5.3.1"
+  }
+}

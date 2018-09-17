@@ -1,0 +1,26 @@
+<!-- collaborating.njk -->
+{% set title = "Collaborating Conversation" %}
+{% set id = "collaborating" %}
+{% extends "../templates/layout.njk" %}
+
+{% block content %}
+  <!-- Adds the header partial { include "partials/header.njk" %} -->
+
+  <!-- Adds the nav macro -->
+  {% import 'macros/nav.njk' as nav %}
+  {{ nav.build({ icon: 'fas fa-users', title: title, id: id }) }}
+
+  <!--- Content for this page -->
+  {% import 'macros/tabs.njk' as tabs %}
+  {{ tabs.build({
+    tabfile: id,
+    tabs: [{
+      icon: 'fas fa-star-of-life',
+      title: 'Intro'
+    }, {
+      icon: 'fas fa-question',
+      title: 'Questions'
+    }]
+  }) }}
+
+{% endblock %}

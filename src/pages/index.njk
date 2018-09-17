@@ -1,0 +1,85 @@
+{% set title = 'Conversation Tools' %}
+{% extends "layout.njk" %}
+
+{% block content %}
+
+  <!-- Start your project here-->
+  <!-- Adds the nav macro -->
+  {% import 'macros/nav.njk' as nav %}
+  {{nav.build({ title: title })}}
+  <!-- params = { icon: 'fas fa-crown', title: 'Courageous Conversation', id: 'courageous' } -->
+
+  <main>
+    <div class="d-flex justify-content-around flex-wrap grid-container mb-5 pb-5">
+      <a class="waves-effect waves-light normal-to-noble-button flex-item" href="normal-to-noble.html">
+        <i class="fas fa-chess-knight fa-2x"></i>
+        <p></p>
+        Normal to Noble
+      </a>
+      <a class="waves-effect waves-light courageous-button flex-item" href="courageous.html">
+        <i class="fas fa-crown fa-2x"></i>
+        <p></p>
+        Courageous Conversation
+      </a>
+      <a class="waves-effect waves-light comforting-button flex-item" href="comforting.html">
+        <i class="fas fa-hand-holding-heart fa-2x"></i>
+        <p></p>
+        Comforting Conversation
+      </a>
+      <a class="waves-effect waves-light connecting-button flex-item" href="connecting.html">
+        <i class="fas fa-plug fa-2x"></i>
+        <p></p>
+        Connecting Conversation
+      </a>
+      <a class="waves-effect waves-light collaborating-button flex-item" href="collaborating.html">
+        <i class="fas fa-users fa-2x"></i>
+        <p></p>
+        Collaborating Conversation
+      </a>
+      <a class="waves-effect waves-light conciliatory-button flex-item" href="conciliatory.html">
+        <i class="fas fa-dove fa-2x"></i>
+        <p></p>
+        Conciliatory Conversation
+      </a>
+      <a class="waves-effect waves-light normal-to-noble-button flex-item" href="prayers.html">
+        <i class="fas fa-praying-hands fa-2x"></i>
+        <p></p>
+        Prayers
+      </a>
+      <a class="waves-effect waves-light normal-to-noble-button flex-item" href="contact.html">
+        <i class="fa fa-envelope fa-2x"></i>
+        <p></p>
+        Contact Us
+      </a>
+    </div>
+  </main>
+  <footer class="page-footer font-small bg-relate-purple darken-3 fixed-bottom">
+    <!-- Footer Elements -->
+    <div class="container">
+      <!-- Grid row-->
+      <div class="row">
+        <!-- Grid column -->
+        <div class="col-md-12 py-1">
+          <div class="mb-5 flex-center">
+
+            <!-- Facebook -->
+            <a class="fb-ic" href="https://www.facebook.com/relate2020/">
+                <i class="fab fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a>
+            <!-- Twitter -->
+            <a class="tw-ic" href="https://twitter.com/relate2020">
+                <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a>
+              <!--Instagram-->
+            <a class="ins-ic" href="https://www.instagram.com/relate2020/">
+                <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+              </a>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row-->
+    </div>
+  </footer>
+  <!-- /Start your project here-->
+  {% endblock %}

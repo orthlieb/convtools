@@ -1,0 +1,89 @@
+{% macro build(params) %}
+  <!-- params = { icon: 'fas fa-crown', title: 'Courageous Conversation', id: 'courageous' } -->
+
+  <header>
+    <!-- Sidebar navigation -->
+    <div id="slide-out" class="side-nav fixed grey lighten-3" style="transform: translateX(-100%);">
+      <ul class="custom-scrollbar">
+        <!-- Logo -->
+        <li>
+          <div class="logo-wrapper waves-light waves-effect waves-light">
+            <a href="index.html"><img src="img/relate-logo-stacked.png" class="img-fluid flex-center"></a>
+          </div>
+        </li>
+        <!--/. Logo -->
+        <!-- Side navigation links -->
+        <li>
+          <a href="normal-to-noble.html">
+            {% if params.id == "normal-to-noble" %}
+              <i class="fal fa-arrow-circle-right"></i>
+            {% endif %}
+            Normal To Noble
+          </a>
+        </li>
+        <li>
+          <a href="courageous.html">
+            {% if params.id == "courageous" %}
+              <i class="fal fa-arrow-circle-right"></i>
+            {% endif %}
+            Courageous
+          </a>
+        </li>
+        <li>
+          <a href="comforting.html">
+            {% if params.id == "comforting" %}
+              <i class="fal fa-arrow-circle-right"></i>
+            {% endif %}
+            Comforting</a>
+        </li>
+        <li>
+          <a href="connecting.html">
+            {% if params.id == "connecting" %}
+              <i class="fal fa-arrow-circle-right"></i>
+            {% endif %}
+            Connecting</a>
+        </li>
+        <li>
+          <a href="collaborating.html">
+            {% if params.id == "collaborating" %}
+              <i class="fal fa-arrow-circle-right"></i>
+            {% endif %}
+            Collaborating</a>
+        </li>
+        <li>
+          <a href="conciliatory.html">
+            {% if params.id == "conciliatory" %}
+              <i class="fal fa-arrow-circle-right"></i>
+            {% endif %}
+            Conciliatory</a>
+        </li>
+        <li>
+          <a href="prayers.html">
+            {% if params.id == "prayers" %}
+              <i class="fal fa-arrow-circle-right"></i>
+            {% endif %}
+            Prayers</a>
+        </li>
+        <!--/. Side navigation links -->
+      </ul>
+      <div class="sidenav-bg mask-strong"></div>
+    </div>
+    <!--/. Sidebar navigation -->
+    <!-- Navbar -->
+    <nav class="navbar nav bg-relate-purple navbar-toggleable-md double-nav fixed-top pl-1">
+      <!-- SideNav slide-out button -->
+      <div class="float-left">
+        <a href="#" data-activates="slide-out" class="button-collapse ml-0 pr-2">
+          <i class="fas fa-bars"></i>
+        </a>
+      </div>
+      <!-- Breadcrumb-->
+      <div class="ml-2 mr-auto navbar-text navbar-light white-text">
+        <i class="{{ params.icon }}"></i>
+        &nbsp;
+        {{ params.title }}
+      </div>
+    </nav>
+    <!-- /.Navbar -->
+  </header>
+{% endmacro %}

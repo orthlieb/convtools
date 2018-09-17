@@ -1,0 +1,36 @@
+<!-- courageous.njk -->
+{% set title = "Courageous Conversation" %}
+{% set id = "courageous" %}
+
+{% extends "layout.njk" %}
+
+{% block content %}
+  <!-- Adds the header partial { include "partials/header.njk" %} -->
+
+  <!-- Adds the nav macro -->
+  {% import 'macros/nav.njk' as nav %}
+  {{ nav.build({ icon: 'fas fa-crown', title: title, id: id }) }}
+
+  <!--- Content for this page -->
+  {% import 'macros/tabs.njk' as tabs %}
+  {{ tabs.build({
+    tabfile: id,
+    tabs: [{
+      icon: 'fas fa-star-of-life',
+      title: 'Intro'
+    }, {
+      icon: 'fas fa-handshake-alt',
+      title: 'Agreements'
+    }, {
+      icon: 'fas fa-hands-heart',
+      title: 'Prayer'
+    }, {
+      icon: 'fas fa-question',
+      title: 'Questions'
+    }, {
+      icon: 'fas fa-theater-masks',
+      title: 'Emotions'
+    }]
+  }) }}
+
+{% endblock %}

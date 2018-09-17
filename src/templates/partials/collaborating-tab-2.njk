@@ -1,0 +1,19 @@
+<div>
+  <h4>Develop A Noble Plan</h4>
+  <p>This involves God's will, God's way, God's resources, God's timing, and God's blessing.
+  </p>
+
+  <!-- params = { cards: 'comforting-great', titles: [ '1. What can you be grateful for', ...] } -->
+  {% import 'macros/accordian.njk' as accordian %}
+  {{ accordian.build({
+    cards: 'collaborating-questions',
+    titles: [
+      '1. God\'s Will',
+      '2. God\'s Way',
+      '3. God\'s Resources',
+      '4. God\'s Timing',
+      '5. God\'s Blessings'
+    ]
+  }) }}
+
+</div>

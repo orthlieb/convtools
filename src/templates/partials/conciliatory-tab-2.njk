@@ -1,0 +1,13 @@
+<h4>Four Levels of the Problem</h4>
+
+<!-- params = { cards: 'comforting-great', titles: [ '1. What can you be grateful for', ...] } -->
+{% import 'macros/accordian.njk' as accordian %}
+{{ accordian.build({
+    cards: 'conciliatory-problem',
+    titles: [
+      'Level 1: Surface Issues',
+      'Level 2: Surface Causes',
+      'Level 3: Root Issues',
+      'Level 4: Root Cause'
+    ]
+}) }}

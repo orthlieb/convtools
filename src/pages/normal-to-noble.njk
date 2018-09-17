@@ -1,0 +1,28 @@
+<!-- prayers.njk -->
+{% set title = "Normal To Noble" %}
+{% set id = "normal-to-noble" %}
+
+{% extends "layout.njk" %}
+
+{% block content %}
+  <!-- Adds the nav macro -->
+  {% import 'macros/nav.njk' as nav %}
+  {{ nav.build({ icon: 'fas fa-chess-knight', title: title, id: id }) }}
+
+  <!--- Content for this page -->
+  <div class="container mt-5 pt-3">
+    <h4>The Normal vs the Noble Path</h4>
+    <img class="w-100" src="img/normal-to-noble/joymountain.png" alt="JoyMountain"/>
+
+    <!-- params = { cards: 'comforting-great', titles: [ '1. What can you be grateful for', ...] } -->
+    {% import 'macros/accordian.njk' as accordian %}
+    {{ accordian.build({
+      cards: 'normal-to-noble',
+      titles: [
+        'The Normal Path',
+        'The Noble Path'
+        ]
+    }) }}
+</div>
+
+{% endblock %}

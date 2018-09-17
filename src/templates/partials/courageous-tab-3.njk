@@ -1,0 +1,15 @@
+<!-- courageous-prayer.njk -->
+<div>
+  <h4>The Courageous Prayers</h4>
+
+  <!-- params = { cards: 'comforting-great', titles: [ '1. What can you be grateful for', ...] } -->
+  {% import 'macros/accordian.njk' as accordian %}
+  {{ accordian.build({
+  cards: 'courageous-prayer',
+  titles: [
+    'Wife is the Speaker',
+    'Husband is the Speaker'
+  ]
+}) }}
+
+</div>
