@@ -4,7 +4,7 @@ const nunjucksRender = require('gulp-nunjucks-render');
 module.exports = {
   templates: function() {
     // Gets .html and .njk files in pages
-    return gulp.src('src/pages/**/*.+(html|njk)')
+    return gulp.src('src/templates/pages/**/*.+(html|njk)')
       // Renders template with nunjucks
       .pipe(nunjucksRender({
         path: ['src/templates']
