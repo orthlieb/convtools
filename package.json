@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
+    "ajv": "^6.5.3",
     "del": "^3.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-nunjucks-render": "^2.2.2",
@@ -12,7 +13,8 @@
     "gulp-sass": "^4.0.1",
     "gulp-sftp-clean": "^0.1.7",
     "nunjucks": "^3.1.3",
-    "webpack": "^4.19.1"
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0"
   },
   "scripts": {
     "build": "gulp --gulpfile tasks build",
@@ -22,6 +24,7 @@
     "templates": "gulp --gulpfile tasks templates",
     "watch": "gulp --gulpfile tasks watch",
     "deploy": "gulp --gulpfile tasks deploy",
-    "deployCheck": "gulp --gulpfile tasks deployCheck"
+    "deployCheck": "gulp --gulpfile tasks deployCheck",
+    "bundle": "webpack ./dist/js/main.js --output ./bundled/bundle.js"
   }
 }

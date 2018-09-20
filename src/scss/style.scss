@@ -1,45 +1,42 @@
 .grid-container {
-  margin: 50px 1% 1% 1%;
-  padding: 2%;
+  margin: 50px 0px 0px 0px;
+  padding: 1%;
   display: flex;
-  justify-content: space-around;
+  height: 100%;
 }
 
 .courageous-button {
-  background: red;
-  border: 5px solid darkred;
-  text-shadow: 1px 1px 1px darkred;
+  background-color: #9E0B2C;
 }
 
 .normal-to-noble-button {
-  background: DarkGray;
-  border: 5px solid gray;
-  text-shadow: 1px 1px 1px gray;
+  background-color: #F6682F;
 }
 
 .comforting-button {
-  background: blue;
-  border: 5px solid darkblue;
-  text-shadow: 1px 1px 1px darkblue;
+  background-color: #195BE7;
 }
 
 .connecting-button {
-  background: green;
-  border: 5px solid darkgreen;
-  text-shadow: 1px 1px 1px darkgreen;
+  background-color: #1B881F;
 }
 
 .collaborating-button {
-  background: sienna;
-  border: 5px solid saddlebrown;
-  text-shadow: 1px 1px 1px saddlebrown;
+  background-color: #805A33;
 }
 
 .conciliatory-button {
-  background: aqua;
-  border: 5px solid turquoise;
-  text-shadow: 1px 1px 1px turquoise;
+  background-color: #31A3DD;
 }
+
+.prayers-button {
+  background-color: #A836F7;
+}
+
+.contact-us-button {
+  background-color: #A6C037;
+}
+
 
 .bg-relate-purple {
   background: #5961A8 !important;
@@ -50,15 +47,15 @@
 }
 
 .flex-item {
-  margin: 5px;
-  padding: 10px;
-  width: 125px;
-  height: 125px;
+  margin: 0px;
+  padding: 2em;
+  width: 33.3%;
+  height: 10em;
   line-height: 1.25em;
-  color: white !important;
-  font-size: 1em;
+  font-size: 0.8em;
   text-align: center;
-  border-radius: 20px;
+  border: thin solid white;
+  color: white;
 }
 
 .nav {
