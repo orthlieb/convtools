@@ -24,7 +24,6 @@
     "templates": "gulp --gulpfile tasks templates",
     "watch": "gulp --gulpfile tasks watch",
     "deploy": "gulp --gulpfile tasks deploy",
-    "deployCheck": "gulp --gulpfile tasks deployCheck",
-    "bundle": "webpack ./dist/js/main.js --output ./bundled/bundle.js"
+    "deployCheck": "gulp --gulpfile tasks deployCheck"
   }
 }

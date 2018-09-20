@@ -1,5 +1,5 @@
 .grid-container {
-  margin: 50px 0px 0px 0px;
+  margin: 0px;
   padding: 1%;
   display: flex;
   height: 100%;
@@ -48,14 +48,14 @@
 
 .flex-item {
   margin: 0px;
-  padding: 2em;
+  padding: 1.5em 1em 1em 1em;
   width: 33.3%;
   height: 10em;
   line-height: 1.25em;
   font-size: 0.8em;
   text-align: center;
   border: thin solid white;
-  color: white;
+  color: white !important;
 }
 
 .nav {

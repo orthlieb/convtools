@@ -12,22 +12,23 @@
   {{ nav.build({ icon: 'fas fa-prayer', title: title, id: id }) }}
 
   <!--- Content for this page -->
-  {% import 'macros/tabs.njk' as tabs %}
-  {{ tabs.build({
-    tabfile: id,
-    tabs: [{
-      icon: 'fas fa-shield',
-      title: 'Armor'
-    }, {
-      icon: 'fas fa-dharmachakra',
-      title: 'Creed'
-    }, {
-      icon: 'fas fa-trophy',
-      title: 'Victim'
-    }, {
-      icon: 'fas fa-cross',
-      title: 'St Patrick'
-    }]
-  }) }}
-
+  <main class="pt-5">
+    {% import 'macros/tabs.njk' as tabs %}
+    {{ tabs.build({
+      tabfile: id,
+      tabs: [{
+        icon: 'fas fa-shield',
+        title: 'Armor'
+      }, {
+        icon: 'fas fa-dharmachakra',
+        title: 'Creed'
+      }, {
+        icon: 'fas fa-trophy',
+        title: 'Victim'
+      }, {
+        icon: 'fas fa-cross',
+        title: 'St Patrick'
+      }]
+    }) }}
+  </main>
 {% endblock %}

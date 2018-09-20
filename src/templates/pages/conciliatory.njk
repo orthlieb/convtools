@@ -10,8 +10,9 @@
   {{ nav.build({ icon: 'fas fa-dove', title: title, id: id }) }}
 
   <!--- Content for this page -->
-  {% import 'macros/tabs.njk' as tabs %}
-  {{ tabs.build({
+  <main class="pt-5">
+    {% import 'macros/tabs.njk' as tabs %}
+    {{ tabs.build({
     tabfile: id,
     tabs: [{
       icon: 'fas fa-star-of-life',
@@ -24,5 +25,5 @@
       title: 'Apology'
     }]
   }) }}
-
+  </main>
 {% endblock %}
