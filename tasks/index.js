@@ -41,7 +41,7 @@ function getConfig() {
   return config;
 }
 
-gulp.task('deployCheck', function (done) {
+gulp.task('deploy-check', function (done) {
   let config = getConfig();
   console.log('Deploy check: ', JSON.stringify(config));
   done();

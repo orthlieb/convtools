@@ -24,6 +24,6 @@
     "templates": "gulp --gulpfile tasks templates",
     "watch": "gulp --gulpfile tasks watch",
     "deploy": "gulp --gulpfile tasks deploy",
-    "deployCheck": "gulp --gulpfile tasks deployCheck"
+    "deploy-check": "gulp --gulpfile tasks deploy-check"
   }
 }
