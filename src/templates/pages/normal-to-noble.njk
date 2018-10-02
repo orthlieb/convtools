@@ -11,20 +11,17 @@
 
   <!--- Content for this page -->
   <main class="pt-5">
-    <div class="container">
-      <h4>The Normal vs the Noble Path</h4>
-      <img class="w-100" src="img/normal-to-noble/joymountain.png" alt="JoyMountain"/>
-
-      <!-- params = { cards: 'comforting-great', titles: [ '1. What can you be grateful for', ...] } -->
-      {% import 'macros/accordian.njk' as accordian %}
-      {{ accordian.build({
-      cards: 'normal-to-noble',
-      titles: [
-        'The Normal Path',
-        'The Noble Path'
-        ]
-    }) }}
-    </main>
-  </div>
+    {% import 'macros/tabs.njk' as tabs %}
+    {{ tabs.build({
+    tabfile: id,
+    tabs: [{
+      icon: 'fas fa-fire',
+      title: 'Normal'
+    }, {
+      icon: 'fas fa-chess-knight',
+      title: 'Noble'
+    }]
+  }) }}
+  </main>
 
 {% endblock %}

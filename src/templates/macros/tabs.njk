@@ -2,7 +2,7 @@
   <!-- params = { cards: 'comforting-great', titles: [ '1. What can you be grateful for', ...] } -->
   <!-- Nav tabs -->
   <div class="classic-tabs">
-    <ul class="nav tabs-white tabs-text mx-0" role="tablist">
+    <ul class="nav tabs-primary tabs-text mx-0" role="tablist">
       {% for i in range(0, params.tabs.length) -%}
         <li class="nav-item">
           <a class="nav-link waves-light {% if i == 0 %}active show{% endif %}" data-toggle="tab" href="#{{params.tabfile}}-panel-{{(i + 1)}}" role="tab">

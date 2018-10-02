@@ -1,5 +1,5 @@
 .grid-container {
-  margin: 0px;
+  margin: 0;
   padding: 1%;
   display: flex;
   height: 100%;
@@ -37,7 +37,6 @@
   background-color: #A6C037;
 }
 
-
 .bg-relate-purple {
   background: #5961A8 !important;
 }
@@ -47,8 +46,8 @@
 }
 
 .flex-item {
-  margin: 0px;
-  padding: 1.5em 1em 1em 1em;
+  margin: 0;
+  padding: 1.5em 1em 1em;
   width: 33.3%;
   height: 10em;
   line-height: 1.25em;
@@ -62,19 +61,47 @@
   flex-wrap: nowrap;
 }
 
-@media (min-width: 62rem) {
-  .classic-tabs {
-    overflow-x: auto;
-  }
-}
-
 .classic-tabs ul.tabs-white li.nav-item a.nav-link {
-  color: #5961A8;
   font-weight: 500;
   border-right: 1px solid #F8F8F8 !important;
+  border-left: 1px solid #F8F8F8 !important;
+  color: #7B83CA;
 }
 
 .classic-tabs ul.tabs-white li.nav-item a.nav-link.active {
   color: #6A72B9;
   border-bottom: 2px solid #6A72B9 !important;
+}
+
+.classic-tabs .nav li:first-child {
+    margin-left: 0px;
+}
+
+.fixed-sn main {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+// On tablets and phones that are in landscape mode and have the space,
+// We make the sidenav fixed
+@media only screen and (min-width: 768px) and (orientation: landscape) {
+
+  .side-nav.fixed {
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px) !important;
+  }
+
+  .fixed-sn nav {
+    margin-left: 15rem;
+  }
+
+  .fixed-sn nav .button-collapse {
+    display: none;
+  }
+
+  .fixed-sn main {
+    margin-left: 15rem;
+    margin-right: 0px;
+  }
 }
