@@ -1,0 +1,89 @@
+{% set title = 'Which Conversation To Use?' %}
+{% set id = 'which' %}
+{% extends "layout.njk" %}
+
+{% block content %}
+
+  <!-- Start your project here-->
+  <!-- Adds the nav macro -->
+  {% import 'macros/nav.njk' as nav %}
+  {{nav.build({ title: title, id: id })}}
+  <!-- params = { icon: 'fas fa-crown', title: 'Courageous Conversation', id: 'courageous' } -->
+
+  <main class="mt-4 pt-5 pb-5 px-3">
+    <div id="bing">
+      <h4>Is there an issue?</h4>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="issueUnchecked" name="isThereAnIssue" onClick="hideAndShowSections(s, ['#bang'])">
+        <label class="form-check-label" for="issueUnchecked">No issue</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="issueChecked" name="isThereAnIssue" onClick="hideAndShowSections(s, ['#bong'])">
+        <label class="form-check-label" for="issueChecked">Issue</label>
+      </div>
+    </div>
+    <div id="bang" style="display:none;">
+      <h4>Are you just checking in or do you need to decide something?</h4>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="checkingIn" name="checkingInOrDeciding" onClick="hideAndShowSections(s, ['#bong', '#ding'])">
+        <label class="form-check-label" for="checkingIn">Just checking in</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="deciding" name="checkingInOrDeciding" onClick="hideAndShowSections(s, ['#bong'])">
+        <label class="form-check-label" for="deciding">We need to make a decision</label>
+      </div>
+    </div>
+    <div id="bong" style="display:none;">
+      <h4>Are you involved directly in the issue?</h4>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="notInvolved" name="involvedOrNot">
+        <label class="form-check-label" for="notInvolved">I'm not directly involved</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="involved" name="involvedOrNot">
+        <label class="form-check-label" for="involved">Yes, I'm involved</label>
+      </div>
+    </div>
+    <div id="bung" style="display:none;">
+      <h4>Are you at fault?</h4>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="partially" name="partiallyOrFully">
+        <label class="form-check-label" for="partially">I may be partially at fault</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="fully" name="partiallyOrFully">
+        <label class="form-check-label" for="fully">I am fully to blame</label>
+      </div>
+    </div>
+    <div id="ding" class="mt-4" style="display:none;">
+      <h4>You want to use the</h4>
+      <img src="img/which/connecting.png" href="connecting.html" class="w-100">
+      <h4>conversation</h4>
+    </div>
+  </main>
+
+  <script>
+    let s = ['#bang', '#bong', "#bung", '#ding'];
+
+    function hideSections(sections) {
+      for (let i of sections) {
+        console.log('HIDING', i, sections[i]);
+        $(i).hide();
+      }
+    }
+
+    function showSections(sections) {
+      for (let i of sections) {
+        console.log('SHOWING', i, sections[i]);
+        $(i).show();
+      }
+    }
+
+    function hideAndShowSections(hs, ss) {
+      hideSections(hs);
+      showSections(ss);
+    }
+  </script>
+
+  <!-- /Start your project here-->
+{% endblock %}
