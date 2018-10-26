@@ -1,0 +1,27 @@
+{% macro build(params) %}
+<!-- params = [{ type: 'choice', title: 'The title'}, id: 'section-id', choices: ['first choice', 'second choice', ...]}, ...] -->
+<!-- params = [{ type: 'static', title: 'The title', id: 'section-id', href: 'link/to/other/content.html', img: 'link/to/image.png'}, ...] -->
+  <div class="quiztree">
+    {% for i in range(0, params.length) %}
+      {% if params[i].type == 'radio' %}
+        <div id="{{ params[i].id }}" class="section" {% if i != 0 %}style="display: none;"{%endif%}>
+          <h4>{{ params[i].title }}</h4>
+          {% for j in range(0, params[i].children.length) %}
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="{{ params[i].id + '-' + j }}" name="{{ params[i].id }}" onClick="showAndCheckSections({{ params[i].show[j] | dump }}, {{ params[i].check[j] | dump }})">
+              <label class="form-check-label" for="{{ params[i].id }}">{{ params[i].children[j] }}</label>
+            </div>
+          {%- endfor %}
+        </div>
+      {% else %}
+        <div id="{{ params[i].id }}" class="section">
+          <h4>{{ params[i].title }}</h4>
+          <a href="{{ params[i].href }}">
+            <img src="{{ params[i].img }}" class="w-100">
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+{% endmacro %}
