@@ -18,21 +18,21 @@
         id: 'issue',
         title: 'Is there an issue between the two of you?',
         children: [ 'No issue', 'Yes, there is an issue'],
-        show: [['issue', 'check-in-or-decide'], ['issue', 'involved-or-not']],
+        show: [['checkin-or-decide'], ['involved-or-not']],
         check: [['issue-0'], ['issue-1']]
       }, {
         type: 'radio',
         id: 'checkin-or-decide',
         title: 'Are you just checking in or do you need to decide something',
         children: [ 'Just checking in', 'We need to decide something' ],
-        show: [['issue', 'check-in-or-decide', 'connecting'], ['issue', 'check-in-or-decide', 'collaborating']],
+        show: [['checkin-or-decide', 'connecting'], ['checkin-or-decide', 'collaborating']],
         check: [['issue-0', 'checkin-or-decide-0'], ['issue-0', 'checkin-or-decide-1']]
       }, {
         type: 'radio',
         id: 'involved-or-not',
         title: 'Are you involved directly in the issue?',
         children: [ 'I am not involved',  'I may be at fault, I\'m not sure', 'I am most likely to blame' ],
-        show: [['issue', 'involved-or-not', 'connecting'], ['issue', 'involved-or-not', 'collaborating'], ['issue', 'involved-or-not', 'conciliatory']],
+        show: [['involved-or-not', 'comforting'], ['involved-or-not', 'collaborating'], ['involved-or-not', 'conciliatory']],
         check: [['issue-1', 'involved-or-not-0'], ['issue-1', 'involved-or-not-1'], ['issue-1', 'involved-or-not-2']]
       }, {
         type: 'static',
@@ -71,45 +71,6 @@
   <script type="text/javascript">
     let allSections = [ 'checkin-or-decide', 'involved-or-not', 'connecting', 'collaborating', 'comforting', 'courageous', 'conciliatory' ];
     let allChecks = [ 'issue-0', 'issue-1', 'checkin-or-decide-0', 'checkin-or-decide-1', 'involved-or-not-0', 'involved-or-not-1', 'involved-or-not-2' ];
-
-    function hideSections(sections) {
-      console.log('HIDING DOZE SECTIONS');
-      for (let i of sections) {
-        console.log('HIDING', i, sections[i]);
-        $('#' + i).hide();
-      }
-    }
-
-    function showSections(sections) {
-      for (let i of sections) {
-        console.log('SHOWING', i, sections[i]);
-        $('#' + i).show();
-      }
-    }
-
-    function checkSections(sections) {
-      for (let i of sections) {
-        console.log('CHECKING', i, sections[i]);
-        $('#' + i).addAttribute('checked');
-      }
-    }
-
-    function uncheckSections(sections) {
-      for (let i of sections) {
-        console.log('UNCHECKING', i, sections[i]);
-        $('#' + i).addAttribute('checked');
-      }
-    }
-
-    function showAndCheckSections(hs, cs) {
-      hideSections(allSections);
-      showSections(hs);
-      uncheckSections(allChecks);
-      checkSections(cs);
-    }
-
-    window.onload = () => hideSections(allSections);
-
   </script>
 
   <!-- /Start your project here-->

@@ -8,13 +8,13 @@
           <h4>{{ params[i].title }}</h4>
           {% for j in range(0, params[i].children.length) %}
             <div class="form-check">
-              <input type="radio" class="form-check-input" id="{{ params[i].id + '-' + j }}" name="{{ params[i].id }}" onClick="showAndCheckSections({{ params[i].show[j] | dump }}, {{ params[i].check[j] | dump }})">
+              <input type="radio" class="form-check-input" id="{{ params[i].id + '-' + j }}" name="{{ params[i].id }}" onclick="showAndCheckSections({{ params[i].show[j] | dump }}, {{ params[i].check[j] | dump }})">
               <label class="form-check-label" for="{{ params[i].id }}">{{ params[i].children[j] }}</label>
             </div>
           {%- endfor %}
         </div>
       {% else %}
-        <div id="{{ params[i].id }}" class="section">
+        <div id="{{ params[i].id }}" class="section" style="display: none;">
           <h4>{{ params[i].title }}</h4>
           <a href="{{ params[i].href }}">
             <img src="{{ params[i].img }}" class="w-100">
@@ -23,5 +23,44 @@
       {% endif %}
     {% endfor %}
   </div>
+  <script>
+    function hideSections(sections) {
+      console.log('HIDING DOZE SECTIONS');
+      for (let i of sections) {
+        console.log('HIDING', i);
+        $('#' + i).hide();
+      }
+    }
+
+    function showSections(sections) {
+      for (let i of sections) {
+        console.log('SHOWING', i);
+        $('#' + i).show();
+      }
+    }
+
+    function checkSections(sections) {
+      for (let i of sections) {
+        console.log('CHECKING', i);
+        $('#' + i).prop( "checked", true );
+      }
+    }
+
+    function uncheckSections(sections) {
+      for (let i of sections) {
+        console.log('UNCHECKING', i);
+        $('#' + i).prop( "checked", false );
+      }
+    }
+
+    function showAndCheckSections(hs, cs) {
+      console.log('wheee');
+      hideSections($(allSections).not(hs));
+      showSections(hs);
+      uncheckSections($(allChecks).not(cs));
+      checkSections(cs);
+    }
+    
+    </script>
 
 {% endmacro %}
