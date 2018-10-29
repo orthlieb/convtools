@@ -4,7 +4,6 @@
 
 {% block content %}
 
-  <!-- Start your project here-->
   <!-- Adds the nav macro -->
   {% import 'macros/nav.njk' as nav %}
   {{ nav.build({ title: title, id: id }) }}
@@ -12,28 +11,28 @@
 
   <main class="mt-4 pt-5 pb-5 px-3">
     {% import 'macros/quiztree.njk' as quiztree %}
-    {{ quiztree.build([
+    {{ quiztree.build('WhichQuiz', [
       {
         type: 'radio',
         id: 'issue',
         title: 'Is there an issue between the two of you?',
         children: [ 'No issue', 'Yes, there is an issue'],
-        show: [['checkin-or-decide'], ['involved-or-not']],
-        check: [['issue-0'], ['issue-1']]
+        show: ['#checkin-or-decide', '#involved-or-not'],
+        check: ['#issue-0', '#issue-1']
       }, {
         type: 'radio',
         id: 'checkin-or-decide',
         title: 'Are you just checking in or do you need to decide something',
         children: [ 'Just checking in', 'We need to decide something' ],
-        show: [['checkin-or-decide', 'connecting'], ['checkin-or-decide', 'collaborating']],
-        check: [['issue-0', 'checkin-or-decide-0'], ['issue-0', 'checkin-or-decide-1']]
+        show: ['#checkin-or-decide, #connecting', '#checkin-or-decide, #collaborating'],
+        check: ['#issue-0, #checkin-or-decide-0', '#issue-0, #checkin-or-decide-1']
       }, {
         type: 'radio',
         id: 'involved-or-not',
         title: 'Are you involved directly in the issue?',
         children: [ 'I am not involved',  'I may be at fault, I\'m not sure', 'I am most likely to blame' ],
-        show: [['involved-or-not', 'comforting'], ['involved-or-not', 'collaborating'], ['involved-or-not', 'conciliatory']],
-        check: [['issue-1', 'involved-or-not-0'], ['issue-1', 'involved-or-not-1'], ['issue-1', 'involved-or-not-2']]
+        show: ['#involved-or-not, #comforting', '#involved-or-not, #collaborating', '#involved-or-not, #conciliatory'],
+        check: ['#issue-1, #involved-or-not-0', '#issue-1, #involved-or-not-1', '#issue-1, #involved-or-not-2']
       }, {
         type: 'static',
         id: 'connecting',
@@ -67,11 +66,4 @@
       }
     ]) }}
   </main>
-
-  <script type="text/javascript">
-    let allSections = [ 'checkin-or-decide', 'involved-or-not', 'connecting', 'collaborating', 'comforting', 'courageous', 'conciliatory' ];
-    let allChecks = [ 'issue-0', 'issue-1', 'checkin-or-decide-0', 'checkin-or-decide-1', 'involved-or-not-0', 'involved-or-not-1', 'involved-or-not-2' ];
-  </script>
-
-  <!-- /Start your project here-->
 {% endblock %}

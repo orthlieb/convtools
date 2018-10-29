@@ -1,20 +1,21 @@
-{% macro build(params) %}
-<!-- params = [{ type: 'choice', title: 'The title'}, id: 'section-id', choices: ['first choice', 'second choice', ...]}, ...] -->
+{% macro build(quizName, params) %}
+<!-- params = [{ type: 'choice', title: 'The title', id: 'section-id', children: ['First Choice', 'Second Choice', ...], show: '#sections, #to, #show', check: '#radios, #to, #check' }, ...] -->
 <!-- params = [{ type: 'static', title: 'The title', id: 'section-id', href: 'link/to/other/content.html', img: 'link/to/image.png'}, ...] -->
-  <div class="quiztree">
+  <div class="quiztree" id="{{ quizName }}">
     {% for i in range(0, params.length) %}
       {% if params[i].type == 'radio' %}
-        <div id="{{ params[i].id }}" class="section" {% if i != 0 %}style="display: none;"{%endif%}>
-          <h4>{{ params[i].title }}</h4>
+        <div id="{{ params[i].id }}" {% if i != 0 %}class="quiz-section" style="display: none;"{%endif%}>
+          <h5>{{ params[i].title }}</h5>
           {% for j in range(0, params[i].children.length) %}
             <div class="form-check">
-              <input type="radio" class="form-check-input" id="{{ params[i].id + '-' + j }}" name="{{ params[i].id }}" onclick="showAndCheckSections({{ params[i].show[j] | dump }}, {{ params[i].check[j] | dump }})">
-              <label class="form-check-label" for="{{ params[i].id }}">{{ params[i].children[j] }}</label>
+              <input type="radio" class="form-check-input quiz-choice" id="{{ params[i].id + '-' + j }}" name="{{ params[i].id }}" onClick="showAndCheckSectionsIn{{quizName}}('{{ params[i].show[j] }}', '{{ params[i].check[j] }}');">
+              <label class="form-check-label" for="{{ params[i].id + '-' + j }}">{{ params[i].children[j] }}</label>
             </div>
           {%- endfor %}
         </div>
       {% else %}
-        <div id="{{ params[i].id }}" class="section" style="display: none;">
+        <div id="{{ params[i].id }}" class="quiz-section" style="display: none;">
+          <br>
           <h4>{{ params[i].title }}</h4>
           <a href="{{ params[i].href }}">
             <img src="{{ params[i].img }}" class="w-100">
@@ -24,43 +25,22 @@
     {% endfor %}
   </div>
   <script>
-    function hideSections(sections) {
-      console.log('HIDING DOZE SECTIONS');
-      for (let i of sections) {
-        console.log('HIDING', i);
-        $('#' + i).hide();
-      }
+    /**
+     * Shows a specific set of sections, while hiding all others. Checks a specific set of
+     * radio buttons, while unchecking all others.
+     * @param {string} showSections list of section selectors to show
+     * @param {string} checkRadios list of radio button selectors to check
+     */
+    function showAndCheckSectionsIn{{quizName}}(showSections, checkRadios) {
+      let allSections = $('#{{quizName}} .quiz-section');
+      allSections.filter(showSections).show();
+      allSections.not(showSections).hide();
+
+      let allRadios = $('#{{quizName}} .quiz-choice');
+      allRadios.filter(checkRadios).prop('checked', true);
+      allRadios.not(checkRadios).prop('checked', false);
     }
 
-    function showSections(sections) {
-      for (let i of sections) {
-        console.log('SHOWING', i);
-        $('#' + i).show();
-      }
-    }
-
-    function checkSections(sections) {
-      for (let i of sections) {
-        console.log('CHECKING', i);
-        $('#' + i).prop( "checked", true );
-      }
-    }
-
-    function uncheckSections(sections) {
-      for (let i of sections) {
-        console.log('UNCHECKING', i);
-        $('#' + i).prop( "checked", false );
-      }
-    }
-
-    function showAndCheckSections(hs, cs) {
-      console.log('wheee');
-      hideSections($(allSections).not(hs));
-      showSections(hs);
-      uncheckSections($(allChecks).not(cs));
-      checkSections(cs);
-    }
-    
-    </script>
+  </script>
 
 {% endmacro %}
