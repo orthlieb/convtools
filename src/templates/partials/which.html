@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/splash/splash-icon.png">
+    <link rel="apple-touch-startup-image" href="img/splash/splash-screen.png" media="screen and (max-device-width: 320px)"/>
+    <link rel="apple-touch-startup-image" href="img/splash/splash-screen@2x.png" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)"/>
+    <link rel="apple-touch-startup-image" sizes="640x1096" href="img/splash/splash-screen@3x.png"/>
+    <link rel="apple-touch-startup-image" sizes="1024x748" href="img/splash/splash-screen-ipad-landscape" media="screen and (min-device-width : 481px) and (max-device-width : 1024px) and (orientation : landscape)"/>
+    <link rel="apple-touch-startup-image" sizes="768x1004" href="img/splash/splash-screen-ipad-portrait.png" media="screen and (min-device-width : 481px) and (max-device-width : 1024px) and (orientation : portrait)"/>
+    <link rel="apple-touch-startup-image" sizes="1536x2008" href="img/splash/splash-screen-ipad-portrait-retina.png" media="(device-width: 768px)	and (orientation: portrait)	and (-webkit-device-pixel-ratio: 2)"/>
+    <link rel="apple-touch-startup-image" sizes="1496x2048" href="img/splash/splash-screen-ipad-landscape-retina.png" media="(device-width: 768px)	and (orientation: landscape)	and (-webkit-device-pixel-ratio: 2)"/>
+
+    <title>Which Conversation To Use?</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="node_modules/@fortawesome/fontawesome-pro/css/all.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+
+  <body class="fixed-sn white-skin">
+
+    <!-- You write code for this content block in another file -->
+      
+
+  <!-- Adds the nav macro -->
+  
+  
+  <!-- params = { icon: 'fas fa-crown', title: 'Courageous Conversation', id: 'courageous' } -->
+
+  <header>
+    <!-- Sidebar navigation -->
+    <div id="slide-out" class="side-nav fixed">
+      <ul class="custom-scrollbar">
+        <!-- Logo -->
+        <li>
+          <div class="logo-wrapper waves-light waves-effect waves-light">
+            <a href="index.html"><img src="img/logo-stacked.png" class="img-fluid flex-center"></a>
+          </div>
+        </li>
+        <!--/. Logo -->
+        <!-- Side navigation links -->
+        <li>
+          <a href="normal-to-noble.html">
+            
+            Normal To Noble
+          </a>
+        </li>
+        <li>
+          <a href="which.html">
+            
+              <i class="fal fa-arrow-circle-right"></i>
+            
+            Which Conversation?
+          </a>
+        </li>
+        <li>
+          <a href="courageous.html">
+            
+            Courageous
+          </a>
+        </li>
+        <li>
+          <a href="comforting.html">
+            
+            Comforting</a>
+        </li>
+        <li>
+          <a href="connecting.html">
+            
+            Connecting</a>
+        </li>
+        <li>
+          <a href="collaborating.html">
+            
+            Collaborating</a>
+        </li>
+        <li>
+          <a href="conciliatory.html">
+            
+            Conciliatory</a>
+        </li>
+        <li>
+          <a href="prayers.html">
+            
+            Prayers</a>
+        </li>
+        <li>
+          <a href="character.html">
+            
+            About Character</a>
+        </li>
+        <!--/. Side navigation links -->
+      </ul>
+      <div class="sidenav-bg mask-strong"></div>
+    </div>
+    <!--/. Sidebar navigation -->
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg double-nav">
+      <!-- SideNav slide-out button -->
+      <div class="float-left">
+        <a href="#" data-activates="slide-out" class="button-collapse ml-0 pr-2">
+          <i class="fas fa-bars"></i>
+        </a>
+      </div>
+      <!-- Breadcrumb-->
+      <div class="ml-2 mr-auto navbar-text navbar-light">
+        <i class=""></i>
+        &nbsp;
+        Which Conversation To Use?
+      </div>
+    </nav>
+    <!-- /.Navbar -->
+  </header>
+
+  <!-- params = { icon: 'fas fa-crown', title: 'Courageous Conversation', id: 'courageous' } -->
+
+  <main class="mt-4 pt-5 pb-5 px-3">
+    
+    
+<!-- params = [{ type: 'choice', title: 'The title', id: 'section-id', children: ['First Choice', 'Second Choice', ...], show: '#sections, #to, #show', check: '#radios, #to, #check' }, ...] -->
+<!-- params = [{ type: 'static', title: 'The title', id: 'section-id', href: 'link/to/other/content.html', img: 'link/to/image.png'}, ...] -->
+  <div class="quiztree" id="WhichQuiz">
+    
+      
+        <div id="issue" >
+          <h5>Is there an issue between the two of you?</h5>
+          
+            <div class="form-check">
+              <input type="radio" class="form-check-input quiz-choice" id="issue-0" name="issue" onClick="showAndCheckSectionsInWhichQuiz('#checkin-or-decide', '#issue-0');">
+              <label class="form-check-label" for="issue-0">No issue</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input quiz-choice" id="issue-1" name="issue" onClick="showAndCheckSectionsInWhichQuiz('#involved-or-not', '#issue-1');">
+              <label class="form-check-label" for="issue-1">Yes, there is an issue</label>
+            </div>
+        </div>
+      
+    
+      
+        <div id="checkin-or-decide" class="quiz-section" style="display: none;">
+          <h5>Are you just checking in or do you need to decide something</h5>
+          
+            <div class="form-check">
+              <input type="radio" class="form-check-input quiz-choice" id="checkin-or-decide-0" name="checkin-or-decide" onClick="showAndCheckSectionsInWhichQuiz('#checkin-or-decide, #connecting', '#issue-0, #checkin-or-decide-0');">
+              <label class="form-check-label" for="checkin-or-decide-0">Just checking in</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input quiz-choice" id="checkin-or-decide-1" name="checkin-or-decide" onClick="showAndCheckSectionsInWhichQuiz('#checkin-or-decide, #collaborating', '#issue-0, #checkin-or-decide-1');">
+              <label class="form-check-label" for="checkin-or-decide-1">We need to decide something</label>
+            </div>
+        </div>
+      
+    
+      
+        <div id="involved-or-not" class="quiz-section" style="display: none;">
+          <h5>Are you involved directly in the issue?</h5>
+          
+            <div class="form-check">
+              <input type="radio" class="form-check-input quiz-choice" id="involved-or-not-0" name="involved-or-not" onClick="showAndCheckSectionsInWhichQuiz('#involved-or-not, #comforting', '#issue-1, #involved-or-not-0');">
+              <label class="form-check-label" for="involved-or-not-0">I am not involved</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input quiz-choice" id="involved-or-not-1" name="involved-or-not" onClick="showAndCheckSectionsInWhichQuiz('#involved-or-not, #collaborating', '#issue-1, #involved-or-not-1');">
+              <label class="form-check-label" for="involved-or-not-1">I may be at fault, I&#39;m not sure</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input quiz-choice" id="involved-or-not-2" name="involved-or-not" onClick="showAndCheckSectionsInWhichQuiz('#involved-or-not, #conciliatory', '#issue-1, #involved-or-not-2');">
+              <label class="form-check-label" for="involved-or-not-2">I am most likely to blame</label>
+            </div>
+        </div>
+      
+    
+      
+        <div id="connecting" class="quiz-section" style="display: none;">
+          <br>
+          <h4>You want to use the Connecting Conversation</h4>
+          <a href="connecting.html">
+            <img src="img/which/connecting.png" class="w-100">
+          </a>
+        </div>
+      
+    
+      
+        <div id="collaborating" class="quiz-section" style="display: none;">
+          <br>
+          <h4>You want to use the Collaborating Conversation</h4>
+          <a href="collaborating.html">
+            <img src="img/which/collaborating.png" class="w-100">
+          </a>
+        </div>
+      
+    
+      
+        <div id="comforting" class="quiz-section" style="display: none;">
+          <br>
+          <h4>You want to use the Comforting Conversation</h4>
+          <a href="comforting.html">
+            <img src="img/which/comforting.png" class="w-100">
+          </a>
+        </div>
+      
+    
+      
+        <div id="courageous" class="quiz-section" style="display: none;">
+          <br>
+          <h4>You want to use the Courageous Conversation</h4>
+          <a href="courageous.html">
+            <img src="img/which/courageous.png" class="w-100">
+          </a>
+        </div>
+      
+    
+      
+        <div id="conciliatory" class="quiz-section" style="display: none;">
+          <br>
+          <h4>You want to use the Conciliatory Conversation</h4>
+          <a href="conciliatory.html">
+            <img src="img/which/conciliatory.png" class="w-100">
+          </a>
+        </div>
+      
+    
+  </div>
+  <script>
+    /**
+     * Shows a specific set of sections, while hiding all others. Checks a specific set of
+     * radio buttons, while unchecking all others.
+     * @param {string} showSections list of section selectors to show
+     * @param {string} checkRadios list of radio button selectors to check
+     */
+    function showAndCheckSectionsInWhichQuiz(showSections, checkRadios) {
+      let allSections = $('#WhichQuiz .quiz-section');
+      allSections.filter(showSections).show();
+      allSections.not(showSections).hide();
+
+      let allRadios = $('#WhichQuiz .quiz-choice');
+      allRadios.filter(checkRadios).prop('checked', true);
+      allRadios.not(checkRadios).prop('checked', false);
+    }
+
+  </script>
+
+
+  </main>
+
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Your application script -->
+    <script type="text/javascript" src="js/main.js"></script>
+
+  </body>
+</html>
