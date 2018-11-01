@@ -3,24 +3,19 @@
   overcome that failure.
 </p>
 
-<div class="row">
-  <div class="col">
-    <!-- params = { cards: 'comforting-great', titles: [ '1. What can you be grateful for', ...] } -->
-    {% import 'macros/accordian.njk' as accordian %}
-    {{ accordian.build({
-      cards: 'character-groups',
-      titles: [
-        'Anger',
-        'Guilt',
-        'Lust',
-        'Bitterness',
-        'Greed',
-        'Fear',
-        'Envy'
-      ]
-    }) }}
-  </div>
-  <div class="col">
-    <img src="img/character/treeroots.jpg" alt="Tree and Roots" class="w-100">
-  </div>
+  <!-- params = { cards: 'comforting-great', titles: [ '1. What can you be grateful for', ...] } -->
+  {% import 'macros/accordian.njk' as accordian %}
+  {{ accordian.build({
+    cards: 'character-groups',
+    titles: [
+      'Anger',
+      'Guilt',
+      'Lust',
+      'Bitterness',
+      'Greed',
+      'Fear',
+      'Envy'
+    ]
+  }) }}
+  <img src="img/character/treeroots.jpg" alt="Tree and Roots" class="w-100">
 </div>

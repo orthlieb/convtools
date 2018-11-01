@@ -45,5 +45,29 @@
     <!-- Your application script -->
     <script type="text/javascript" src="js/main.js"></script>
 
+    <script>
+      $(function () {
+        const url = new URL(window.location.href);
+        const tab = url.searchParams.get("tab");
+        const name = url.searchParams.get("name");
+
+        function onShownTab(e) {
+          const anchor = $('a[name="' + name + '"]').get(0);
+          anchor.scrollIntoView({ behavior: 'smooth', block: 'start'});
+          $('ul.nav a[href="#' + tab + '"]').off('shown.bs.tab', onShownTab);
+        }
+
+        if (tab) {
+          // If there is a tab, show it, then scroll to anchor
+          name && $('ul.nav a[href="#' + tab + '"]').on('shown.bs.tab', onShownTab);
+          $('ul.nav a[href="#' + tab + '"]').tab('show');
+        } else if (name) {
+          // No tab specified, so just scroll to anchor
+          const anchor = $('a[name="' + name + '"]').get(0);
+          anchor.scrollIntoView({ behavior: 'smooth', block: 'start'});
+        }
+      });
+    </script>
+
   </body>
 </html>
