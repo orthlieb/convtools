@@ -45,6 +45,9 @@
     <!-- Your application script -->
     <script type="text/javascript" src="js/main.js"></script>
 
+    <!-- You write code for this scripts block in another file -->
+    {% block scripts %}{% endblock %}
+
     <script>
       $(function () {
         const url = new URL(window.location.href);

@@ -1,24 +1,136 @@
 <!-- collaborating.njk -->
-{% set title = "Collaborating Conversation" %}
-{% set id = "collaborating" %}
+{% set title = "Contact Us" %}
+{% set id = "contact-us" %}
 {% extends "layout.njk" %}
 
 {% block content %}
   <!-- Adds the nav macro -->
   {% import 'macros/nav.njk' as nav %}
-  {{ nav.build({ icon: 'fas fa-users', title: title, id: id }) }}
+  {{ nav.build({ icon: 'fas fa-envelope', title: title, id: id }) }}
 
   <!--- Content for this page -->
-  <!--Main Layout-->
-  <main>
-      <div class="container-fluid mt-5">
-          <h2>Advanced Double Navigation with fixed SideNav & fixed Navbar:</h2>
-          <br>
-          <h5>1. Fixed side menu, hidden on small devices.</h5>
-          <h5>2. Fixed Navbar. It will always stay visible on the top, even when you scroll down.</h5>
-          <div style="height: 2000px"></div>
-      </div>
-  </main>
-  <!--Main Layout-->
+  <main class="pt-5">
+    <div class="container">
+      <!--Section: Contact v.2-->
+      <section class="section">
 
+        <!--Section heading-->
+        <h2 class="h1-responsive font-weight-bold text-center my-5">Contact us</h2>
+        <!--Section description-->
+        <p class="text-center w-responsive mx-auto">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within matter of hours to help you.</p>
+
+        <div id="status" class="alert mt-2 w-100" style="display: none;" role="alert"></div>
+
+        <div class="row">
+
+          <!--Grid column-->
+          <div class="col-md-12 mb-md-0 mb-5">
+            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+              <!--Grid row-->
+              <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-6">
+                  <div class="md-form mb-0">
+                    <input type="text" id="name" name="name" class="form-control">
+                    <label for="name" class="">Your name</label>
+                  </div>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-6">
+                  <div class="md-form mb-0">
+                    <input type="text" id="email" name="email" class="form-control">
+                    <label for="email" class="">Your email</label>
+                  </div>
+                </div>
+                <!--Grid column-->
+
+              </div>
+              <!--Grid row-->
+
+              <!--Grid row-->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="md-form mb-0">
+                    <input type="text" id="subject" name="subject" class="form-control">
+                    <label for="subject" class="">Subject</label>
+                  </div>
+                </div>
+              </div>
+              <!--Grid row-->
+
+              <!--Grid row-->
+              <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-12">
+
+                  <div class="md-form">
+                    <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                    <label for="message">Your message</label>
+                  </div>
+
+                </div>
+              </div>
+              <!--Grid row-->
+
+            </form>
+
+            <div class="text-center text-md-left">
+              <a class="btn btn-primary" onclick="validateForm()">Send</a>
+            </div>
+          </div>
+          <!--Grid column-->
+
+        </div>
+
+      </section>
+      <!--Section: Contact v.2-->
+    </div>
+  </main>
+{% endblock %}
+{% block scripts %}
+  <script>
+
+    function validateForm() {
+      let status = $('#status');
+      status.show();
+      status.addClass('alert-danger').removeClass('alert-success');
+
+      let name = $('#name').val();
+      if (!name) {
+        status.html('Name cannot be empty');
+        return false;
+      }
+      let email = $('#email').val();
+      if (!email) {
+        status.html('Email cannot be empty');
+        return false;
+      } else {
+        let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!re.test(email)) {
+          status.html('Email format invalid');
+          return false;
+        }
+      }
+      let subject = $('#subject').val();
+      if (!subject) {
+        status.html('Subject cannot be empty');
+        return false;
+      }
+      let body = $('#message').val();
+      if (!body) {
+        status.html('Message cannot be empty');
+        return false;
+      }
+      status.removeClass('alert-danger').addClass('alert-success');
+      status.html('Sending...');
+
+      let uri = 'mailto:appquestions@relatematters.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      window.open(uri);
+    }
+  </script>
 {% endblock %}
