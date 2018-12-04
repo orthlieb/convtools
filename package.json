@@ -20,6 +20,7 @@
     "build": "gulp --gulpfile tasks build",
     "clean": "gulp --gulpfile tasks clean",
     "static": "gulp --gulpfile tasks static",
+    "js": "gulp --gulpfile tasks js",
     "style": "gulp --gulpfile tasks style",
     "templates": "gulp --gulpfile tasks templates",
     "watch": "gulp --gulpfile tasks watch",

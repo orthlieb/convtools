@@ -17,18 +17,23 @@ gulp.task('static', function () {
   return gulp.src(['src/static/**/*']).pipe(gulp.dest('dist'));
 });
 
+gulp.task('js', function () {
+  return gulp.src(['src/js/**/*']).pipe(gulp.dest('dist/js'));
+});
+
 gulp.task('style', function () {
   return gulp.src('./src/scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./dist/css'));
 });
 
-gulp.task('build', gulp.series('clean', gulp.parallel('static', templates, 'style')));
+gulp.task('build', gulp.series('clean', gulp.parallel('static', templates, 'style', 'js')));
 
 gulp.task('watch', function() {
   gulp.watch('src/templates/**/*.njk', gulp.series('templates'));
   gulp.watch('src/scss/**/*.scss', gulp.series('style'));
   gulp.watch('src/static/**/*', gulp.series('static'));
+  gulp.watch('src/js/**/*', gulp.series('js'));
 });
 
 function getConfig() {

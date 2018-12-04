@@ -17,8 +17,9 @@
         <div id="{{ params[i].id }}" class="quiz-section" style="display: none;">
           <br>
           <h4>{{ params[i].title }}</h4>
-          <a href="{{ params[i].href }}">
-            <img src="{{ params[i].img }}" class="w-100">
+          <a type="button" class="btn w-50 {{ params[i].style }} px-3" href="{{ params[i].href }}">
+              <i class="{{ params[i].icon }}"></i>
+              {{ params[i].label }}
           </a>
         </div>
       {% endif %}

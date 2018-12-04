@@ -31,37 +31,47 @@
         id: 'involved-or-not',
         title: 'Are you involved directly in the issue?',
         children: [ 'I am not involved',  'I may be at fault, I\'m not sure', 'I am most likely to blame' ],
-        show: ['#involved-or-not, #comforting', '#involved-or-not, #collaborating', '#involved-or-not, #conciliatory'],
+        show: ['#involved-or-not, #comforting', '#involved-or-not, #courageous', '#involved-or-not, #conciliatory'],
         check: ['#issue-1, #involved-or-not-0', '#issue-1, #involved-or-not-1', '#issue-1, #involved-or-not-2']
       }, {
         type: 'static',
         id: 'connecting',
-        title: 'You want to use the Connecting Conversation',
-        img: 'img/which/connecting.png',
+        style: 'btn-dark-green',
+        title: 'You want to use the following conversation:',
+        icon: 'fas fa-crown',
+        label: 'Connecting',
         href: 'connecting.html'
       }, {
         type: 'static',
         id: 'collaborating',
-        title: 'You want to use the Collaborating Conversation',
-        img: 'img/which/collaborating.png',
+        style: 'btn-deep-purple',
+        title: 'You want to use the following conversation:',
+        icon: 'fas fa-users',
+        label: 'Collaborating',
         href: 'collaborating.html'
       }, {
         type: 'static',
         id: 'comforting',
-        title: 'You want to use the Comforting Conversation',
-        img: 'img/which/comforting.png',
+        style: 'btn-info',
+        title: 'You want to use the following conversation:',
+        icon: 'fas fa-hand-holding-heart',
+        label: 'Comforting',
         href: 'comforting.html'
       }, {
         type: 'static',
         id: 'courageous',
-        title: 'You want to use the Courageous Conversation',
-        img: 'img/which/courageous.png',
+        style: 'btn-danger',
+        title: 'You want to use the following conversation:',
+        icon: 'fas fa-crown',
+        label: 'Courageous',
         href: 'courageous.html'
       }, {
         type: 'static',
         id: 'conciliatory',
-        title: 'You want to use the Conciliatory Conversation',
-        img: 'img/which/conciliatory.png',
+        style: 'btn-indigo',
+        title: 'You want to use the following conversation:',
+        icon: 'fas fa-dove',
+        label: 'Conciliatory',
         href: 'conciliatory.html'
       }
     ]) }}

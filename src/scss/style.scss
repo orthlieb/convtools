@@ -1,37 +1,51 @@
+$courageous-color: #9E0B2C;
+$normal-to-noble-color: #F6682F;
+$comforting-color: #195BE7;
+$connecting-color: #1B881F;
+$collaborating-color: #805A33;
+$conciliatory-color: #31A3DD;
+$prayers-color: #A836F7;
+$character-color: #A6C037;
+$contact-us-color: #5961A8;
+
+.courageous-text {
+  color: $courageous-color !important;
+}
+
 .courageous-button {
-  background-color: #9E0B2C;
+  background-color: $courageous-color;
 }
 
 .normal-to-noble-button {
-  background-color: #F6682F;
+  background-color: $normal-to-noble-color;
 }
 
 .comforting-button {
-  background-color: #195BE7;
+  background-color: $comforting-color;
 }
 
 .connecting-button {
-  background-color: #1B881F;
+  background-color: $connecting-color;
 }
 
 .collaborating-button {
-  background-color: #805A33;
+  background-color: $collaborating-color;
 }
 
 .conciliatory-button {
-  background-color: #31A3DD;
+  background-color: $conciliatory-color;
 }
 
 .prayers-button {
-  background-color: #A836F7;
+  background-color: $prayers-color;
 }
 
 .character-button {
-  background-color: #A6C037;
+  background-color: $character-color;
 }
 
 .contact-us-button {
-  background-color: #5961A8;
+  background-color: $contact-us-color;
 }
 
 .bg-relate-purple {
@@ -87,13 +101,6 @@
     margin-left: 0px;
 }
 
-.fixed-sn main {
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 48px;
-  padding-top: 0px;
-}
-
 // On tablets and phones that are in landscape mode and have the space,
 // We make the sidenav fixed
 @media only screen and (min-width: 768px) and (orientation: landscape) {
@@ -115,5 +122,16 @@
   .fixed-sn main {
     margin-left: 15rem;
     margin-right: 0px;
+    margin-top: 56px;
+    padding-top: 0px;
+  }
+}
+
+@media (max-width: 992px) {
+  .fixed-sn main {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 48px;
+    padding-top: 0px;
   }
 }

@@ -7,8 +7,7 @@
         <li class="nav-item">
           <a class="nav-link waves-light {% if i == 0 %}active show{% endif %}" data-toggle="tab" href="#{{params.tabfile}}-panel-{{(i + 1)}}" role="tab">
             <i class="{{ params.tabs[i].icon }} fa-2x"></i>
-            <span class="d-none d-md-block">&nbsp;
-              {{ params.tabs[i].title | safe }}</span></a>
+            <span class="d-none d-md-block">{{ params.tabs[i].title | safe }}</span></a>
         </li>
       {%- endfor %}
     </ul>
