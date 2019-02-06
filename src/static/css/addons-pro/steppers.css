@@ -24,9 +24,9 @@ ul.stepper .wait-feedback {
   width: 100%;
   height: 100%;
   text-align: center;
-  display: -ms-flexbox;
   display: -webkit-box;
   display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -63,13 +63,15 @@ ul.stepper .step {
     background-color: #4285f4; }
   ul.stepper .step.done:before {
     content: '\f00c';
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 free';
     font-size: 1rem;
+    font-weight: 900;
     background-color: #00c851; }
   ul.stepper .step.wrong:before {
     content: '\f071';
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 free';
     font-size: 1.1rem;
+    font-weight: 900;
     background-color: #ff3547; }
 
 ul.stepper > li:not(:last-of-type) {
@@ -99,7 +101,6 @@ ul.stepper .step.active .step-title {
 ul.stepper .step-new-content {
   position: relative;
   display: none;
-  height: -webkit-calc(100% - 132px);
   height: calc(100% - 132px);
   width: inherit;
   overflow: visible;
@@ -113,7 +114,6 @@ ul.stepper > .step:not(:last-of-type):after {
   left: 0.8438rem;
   width: 0.0625rem;
   height: 40%;
-  height: -webkit-calc(100% - 38px);
   height: calc(100% - 38px);
   background-color: rgba(0, 0, 0, 0.1);
   -webkit-transition: all 0.4s;
@@ -122,7 +122,6 @@ ul.stepper > .step:not(:last-of-type):after {
 
 ul.stepper > .step.active:not(:last-child):after {
   height: 93%;
-  height: -webkit-calc(100% - 12px);
   height: calc(100% - 12px); }
 
 ul.stepper > .step[data-last="true"] {
@@ -149,15 +148,15 @@ ul.stepper .md-form .validate {
   margin-bottom: 0; }
 
 @media only screen and (min-width: 993px) {
-   ul.stepper.horizontal {
+  .card-body ul.stepper.horizontal {
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: justify;
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     min-height: 20rem;
     margin-left: -1.5rem;
@@ -165,7 +164,7 @@ ul.stepper .md-form .validate {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     overflow: hidden; }
-     ul.stepper.horizontal:before {
+    .card-body ul.stepper.horizontal:before {
       content: '';
       background-color: transparent;
       width: 100%;
@@ -174,48 +173,50 @@ ul.stepper .md-form .validate {
       left: -3px;
       -webkit-border-top-left-radius: 2px;
       border-top-left-radius: 2px; }
-     ul.stepper.horizontal:first-child {
+    .card-body ul.stepper.horizontal:first-child {
       margin-top: -2.7rem; }
-     ul.stepper.horizontal .step {
+    .card-body ul.stepper.horizontal .step {
       position: static;
       margin: 0;
       width: 100%;
-      display: -ms-flexbox;
       display: -webkit-box;
       display: -webkit-flex;
+      display: -ms-flexbox;
       display: flex;
       -webkit-box-align: center;
       -webkit-align-items: center;
       -ms-flex-align: center;
       align-items: center;
       height: 5.25rem !important; }
-       ul.stepper.horizontal .step:not(:last-of-type):after {
+      .card-body ul.stepper.horizontal .step:not(:last-of-type):after {
         content: '';
         position: static;
         display: inline-block;
         width: 100%;
         height: 0.0625rem; }
-     ul.stepper.horizontal > .step:last-of-type,  ul.stepper.horizontal > .step[data-last="true"] {
+    .card-body ul.stepper.horizontal > .step:last-of-type, .card-body ul.stepper.horizontal > .step[data-last="true"] {
       width: auto !important; }
-     ul.stepper.horizontal > .step.active:not(:last-of-type):after {
+    .card-body ul.stepper.horizontal > .step.active:not(:last-of-type):after {
       content: '';
       position: static;
       display: inline-block;
       width: 100%;
       height: 0.0625rem; }
-     ul.stepper.horizontal .step.active .step-title:before {
+    .card-body ul.stepper.horizontal .step.active .step-title:before {
       background-color: #4285f4; }
-     ul.stepper.horizontal .step.done .step-title:before {
+    .card-body ul.stepper.horizontal .step.done .step-title:before {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
       content: '\f00c';
-      font-family: FontAwesome;
       font-size: 1rem;
       background: #00c851; }
-     ul.stepper.horizontal .step.wrong .step-title:before {
+    .card-body ul.stepper.horizontal .step.wrong .step-title:before {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
       content: '\f071';
-      font-family: FontAwesome;
       font-size: 1.1rem;
       background-color: #ff3547; }
-     ul.stepper.horizontal .step-title {
+    .card-body ul.stepper.horizontal .step-title {
       line-height: 5.25rem;
       height: 5.25rem;
       margin: 0;
@@ -229,9 +230,9 @@ ul.stepper .md-form .validate {
       -ms-flex-negative: 0;
       -webkit-flex-shrink: 0;
       flex-shrink: 0; }
-     ul.stepper.horizontal .step:before {
+    .card-body ul.stepper.horizontal .step:before {
       content: none; }
-     ul.stepper.horizontal .step .step-title:before {
+    .card-body ul.stepper.horizontal .step .step-title:before {
       position: absolute;
       top: 1.7813rem;
       left: 1.1875rem;
@@ -246,20 +247,19 @@ ul.stepper .md-form .validate {
       text-align: center;
       line-height: 1.75rem;
       font-weight: 400; }
-     ul.stepper.horizontal .step-title:after {
+    .card-body ul.stepper.horizontal .step-title:after {
       top: 0.9375rem; }
-     ul.stepper.horizontal .step-new-content {
+    .card-body ul.stepper.horizontal .step-new-content {
       position: absolute;
-      height: -webkit-calc(100% - 84px);
       height: calc(100% - 84px);
       top: 6rem;
       left: 0;
       width: 100%;
-      overflow-y: hidden;
+      overflow-y: auto;
       overflow-x: hidden;
       margin: 0;
       padding: 1.25rem 1.25rem 4.75rem 1.25rem; }
-     ul.stepper.horizontal .step-actions {
+    .card-body ul.stepper.horizontal .step-actions {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -270,12 +270,12 @@ ul.stepper .md-form .validate {
       -webkit-flex-direction: row-reverse;
       -ms-flex-direction: row-reverse;
       flex-direction: row-reverse; }
-       ul.stepper.horizontal .step-actions .btn:not(:last-child),
-       ul.stepper.horizontal .step-actions .btn-flat:not(:last-child),
-       ul.stepper.horizontal .step-actions .btn-large:not(:last-child) {
+      .card-body ul.stepper.horizontal .step-actions .btn:not(:last-child),
+      .card-body ul.stepper.horizontal .step-actions .btn-flat:not(:last-child),
+      .card-body ul.stepper.horizontal .step-actions .btn-large:not(:last-child) {
         margin-left: 0.3125rem;
         margin-right: 0; }
-   ul.stepper.horizontal .step-new-content,
-   ul.stepper.horizontal .step-actions {
+  .card-body ul.stepper.horizontal .step-new-content,
+  .card-body ul.stepper.horizontal .step-actions {
     padding-left: 2.5rem;
     padding-right: 2.5rem; } }

@@ -189,11 +189,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         var disabled = $nativeSelectChild.is(':disabled') ? 'disabled' : '';
         var optgroupClass = type === 'optgroup-option' ? 'optgroup-option' : '';
         var iconUrl = $nativeSelectChild.data('icon');
-        var fa = $nativeSelectChild.data('fa') ? "<i class=\"fa fa-".concat($nativeSelectChild.data('fa'), "\"></i>") : '';
+        var fa = $nativeSelectChild.data('fas') ? "<i class=\"fas fa-".concat($nativeSelectChild.data('fas'), "\"></i> ") : '';
         var classes = $nativeSelectChild.attr('class');
         var iconHtml = iconUrl ? "<img alt=\"\" src=\"".concat(iconUrl, "\" class=\"").concat(classes, "\">") : '';
         var checkboxHtml = this.isMultiple ? "<input type=\"checkbox\" class=\"form-check-input\" ".concat(disabled, "/><label></label>") : '';
-        this.$materialOptionsList.append($("<li class=\"".concat(disabled, " ").concat(optgroupClass, "\">").concat(iconHtml, "<span class=\"filtrable\">").concat(checkboxHtml, " ").concat(fa, " ").concat($nativeSelectChild.html(), "</span></li>")));
+        this.$materialOptionsList.append($("<li class=\"".concat(disabled, " ").concat(optgroupClass, "\">").concat(iconHtml, "<span class=\"filtrable\">").concat(checkboxHtml).concat(fa).concat($nativeSelectChild.html(), "</span></li>")));
       }
     }, {
       key: "enableValidation",
@@ -626,7 +626,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         for (var i = 0; i < itemsCount; i++) {
           var text = this.$nativeSelect.find('option').eq(this.valuesSelected[i]).text();
-          value += ", ".concat(text);
+          value += ",".concat(text);
         }
 
         if (itemsCount >= 5) {

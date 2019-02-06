@@ -28,7 +28,7 @@
       chips: '.chips',
       chip: '.chip',
       input: 'input',
-      delete: '.fa',
+      delete: '.fas',
       selectedChip: '.selected'
     };
     this.keyCodes = {
@@ -233,7 +233,7 @@
         html += " <img src=\"".concat(elem.image, "\"> ");
       }
 
-      html += '<i class="close fa fa-times"></i>';
+      html += '<i class="close fas fa-times"></i>';
       html += '</div>';
       return html;
     };
