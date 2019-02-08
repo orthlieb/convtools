@@ -5,35 +5,49 @@ const sass = require('gulp-sass');
 const sftp = require('gulp-sftp-clean');
 const assert = require('assert');
 
-const { templates } = require('./templates');
-
-gulp.task('templates', templates);
+const DISTRIBUTION_DIRECTORY = './app/www';
+const STATIC_DIRECTORY = './src/static';
+const JAVASCRIPT_DIRECTORY = './src/js';
+const STYLE_DIRECTORY = './src/scss';
+const TEMPLATES_DIRECTORY = './src/templates';
 
 gulp.task('clean', function() {
-  return del(['dist/**/*']);
+  return del([DISTRIBUTION_DIRECTORY + '/**/*']);
 });
 
 gulp.task('static', function () {
-  return gulp.src(['src/static/**/*']).pipe(gulp.dest('dist'));
+  return gulp.src([STATIC_DIRECTORY + '/**/*']).pipe(gulp.dest(DISTRIBUTION_DIRECTORY));
 });
 
 gulp.task('js', function () {
-  return gulp.src(['src/js/**/*']).pipe(gulp.dest('dist/js'));
+  return gulp.src([JAVASCRIPT_DIRECTORY + '/**/*']).pipe(gulp.dest(DISTRIBUTION_DIRECTORY + '/js'));
 });
 
 gulp.task('style', function () {
-  return gulp.src('./src/scss/**/*.scss')
+  return gulp.src(STYLE_DIRECTORY + '/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(gulp.dest(DISTRIBUTION_DIRECTORY + '/css'));
 });
 
-gulp.task('build', gulp.series('clean', gulp.parallel('static', templates, 'style', 'js')));
+gulp.task('templates', function() {
+  // Gets .html and .njk files in pages
+  return gulp.src(TEMPLATES_DIRECTORY + '/pages/**/*.+(html|njk)')
+    // Renders template with nunjucks
+    .pipe(nunjucksRender({
+      path: [TEMPLATES_DIRECTORY]
+    }))
+    // Output files in src folder
+    .pipe(gulp.dest(DISTRIBUTION_DIRECTORY));
+});
+
+
+gulp.task('build', gulp.series('clean', gulp.parallel('static', 'templates', 'style', 'js')));
 
 gulp.task('watch', function() {
-  gulp.watch('src/templates/**/*.njk', gulp.series('templates'));
-  gulp.watch('src/scss/**/*.scss', gulp.series('style'));
-  gulp.watch('src/static/**/*', gulp.series('static'));
-  gulp.watch('src/js/**/*', gulp.series('js'));
+  gulp.watch(TEMPLATES_DIRECTORY + '/**/*.njk', gulp.series('templates'));
+  gulp.watch(STYLE_DIRECTORY + '/**/*.scss', gulp.series('style'));
+  gulp.watch(STATIC_DIRECTORY + '/**/*', gulp.series('static'));
+  gulp.watch(JAVASCRIPT_DIRECTORY + '/**/*', gulp.series('js'));
 });
 
 function getConfig() {
@@ -54,7 +68,7 @@ gulp.task('deploy-check', function (done) {
 
 gulp.task('deploy', function () {
   let config = getConfig();
-  console.log('Deploying to production: ', JSON.stringify(config));
-  return gulp.src('./dist/**/*')
+  console.log('Deploying to website: ', JSON.stringify(config));
+  return gulp.src(DISTRIBUTION_DIRECTORY + '/**/*')
     .pipe(sftp(config));
 });

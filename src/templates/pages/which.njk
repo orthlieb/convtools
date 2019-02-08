@@ -6,7 +6,7 @@
 
   <!-- Adds the nav macro -->
   {% import 'macros/nav.njk' as nav %}
-  {{ nav.build({ title: title, id: id }) }}
+  {{ nav.build({ title: title, id: id, icon: 'fas fa-question'}) }}
   <!-- params = { icon: 'fas fa-crown', title: 'Courageous Conversation', id: 'courageous' } -->
 
   <main class="mt-4 pt-5 pb-5 px-3">
@@ -15,7 +15,7 @@
       {
         type: 'radio',
         id: 'issue',
-        title: 'Is there an issue between the two of you?',
+        title: 'Is there an issue that needs discussion?',
         children: [ 'No issue', 'Yes, there is an issue'],
         show: ['#checkin-or-decide', '#involved-or-not'],
         check: ['#issue-0', '#issue-1']
