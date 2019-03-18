@@ -1,6 +1,6 @@
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB Pro 4.7.1
+ * Version: MDB Pro 4.7.4
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -62,7 +62,6 @@
   enhanced-modals.js
 
 */
-
 
 /*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
@@ -14736,181 +14735,209 @@ module.exports = function() {
 
 var WOW;
 
-(function($) {
+(function ($) {
 
-    WOW = function WOW() {
+  WOW = function WOW() {
 
-        return {
+    return {
 
-            init: function init() {
+      init: function init() {
 
-                var animationName = [];
+        var animationName = [];
 
-                var once = 1;
+        var once = 1;
 
-                function mdbWow() {
+        function mdbWow() {
 
-                    var windowHeight = window.innerHeight;
-                    var scroll = window.scrollY;
+          var windowHeight = window.innerHeight;
+          var scroll = window.scrollY;
 
-                    $('.wow').each(function() {
+          $('.wow').each(function () {
 
-                        if ($(this).css('visibility') == 'visible') {
-                            return;
-                        }
-
-                        if (windowHeight + scroll - 100 > getOffset(this) && scroll < getOffset(this) || windowHeight + scroll - 100 > getOffset(this) + $(this).height() && scroll < getOffset(this) + $(this).height() || windowHeight + scroll == $(document).height() && getOffset(this) + 100 > $(document).height()) {
-
-                            var index = $(this).index('.wow');
-
-                            var delay = $(this).attr('data-wow-delay');
-
-                            if (delay) {
-
-                                delay = $(this).attr('data-wow-delay').slice(0, -1
-
-                                );
-                                var self = this;
-
-                                var timeout = parseFloat(delay) * 1000;
-
-                                $(self).addClass('animated');
-                                $(self).css({ 'visibility': 'visible' });
-                                $(self).css({ 'animation-delay': delay });
-                                $(self).css({ 'animation-name': animationName[index] });
-
-                                var removeTime = $(this).css('animation-duration').slice(0, -1) * 1000;
-
-                                if ($(this).attr('data-wow-delay')) {
-
-                                    removeTime += $(this).attr('data-wow-delay').slice(0, -1) * 1000;
-                                }
-
-                                var self = this;
-
-                                setTimeout(function() {
-
-                                    $(self).removeClass('animated');
-                                }, removeTime);
-                            } else {
-
-                                $(this).addClass('animated');
-                                $(this).css({ 'visibility': 'visible' });
-                                $(this).css({ 'animation-name': animationName[index] });
-
-                                var removeTime = $(this).css('animation-duration').slice(0, -1) * 1000;
-
-                                var self = this;
-
-                                setTimeout(function() {
-
-                                    $(self).removeClass('animated');
-                                }, removeTime);
-                            }
-                        }
-                    });
-                }
-
-                function appear() {
-
-                    $('.wow').each(function() {
-
-                        var index = $(this).index('.wow');
-
-                        var delay = $(this).attr('data-wow-delay');
-
-                        if (delay) {
-
-                            delay = $(this).attr('data-wow-delay').slice(0, -1);
-
-                            var timeout = parseFloat(delay) * 1000;
-
-                            $(this).addClass('animated');
-                            $(this).css({ 'visibility': 'visible' });
-                            $(this).css({ 'animation-delay': delay + 's' });
-                            $(this).css({ 'animation-name': animationName[index] });
-                        } else {
-
-                            $(this).addClass('animated');
-                            $(this).css({ 'visibility': 'visible' });
-                            $(this).css({ 'animation-name': animationName[index] });
-                        }
-                    });
-                }
-
-                function hide() {
-
-                    var windowHeight = window.innerHeight;
-                    var scroll = window.scrollY;
-
-                    $('.wow.animated').each(function() {
-
-                        if (windowHeight + scroll - 100 > getOffset(this) && scroll > getOffset(this) + 100 || windowHeight + scroll - 100 < getOffset(this) && scroll < getOffset(this) + 100 || getOffset(this) + $(this).height > $(document).height() - 100) {
-
-                            $(this).removeClass('animated');
-                            $(this).css({ 'animation-name': 'none' });
-                            $(this).css({ 'visibility': 'hidden' });
-                        } else {
-
-                            var removeTime = $(this).css('animation-duration').slice(0, -1) * 1000;
-
-                            if ($(this).attr('data-wow-delay')) {
-
-                                removeTime += $(this).attr('data-wow-delay').slice(0, -1) * 1000;
-                            }
-
-                            var self = this;
-
-                            setTimeout(function() {
-
-                                $(self).removeClass('animated');
-                            }, removeTime);
-                        }
-                    });
-
-                    mdbWow();
-
-                    once--;
-                }
-
-                function getOffset(elem) {
-
-                    var box = elem.getBoundingClientRect();
-
-                    var body = document.body;
-                    var docEl = document.documentElement;
-
-                    var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
-
-                    var clientTop = docEl.clientTop || body.clientTop || 0;
-
-                    var top = box.top + scrollTop - clientTop;
-
-                    return Math.round(top);
-                }
-
-                $('.wow').each(function() {
-
-                    $(this).css({ 'visibility': 'hidden' });
-                    animationName[$(this).index('.wow')] = $(this).css('animation-name');
-                    $(this).css({ 'animation-name': 'none' });
-                });
-
-                $(window).scroll(function() {
-
-                    if (once) {
-
-                        hide();
-                    } else {
-
-                        mdbWow();
-                    }
-                });
-
-                appear();
+            if ($(this).css('visibility') == 'visible') {
+              return;
             }
-        };
+
+            if (windowHeight + scroll - 100 > getOffset(this) && scroll < getOffset(this) || windowHeight + scroll - 100 > getOffset(this) + $(this).height() && scroll < getOffset(this) + $(this).height() || windowHeight + scroll == $(document).height() && getOffset(this) + 100 > $(document).height()) {
+
+              var index = $(this).index('.wow');
+
+              var delay = $(this).attr('data-wow-delay');
+
+              if (delay) {
+
+                delay = $(this).attr('data-wow-delay').slice(0, -1
+
+                );
+                var self = this;
+
+                var timeout = parseFloat(delay) * 1000;
+
+                $(self).addClass('animated');
+                $(self).css({
+                  'visibility': 'visible'
+                });
+                $(self).css({
+                  'animation-delay': delay
+                });
+                $(self).css({
+                  'animation-name': animationName[index]
+                });
+
+                var removeTime = $(this).css('animation-duration').slice(0, -1) * 1000;
+
+                if ($(this).attr('data-wow-delay')) {
+
+                  removeTime += $(this).attr('data-wow-delay').slice(0, -1) * 1000;
+                }
+
+                var self = this;
+
+                setTimeout(function () {
+
+                  $(self).removeClass('animated');
+                }, removeTime);
+              } else {
+
+                $(this).addClass('animated');
+                $(this).css({
+                  'visibility': 'visible'
+                });
+                $(this).css({
+                  'animation-name': animationName[index]
+                });
+
+                var removeTime = $(this).css('animation-duration').slice(0, -1) * 1000;
+
+                var self = this;
+
+                setTimeout(function () {
+
+                  $(self).removeClass('animated');
+                }, removeTime);
+              }
+            }
+          });
+        }
+
+        function appear() {
+
+          $('.wow').each(function () {
+
+            var index = $(this).index('.wow');
+
+            var delay = $(this).attr('data-wow-delay');
+
+            if (delay) {
+
+              delay = $(this).attr('data-wow-delay').slice(0, -1);
+
+              var timeout = parseFloat(delay) * 1000;
+
+              $(this).addClass('animated');
+              $(this).css({
+                'visibility': 'visible'
+              });
+              $(this).css({
+                'animation-delay': delay + 's'
+              });
+              $(this).css({
+                'animation-name': animationName[index]
+              });
+            } else {
+
+              $(this).addClass('animated');
+              $(this).css({
+                'visibility': 'visible'
+              });
+              $(this).css({
+                'animation-name': animationName[index]
+              });
+            }
+          });
+        }
+
+        function hide() {
+
+          var windowHeight = window.innerHeight;
+          var scroll = window.scrollY;
+
+          $('.wow.animated').each(function () {
+
+            if (windowHeight + scroll - 100 > getOffset(this) && scroll > getOffset(this) + 100 || windowHeight + scroll - 100 < getOffset(this) && scroll < getOffset(this) + 100 || getOffset(this) + $(this).height > $(document).height() - 100) {
+
+              $(this).removeClass('animated');
+              $(this).css({
+                'animation-name': 'none'
+              });
+              $(this).css({
+                'visibility': 'hidden'
+              });
+            } else {
+
+              var removeTime = $(this).css('animation-duration').slice(0, -1) * 1000;
+
+              if ($(this).attr('data-wow-delay')) {
+
+                removeTime += $(this).attr('data-wow-delay').slice(0, -1) * 1000;
+              }
+
+              var self = this;
+
+              setTimeout(function () {
+
+                $(self).removeClass('animated');
+              }, removeTime);
+            }
+          });
+
+          mdbWow();
+
+          once--;
+        }
+
+        function getOffset(elem) {
+
+          var box = elem.getBoundingClientRect();
+
+          var body = document.body;
+          var docEl = document.documentElement;
+
+          var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+
+          var clientTop = docEl.clientTop || body.clientTop || 0;
+
+          var top = box.top + scrollTop - clientTop;
+
+          return Math.round(top);
+        }
+
+        $('.wow').each(function () {
+
+          $(this).css({
+            'visibility': 'hidden'
+          });
+          animationName[$(this).index('.wow')] = $(this).css('animation-name');
+          $(this).css({
+            'animation-name': 'none'
+          });
+        });
+
+        $(window).scroll(function () {
+
+          if (once) {
+
+            hide();
+          } else {
+
+            mdbWow();
+          }
+        });
+
+        appear();
+      }
     };
+  };
 })(jQuery);
 
 "use strict";
@@ -16712,6 +16739,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   var MENU_RIGHT_MIN_BORDER = -0.3;
   var MENU_RIGHT_MAX_BORDER = 0.5;
   var MENU_VELOCITY_OFFSET = 10;
+  var MENU_TIME_DURATION_OPEN = 300;
+  var MENU_TIME_DURATION_CLOSE = 200;
+  var MENU_TIME_DURATION_OVERLAY_OPEN = 50;
+  var MENU_TIME_DURATION_OVERLAY_CLOSE = 200;
+  var MENU_EASING_OPEN = 'easeOutQuad';
+  var MENU_EASING_CLOSE = 'easeOutCubic';
+  var SHOW_OVERLAY = true;
+  var SHOW_CLOSE_BUTTON = false;
 
   var SideNav =
   /*#__PURE__*/
@@ -16720,11 +16755,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _classCallCheck(this, SideNav);
 
       this.defaults = {
-        MENU_WIDTH: MENU_WIDTH,
+        menuWidth: MENU_WIDTH,
         edge: 'left',
-        closeOnClick: false
+        closeOnClick: false,
+        breakpoint: SN_BREAKPOINT,
+        timeDurationOpen: MENU_TIME_DURATION_OPEN,
+        timeDurationClose: MENU_TIME_DURATION_CLOSE,
+        timeDurationOverlayOpen: MENU_TIME_DURATION_OVERLAY_OPEN,
+        timeDurationOverlayClose: MENU_TIME_DURATION_OVERLAY_CLOSE,
+        easingOpen: MENU_EASING_OPEN,
+        easingClose: MENU_EASING_CLOSE,
+        showOverlay: SHOW_OVERLAY,
+        showCloseButton: SHOW_CLOSE_BUTTON
       };
       this.$element = element;
+      this.$elementCloned = element.clone().css({
+        display: 'inline-block',
+        lineHeight: '24px'
+      });
       this.options = this.assignOptions(options);
       this.menuOut = false;
       this.lastTouchVelocity = {
@@ -16751,6 +16799,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.closeOnClick();
         this.openOnClick();
         this.bindTouchEvents();
+        this.showCloseButton();
       }
     }, {
       key: "bindTouchEvents",
@@ -16758,6 +16807,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         var _this = this;
 
         this.$dragTarget.on('click', function () {
+          _this.removeMenu();
+        });
+        this.$elementCloned.on('click', function () {
           _this.removeMenu();
         });
         this.$dragTarget.on('touchstart', function (e) {
@@ -16791,8 +16843,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
         if (this.options.edge === 'left') {
-          if (touchX > this.options.MENU_WIDTH) {
-            touchX = this.options.MENU_WIDTH;
+          if (touchX > this.options.menuWidth) {
+            touchX = this.options.menuWidth;
           } else if (touchX < 0) {
             touchX = 0;
           }
@@ -16818,8 +16870,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
         if (this.options.edge === 'left') {
-          if (touchX > this.options.MENU_WIDTH) {
-            touchX = this.options.MENU_WIDTH;
+          if (touchX > this.options.menuWidth) {
+            touchX = this.options.menuWidth;
           } else if (touchX < 0) {
             touchX = 0;
           }
@@ -16832,13 +16884,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       key: "translateSidenavX",
       value: function translateSidenavX(touchX) {
         if (this.options.edge === 'left') {
-          var isRightDirection = touchX >= this.options.MENU_WIDTH / MENU_WIDTH_HALF;
+          var isRightDirection = touchX >= this.options.menuWidth / MENU_WIDTH_HALF;
           this.menuOut = isRightDirection;
-          this.$menu.css('transform', "translateX(".concat(touchX - this.options.MENU_WIDTH, "px)"));
+          this.$menu.css('transform', "translateX(".concat(touchX - this.options.menuWidth, "px)"));
         } else {
-          var isLeftDirection = touchX < window.innerWidth - this.options.MENU_WIDTH / MENU_WIDTH_HALF;
+          var isLeftDirection = touchX < window.innerWidth - this.options.menuWidth / MENU_WIDTH_HALF;
           this.menuOut = isLeftDirection;
-          var rightPos = touchX - this.options.MENU_WIDTH / MENU_WIDTH_HALF;
+          var rightPos = touchX - this.options.menuWidth / MENU_WIDTH_HALF;
 
           if (rightPos < 0) {
             rightPos = 0;
@@ -16853,9 +16905,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         var overlayPercentage;
 
         if (this.options.edge === 'left') {
-          overlayPercentage = touchX / this.options.MENU_WIDTH;
+          overlayPercentage = touchX / this.options.menuWidth;
         } else {
-          overlayPercentage = Math.abs((touchX - window.innerWidth) / this.options.MENU_WIDTH);
+          overlayPercentage = Math.abs((touchX - window.innerWidth) / this.options.menuWidth);
         }
 
         this.$sidenavOverlay.velocity({
@@ -16863,7 +16915,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           duration: 10,
           queue: false,
-          easing: 'easeOutQuad'
+          easing: this.options.easingOpen
         });
       }
     }, {
@@ -16871,11 +16923,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       value: function buildSidenavOverlay() {
         var _this2 = this;
 
-        this.$sidenavOverlay = $('<div id="sidenav-overlay"></div>');
-        this.$sidenavOverlay.css('opacity', 0).on('click', function () {
-          _this2.removeMenu();
-        });
-        this.$body.append(this.$sidenavOverlay);
+        if (this.options.showOverlay === true) {
+          this.$sidenavOverlay = $('<div id="sidenav-overlay"></div>');
+          this.$sidenavOverlay.css('opacity', 0).on('click', function () {
+            _this2.removeMenu();
+          });
+          this.$body.append(this.$sidenavOverlay);
+        }
       }
     }, {
       key: "disableScrolling",
@@ -16896,8 +16950,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.lastTouchVelocity.x.endPosition = touch.clientX;
         var velocityX = this.calculateTouchVelocityX();
         var touchX = touch.clientX;
-        var leftPos = touchX - this.options.MENU_WIDTH;
-        var rightPos = touchX - this.options.MENU_WIDTH / MENU_WIDTH_HALF;
+        var leftPos = touchX - this.options.menuWidth;
+        var rightPos = touchX - this.options.menuWidth / MENU_WIDTH_HALF;
 
         if (leftPos > 0) {
           leftPos = 0;
@@ -16917,7 +16971,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.showSidenavOverlay();
           } else if (!this.menuOut || velocityX > MENU_LEFT_MIN_BORDER) {
             this.enableScrolling();
-            this.translateMenuX([-1 * this.options.MENU_WIDTH - MENU_VELOCITY_OFFSET, leftPos], '200');
+            this.translateMenuX([-1 * this.options.menuWidth - MENU_VELOCITY_OFFSET, leftPos], '200');
             this.hideSidenavOverlay();
           }
 
@@ -16936,7 +16990,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         } else if (!this.menuOut || velocityX < MENU_RIGHT_MIN_BORDER) {
           this.enableScrolling();
-          this.translateMenuX([this.options.MENU_WIDTH + MENU_VELOCITY_OFFSET, rightPos], '200');
+          this.translateMenuX([this.options.menuWidth + MENU_VELOCITY_OFFSET, rightPos], '200');
           this.hideSidenavOverlay();
           this.$dragTarget.css({
             width: '10px',
@@ -16961,8 +17015,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         var velocityX = e.gesture.velocityX;
         var touchX = e.gesture.center.x;
-        var leftPos = touchX - this.options.MENU_WIDTH;
-        var rightPos = touchX - this.options.MENU_WIDTH / MENU_WIDTH_HALF;
+        var leftPos = touchX - this.options.menuWidth;
+        var rightPos = touchX - this.options.menuWidth / MENU_WIDTH_HALF;
 
         if (leftPos > 0) {
           leftPos = 0;
@@ -16982,7 +17036,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.showSidenavOverlay();
           } else if (!this.menuOut || velocityX > MENU_LEFT_MIN_BORDER) {
             this.enableScrolling();
-            this.translateMenuX([-1 * this.options.MENU_WIDTH - MENU_VELOCITY_OFFSET, leftPos], '200');
+            this.translateMenuX([-1 * this.options.menuWidth - MENU_VELOCITY_OFFSET, leftPos], '200');
             this.hideSidenavOverlay();
           }
 
@@ -17001,7 +17055,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         } else if (!this.menuOut || velocityX < MENU_RIGHT_MIN_BORDER) {
           this.enableScrolling();
-          this.translateMenuX([this.options.MENU_WIDTH + MENU_VELOCITY_OFFSET, rightPos], '200');
+          this.translateMenuX([this.options.menuWidth + MENU_VELOCITY_OFFSET, rightPos], '200');
           this.hideSidenavOverlay();
           this.$dragTarget.css({
             width: '10px',
@@ -17018,7 +17072,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           duration: typeof duration === 'string' ? Number(duration) : duration,
           queue: false,
-          easing: 'easeOutQuad'
+          easing: this.options.easingOpen
         });
       }
     }, {
@@ -17027,9 +17081,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.$sidenavOverlay.velocity({
           opacity: 0
         }, {
-          duration: 200,
+          duration: this.options.timeDurationOverlayClose,
           queue: false,
-          easing: 'easeOutQuad',
+          easing: this.options.easingOpen,
           complete: function complete() {
             $(this).remove();
           }
@@ -17042,9 +17096,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.$sidenavOverlay.velocity({
           opacity: 1
         }, {
-          duration: 50,
+          duration: this.options.timeDurationOverlayOpen,
           queue: false,
-          easing: 'easeOutQuad'
+          easing: this.options.easingOpen
         });
       }
     }, {
@@ -17068,9 +17122,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
             _this3.removeMenu();
           } else {
-            _this3.$sidenavOverlay = $('<div id="sidenav-overlay"></div>');
+            _this3.menuOut = true;
 
-            _this3.$body.append(_this3.$sidenavOverlay);
+            if (_this3.options.showOverlay === true) {
+              _this3.$sidenavOverlay = $('<div id="sidenav-overlay"></div>');
+
+              _this3.$body.append(_this3.$sidenavOverlay);
+            } else {
+              _this3.showCloseButton();
+            }
 
             var translateX = [];
 
@@ -17083,9 +17143,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             _this3.$menu.velocity({
               translateX: translateX
             }, {
-              duration: 300,
+              duration: _this3.options.timeDurationOpen,
               queue: false,
-              easing: 'easeOutQuad'
+              easing: _this3.options.easingOpen
             });
 
             _this3.$sidenavOverlay.on('click', function () {
@@ -17102,6 +17162,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         if (this.options.closeOnClick === true) {
           this.$menu.on('click', 'a:not(.collapsible-header)', function () {
             _this4.removeMenu();
+          });
+        }
+      }
+    }, {
+      key: "showCloseButton",
+      value: function showCloseButton() {
+        if (this.options.showCloseButton === true) {
+          this.$menu.prepend(this.$elementCloned);
+          this.$menu.find('.logo-wrapper').css({
+            borderTop: '1px solid rgba(153,153,153,.3)'
           });
         }
       }
@@ -17123,12 +17193,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
 
         if (this.$menu.hasClass('fixed')) {
-          if (window.innerWidth > SN_BREAKPOINT) {
+          if (window.innerWidth > this.options.breakpoint) {
             this.$menu.css('transform', 'translateX(0)');
           }
 
           $(window).resize(function () {
-            if (window.innerWidth > SN_BREAKPOINT) {
+            if (window.innerWidth > _this5.options.breakpoint) {
               if (_this5.$sidenavOverlay.length) {
                 _this5.removeMenu(true);
               } else {
@@ -17147,9 +17217,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       value: function setMenuWidth() {
         var $sidenavBg = $("#".concat(this.$menu.attr('id'))).find('> .sidenav-bg');
 
-        if (this.options.MENU_WIDTH !== MENU_WIDTH) {
-          this.$menu.css('width', this.options.MENU_WIDTH);
-          $sidenavBg.css('width', this.options.MENU_WIDTH);
+        if (this.options.menuWidth !== MENU_WIDTH) {
+          this.$menu.css('width', this.options.menuWidth);
+          $sidenavBg.css('width', this.options.menuWidth);
         }
       }
     }, {
@@ -17169,14 +17239,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.$menu.velocity({
           translateX: this.options.edge === 'left' ? '-100%' : '100%'
         }, {
-          duration: 200,
+          duration: this.options.timeDurationClose,
           queue: false,
-          easing: 'easeOutCubic',
+          easing: this.options.easingClose,
           complete: function complete() {
             if (restoreMenu === true) {
               _this6.$menu.removeAttr('style');
 
-              _this6.$menu.css('width', _this6.options.MENU_WIDTH);
+              _this6.$menu.css('width', _this6.options.menuWidth);
             }
           }
         });
@@ -17190,7 +17260,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }, {
       key: "hide",
       value: function hide() {
-        this.$sidenavOverlay.trigger('click');
+        this.trigger('click');
       }
     }]);
 
@@ -17203,6 +17273,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     });
   };
 })(jQuery);
+
+$(function () {
+  $("#toggle").click(function () {
+    if ($("#slide-out").hasClass('slim')) {
+      $("#slide-out").removeClass('slim');
+      $(".sv-slim-icon").removeClass('fa-angle-double-right').addClass('fa-angle-double-left');
+    } else {
+      $("#slide-out").addClass('slim');
+      $(".sv-slim-icon").removeClass('fa-angle-double-left').addClass('fa-angle-double-right');
+    }
+  });
+});
 "use strict";
 
 (function ($) {
@@ -17702,7 +17784,7 @@ $.fn.easyPieChart = function(options) {
 
 (function ($) {
   var rangeWrapper = '.range-field';
-  var rangeType = 'input[type=range]:not(.custom-range)';
+  var rangeType = 'input[type=range]:not(.custom-range):not(.multi-range)';
   var thumbHtml = '<span class="thumb"><span class="value"></span></span>';
   var rangeMousedown = false;
   var left;
@@ -17914,6 +17996,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }
     }, {
+      key: "debounce",
+      value: function debounce(func, wait, immediate) {
+        var timeout;
+        return function () {
+          var context = this,
+              args = arguments;
+
+          var later = function later() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+          };
+
+          var callNow = immediate && !timeout;
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+          if (callNow) func.apply(context, args);
+        };
+      }
+    }, {
       key: "_removeMaterialWrapper",
       value: function _removeMaterialWrapper() {
         var currentUuid = this.$nativeSelect.data('select-id');
@@ -18085,7 +18186,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         MaterialSelect.mutationObservers.push(observer);
         var $saveSelectBtn = this.$nativeSelect.parent().find('button.btn-save');
         $saveSelectBtn.on('click', this._onSaveSelectBtnClick);
-        this.$materialSelect.on('focus', this._onMaterialSelectFocus.bind(this));
+        this.$materialSelect.on('focus', this.debounce(this._onMaterialSelectFocus.bind(this), 300));
         this.$materialSelect.on('click', this._onMaterialSelectClick.bind(this));
         this.$materialSelect.on('blur', this._onMaterialSelectBlur.bind(this));
         this.$materialSelect.on('keydown', this._onMaterialSelectKeydown.bind(this));
@@ -18476,7 +18577,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         for (var i = 0; i < itemsCount; i++) {
           var text = this.$nativeSelect.find('option').eq(this.valuesSelected[i]).text();
-          value += ",".concat(text);
+          value += ", ".concat(text);
         }
 
         if (itemsCount >= 5) {
@@ -19156,7 +19257,21 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
         ) //endreturn
     } //createWrappedComponent
 
-
+    // tkane from https://davidwalsh.name/javascript-debounce-function
+    function debounce(func, wait, immediate) {
+      var timeout;
+      return function() {
+          var context = this, args = arguments;
+          var later = function() {
+              timeout = null;
+              if (!immediate) func.apply(context, args);
+          };
+          var callNow = immediate && !timeout;
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+          if (callNow) func.apply(context, args);
+      };
+  }
 
     /**
      * Prepare the input element with all bindings.
@@ -19184,10 +19299,10 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
             $ELEMENT.
 
                 // On focus/click, open the picker.
-                on( 'focus.' + STATE.id + ' click.' + STATE.id, function(event) {
+                on( 'focus.' + STATE.id + ' click.' + STATE.id, debounce(function(event) {
                     event.preventDefault()
                     P.open()
-                }).
+                  }, 300)).
 
                 // Handle keyboard event based on the picker being opened or not.
                 on( 'keydown.' + STATE.id, handleKeydownEvent )
@@ -19721,1378 +19836,1377 @@ return PickerConstructor
 
 (function (factory) {
 
-    // AMD.
-    if (typeof define == 'function' && define.amd)
-        define(['picker', 'jquery'], factory)
+  // AMD.
+  if (typeof define == 'function' && define.amd)
+    define(['picker', 'jquery'], factory)
 
-    // Node.js/browserify.
-    else if (typeof exports == 'object')
-        module.exports = factory(require('./picker.js'), require('jquery'))
+  // Node.js/browserify.
+  else if (typeof exports == 'object')
+    module.exports = factory(require('./picker.js'), require('jquery'))
 
-    // Browser globals.
-    else factory(Picker, jQuery)
+  // Browser globals.
+  else factory(Picker, jQuery)
 
 }(function (Picker, $) {
 
 
-    /**
-     * Globals and constants
-     */
-    var DAYS_IN_WEEK = 7,
-        WEEKS_IN_CALENDAR = 6,
-        _ = Picker._
+  /**
+   * Globals and constants
+   */
+  var DAYS_IN_WEEK = 7,
+    WEEKS_IN_CALENDAR = 6,
+    _ = Picker._
 
 
 
-    /**
-     * The date picker constructor
-     */
-    function DatePicker(picker, settings) {
+  /**
+   * The date picker constructor
+   */
+  function DatePicker(picker, settings) {
 
-        var calendar = this,
-            element = picker.$node[0],
-            elementValue = element.value,
-            elementDataValue = picker.$node.data('value'),
-            valueString = elementDataValue || elementValue,
-            formatString = elementDataValue ? settings.formatSubmit : settings.format,
-            isRTL = function () {
+    var calendar = this,
+      element = picker.$node[0],
+      elementValue = element.value,
+      elementDataValue = picker.$node.data('value'),
+      valueString = elementDataValue || elementValue,
+      formatString = elementDataValue ? settings.formatSubmit : settings.format,
+      isRTL = function () {
 
-                return element.currentStyle ?
+        return element.currentStyle ?
 
-                    // For IE.
-                    element.currentStyle.direction == 'rtl' :
+          // For IE.
+          element.currentStyle.direction == 'rtl' :
 
-                    // For normal browsers.
-                    getComputedStyle(picker.$root[0]).direction == 'rtl'
-            }
+          // For normal browsers.
+          getComputedStyle(picker.$root[0]).direction == 'rtl'
+      }
 
-        calendar.settings = settings
-        calendar.$node = picker.$node
+    calendar.settings = settings
+    calendar.$node = picker.$node
 
-        // The queue of methods that will be used to build item objects.
-        calendar.queue = {
-            min: 'measure create',
-            max: 'measure create',
-            now: 'now create',
-            select: 'parse create validate',
-            highlight: 'parse navigate create validate',
-            view: 'parse create validate viewset',
-            disable: 'deactivate',
-            enable: 'activate'
-        }
+    // The queue of methods that will be used to build item objects.
+    calendar.queue = {
+      min: 'measure create',
+      max: 'measure create',
+      now: 'now create',
+      select: 'parse create validate',
+      highlight: 'parse navigate create validate',
+      view: 'parse create validate viewset',
+      disable: 'deactivate',
+      enable: 'activate'
+    }
 
-        // The component's item object.
-        calendar.item = {}
+    // The component's item object.
+    calendar.item = {}
 
-        calendar.item.clear = null
-        calendar.item.disable = (settings.disable || []).slice(0)
-        calendar.item.enable = -(function (collectionDisabled) {
-            return collectionDisabled[0] === true ? collectionDisabled.shift() : -1
-        })(calendar.item.disable)
+    calendar.item.clear = null
+    calendar.item.disable = (settings.disable || []).slice(0)
+    calendar.item.enable = -(function (collectionDisabled) {
+      return collectionDisabled[0] === true ? collectionDisabled.shift() : -1
+    })(calendar.item.disable)
 
-        calendar.
-        set('min', settings.min).
-        set('max', settings.max).
-        set('now')
+    calendar.
+    set('min', settings.min).
+    set('max', settings.max).
+    set('now')
 
-        // When there’s a value, set the `select`, which in turn
-        // also sets the `highlight` and `view`.
-        if (valueString) {
-            calendar.set('select', valueString, {
-                format: formatString,
-                defaultValue: true
-            })
-        }
+    // When there’s a value, set the `select`, which in turn
+    // also sets the `highlight` and `view`.
+    if (valueString) {
+      calendar.set('select', valueString, {
+        format: formatString,
+        defaultValue: true
+      })
+    }
 
-        // If there’s no value, default to highlighting “today”.
-        else {
-            calendar.
-            set('select', null).
-            set('highlight', calendar.item.now)
-        }
-
-
-        // The keycode to movement mapping.
-        calendar.key = {
-            40: 7, // Down
-            38: -7, // Up
-            39: function () {
-                return isRTL() ? -1 : 1
-            }, // Right
-            37: function () {
-                return isRTL() ? 1 : -1
-            }, // Left
-            go: function (timeChange) {
-                var highlightedObject = calendar.item.highlight,
-                    targetDate = new Date(highlightedObject.year, highlightedObject.month, highlightedObject.date + timeChange)
-                calendar.set(
-                    'highlight',
-                    targetDate, {
-                        interval: timeChange
-                    }
-                )
-                this.render()
-            }
-        }
-
-
-        // Bind some picker events.
-        picker.
-        on('render', function () {
-            picker.$root.find('.' + settings.klass.selectMonth).on('change', function () {
-                var value = this.value
-                if (value) {
-                    picker.set('highlight', [picker.get('view').year, value, picker.get('highlight').date])
-                    picker.$root.find('.' + settings.klass.selectMonth).trigger('focus')
-                }
-            })
-            picker.$root.find('.' + settings.klass.selectYear).on('change', function () {
-                var value = this.value
-                if (value) {
-                    picker.set('highlight', [value, picker.get('view').month, picker.get('highlight').date])
-                    picker.$root.find('.' + settings.klass.selectYear).trigger('focus')
-                }
-            })
-        }, 1).
-        on('open', function () {
-            var includeToday = ''
-            if (calendar.disabled(calendar.get('now'))) {
-                includeToday = ':not(.' + settings.klass.buttonToday + ')'
-            }
-            picker.$root.find('button' + includeToday + ', select').attr('disabled', false)
-        }, 1).
-        on('close', function () {
-            picker.$root.find('button, select').attr('disabled', true)
-        }, 1)
-
-    } //DatePicker
-
-
-    /**
-     * Set a datepicker item object.
-     */
-    DatePicker.prototype.set = function (type, value, options) {
-
-            var calendar = this,
-                calendarItem = calendar.item
-
-            // If the value is `null` just set it immediately.
-            if (value === null) {
-                if (type == 'clear') type = 'select'
-                calendarItem[type] = value
-                return calendar
-            }
-
-            // Otherwise go through the queue of methods, and invoke the functions.
-            // Update this as the time unit, and set the final value as this item.
-            // * In the case of `enable`, keep the queue but set `disable` instead.
-            //   And in the case of `flip`, keep the queue but set `enable` instead.
-            calendarItem[(type == 'enable' ? 'disable' : type == 'flip' ? 'enable' : type)] = calendar.queue[type].split(' ').map(function (method) {
-                value = calendar[method](type, value, options)
-                return value
-            }).pop()
-
-            // Check if we need to cascade through more updates.
-            if (type == 'select') {
-                calendar.set('highlight', calendarItem.select, options)
-            } else if (type == 'highlight') {
-                calendar.set('view', calendarItem.highlight, options)
-            } else if (type.match(/^(flip|min|max|disable|enable)$/)) {
-                if (calendarItem.select && calendar.disabled(calendarItem.select)) {
-                    calendar.set('select', calendarItem.select, options)
-                }
-                if (calendarItem.highlight && calendar.disabled(calendarItem.highlight)) {
-                    calendar.set('highlight', calendarItem.highlight, options)
-                }
-            }
-
-            return calendar
-        } //DatePicker.prototype.set
-
-
-    /**
-     * Get a datepicker item object.
-     */
-    DatePicker.prototype.get = function (type) {
-            return this.item[type]
-        } //DatePicker.prototype.get
-
-
-    /**
-     * Create a picker date object.
-     */
-    DatePicker.prototype.create = function (type, value, options) {
-
-            var isInfiniteValue,
-                calendar = this
-
-            // If there’s no value, use the type as the value.
-            value = value === undefined ? type : value
-
-
-            // If it’s infinity, update the value.
-            if (value == -Infinity || value == Infinity) {
-                isInfiniteValue = value
-            }
-
-            // If it’s an object, use the native date object.
-            else if ($.isPlainObject(value) && _.isInteger(value.pick)) {
-                value = value.obj
-            }
-
-            // If it’s an array, convert it into a date and make sure
-            // that it’s a valid date – otherwise default to today.
-            else if ($.isArray(value)) {
-                value = new Date(value[0], value[1], value[2])
-                value = _.isDate(value) ? value : calendar.create().obj
-            }
-
-            // If it’s a number or date object, make a normalized date.
-            else if (_.isInteger(value) || _.isDate(value)) {
-                value = calendar.normalize(new Date(value), options)
-            }
-
-            // If it’s a literal true or any other case, set it to now.
-            else /*if ( value === true )*/ {
-                value = calendar.now(type, value, options)
-            }
-
-            // Return the compiled object.
-            return {
-                year: isInfiniteValue || value.getFullYear(),
-                month: isInfiniteValue || value.getMonth(),
-                date: isInfiniteValue || value.getDate(),
-                day: isInfiniteValue || value.getDay(),
-                obj: isInfiniteValue || value,
-                pick: isInfiniteValue || value.getTime()
-            }
-        } //DatePicker.prototype.create
-
-
-    /**
-     * Create a range limit object using an array, date object,
-     * literal “true”, or integer relative to another time.
-     */
-    DatePicker.prototype.createRange = function (from, to) {
-
-            var calendar = this,
-                createDate = function (date) {
-                    if (date === true || $.isArray(date) || _.isDate(date)) {
-                        return calendar.create(date)
-                    }
-                    return date
-                }
-
-            // Create objects if possible.
-            if (!_.isInteger(from)) {
-                from = createDate(from)
-            }
-            if (!_.isInteger(to)) {
-                to = createDate(to)
-            }
-
-            // Create relative dates.
-            if (_.isInteger(from) && $.isPlainObject(to)) {
-                from = [to.year, to.month, to.date + from];
-            } else if (_.isInteger(to) && $.isPlainObject(from)) {
-                to = [from.year, from.month, from.date + to];
-            }
-
-            return {
-                from: createDate(from),
-                to: createDate(to)
-            }
-        } //DatePicker.prototype.createRange
-
-
-    /**
-     * Check if a date unit falls within a date range object.
-     */
-    DatePicker.prototype.withinRange = function (range, dateUnit) {
-        range = this.createRange(range.from, range.to)
-        return dateUnit.pick >= range.from.pick && dateUnit.pick <= range.to.pick
+    // If there’s no value, default to highlighting “today”.
+    else {
+      calendar.
+      set('select', null).
+      set('highlight', calendar.item.now)
     }
 
 
-    /**
-     * Check if two date range objects overlap.
-     */
-    DatePicker.prototype.overlapRanges = function (one, two) {
-
-        var calendar = this
-
-        // Convert the ranges into comparable dates.
-        one = calendar.createRange(one.from, one.to)
-        two = calendar.createRange(two.from, two.to)
-
-        return calendar.withinRange(one, two.from) || calendar.withinRange(one, two.to) ||
-            calendar.withinRange(two, one.from) || calendar.withinRange(two, one.to)
+    // The keycode to movement mapping.
+    calendar.key = {
+      40: 7, // Down
+      38: -7, // Up
+      39: function () {
+        return isRTL() ? -1 : 1
+      }, // Right
+      37: function () {
+        return isRTL() ? 1 : -1
+      }, // Left
+      go: function (timeChange) {
+        var highlightedObject = calendar.item.highlight,
+          targetDate = new Date(highlightedObject.year, highlightedObject.month, highlightedObject.date + timeChange)
+        calendar.set(
+          'highlight',
+          targetDate, {
+            interval: timeChange
+          }
+        )
+        this.render()
+      }
     }
 
 
-    /**
-     * Get the date today.
-     */
-    DatePicker.prototype.now = function (type, value, options) {
-        value = new Date()
-        if (options && options.rel) {
-            value.setDate(value.getDate() + options.rel)
+    // Bind some picker events.
+    picker.
+    on('render', function () {
+      picker.$root.find('.' + settings.klass.selectMonth).on('change', function () {
+        var value = this.value
+        if (value) {
+          picker.set('highlight', [picker.get('view').year, value, picker.get('highlight').date])
+          picker.$root.find('.' + settings.klass.selectMonth).trigger('focus')
         }
-        return this.normalize(value, options)
+      })
+      picker.$root.find('.' + settings.klass.selectYear).on('change', function () {
+        var value = this.value
+        if (value) {
+          picker.set('highlight', [value, picker.get('view').month, picker.get('highlight').date])
+          picker.$root.find('.' + settings.klass.selectYear).trigger('focus')
+        }
+      })
+    }, 1).
+    on('open', function () {
+      var includeToday = ''
+      if (calendar.disabled(calendar.get('now'))) {
+        includeToday = ':not(.' + settings.klass.buttonToday + ')'
+      }
+      picker.$root.find('button' + includeToday + ', select').attr('disabled', false)
+    }, 1).
+    on('close', function () {
+      picker.$root.find('button, select').attr('disabled', true)
+    }, 1)
+
+  } //DatePicker
+
+
+  /**
+   * Set a datepicker item object.
+   */
+  DatePicker.prototype.set = function (type, value, options) {
+
+    var calendar = this,
+      calendarItem = calendar.item
+
+    // If the value is `null` just set it immediately.
+    if (value === null) {
+      if (type == 'clear') type = 'select'
+      calendarItem[type] = value
+      return calendar
     }
 
+    // Otherwise go through the queue of methods, and invoke the functions.
+    // Update this as the time unit, and set the final value as this item.
+    // * In the case of `enable`, keep the queue but set `disable` instead.
+    //   And in the case of `flip`, keep the queue but set `enable` instead.
+    calendarItem[(type == 'enable' ? 'disable' : type == 'flip' ? 'enable' : type)] = calendar.queue[type].split(' ').map(function (method) {
+      value = calendar[method](type, value, options)
+      return value
+    }).pop()
 
-    /**
-     * Navigate to next/prev month.
-     */
-    DatePicker.prototype.navigate = function (type, value, options) {
-
-            var targetDateObject,
-                targetYear,
-                targetMonth,
-                targetDate,
-                isTargetArray = $.isArray(value),
-                isTargetObject = $.isPlainObject(value),
-                viewsetObject = this.item.view
-                /*,
-                        safety = 100*/
-
-
-            if (isTargetArray || isTargetObject) {
-
-                if (isTargetObject) {
-                    targetYear = value.year
-                    targetMonth = value.month
-                    targetDate = value.date
-                } else {
-                    targetYear = +value[0]
-                    targetMonth = +value[1]
-                    targetDate = +value[2]
-                }
-
-                // If we’re navigating months but the view is in a different
-                // month, navigate to the view’s year and month.
-                if (options && options.nav && viewsetObject && viewsetObject.month !== targetMonth) {
-                    targetYear = viewsetObject.year
-                    targetMonth = viewsetObject.month
-                }
-
-                // Figure out the expected target year and month.
-                targetDateObject = new Date(targetYear, targetMonth + (options && options.nav ? options.nav : 0), 1)
-                targetYear = targetDateObject.getFullYear()
-                targetMonth = targetDateObject.getMonth()
-
-                // If the month we’re going to doesn’t have enough days,
-                // keep decreasing the date until we reach the month’s last date.
-                while ( /*safety &&*/ new Date(targetYear, targetMonth, targetDate).getMonth() !== targetMonth) {
-                    targetDate -= 1
-                        /*safety -= 1
-                        if ( !safety ) {
-                            throw 'Fell into an infinite loop while navigating to ' + new Date( targetYear, targetMonth, targetDate ) + '.'
-                        }*/
-                }
-
-                value = [targetYear, targetMonth, targetDate]
-            }
-
-            return value
-        } //DatePicker.prototype.navigate
-
-
-    /**
-     * Normalize a date by setting the hours to midnight.
-     */
-    DatePicker.prototype.normalize = function (value /*, options*/ ) {
-        value.setHours(0, 0, 0, 0)
-        return value
+    // Check if we need to cascade through more updates.
+    if (type == 'select') {
+      calendar.set('highlight', calendarItem.select, options)
+    } else if (type == 'highlight') {
+      calendar.set('view', calendarItem.highlight, options)
+    } else if (type.match(/^(flip|min|max|disable|enable)$/)) {
+      if (calendarItem.select && calendar.disabled(calendarItem.select)) {
+        calendar.set('select', calendarItem.select, options)
+      }
+      if (calendarItem.highlight && calendar.disabled(calendarItem.highlight)) {
+        calendar.set('highlight', calendarItem.highlight, options)
+      }
     }
 
-
-    /**
-     * Measure the range of dates.
-     */
-    DatePicker.prototype.measure = function (type, value /*, options*/ ) {
-
-            var calendar = this
-
-            // If it’s anything false-y, remove the limits.
-            if (!value) {
-                value = type == 'min' ? -Infinity : Infinity
-            }
-
-            // If it’s a string, parse it.
-            else if (typeof value == 'string') {
-                value = calendar.parse(type, value)
-            }
-
-            // If it's an integer, get a date relative to today.
-            else if (_.isInteger(value)) {
-                value = calendar.now(type, value, {
-                    rel: value
-                })
-            }
-
-            return value
-        } ///DatePicker.prototype.measure
+    return calendar
+  } //DatePicker.prototype.set
 
 
-    /**
-     * Create a viewset object based on navigation.
-     */
-    DatePicker.prototype.viewset = function (type, dateObject /*, options*/ ) {
-        return this.create([dateObject.year, dateObject.month, 1])
+  /**
+   * Get a datepicker item object.
+   */
+  DatePicker.prototype.get = function (type) {
+    return this.item[type]
+  } //DatePicker.prototype.get
+
+
+  /**
+   * Create a picker date object.
+   */
+  DatePicker.prototype.create = function (type, value, options) {
+
+    var isInfiniteValue,
+      calendar = this
+
+    // If there’s no value, use the type as the value.
+    value = value === undefined ? type : value
+
+
+    // If it’s infinity, update the value.
+    if (value == -Infinity || value == Infinity) {
+      isInfiniteValue = value
     }
 
+    // If it’s an object, use the native date object.
+    else if ($.isPlainObject(value) && _.isInteger(value.pick)) {
+      value = value.obj
+    }
 
-    /**
-     * Validate a date as enabled and shift if needed.
-     */
-    DatePicker.prototype.validate = function (type, dateObject, options) {
+    // If it’s an array, convert it into a date and make sure
+    // that it’s a valid date – otherwise default to today.
+    else if ($.isArray(value)) {
+      value = new Date(value[0], value[1], value[2])
+      value = _.isDate(value) ? value : calendar.create().obj
+    }
 
-            var calendar = this,
+    // If it’s a number or date object, make a normalized date.
+    else if (_.isInteger(value) || _.isDate(value)) {
+      value = calendar.normalize(new Date(value), options)
+    }
 
-                // Keep a reference to the original date.
-                originalDateObject = dateObject,
+    // If it’s a literal true or any other case, set it to now.
+    else /*if ( value === true )*/ {
+      value = calendar.now(type, value, options)
+    }
 
-                // Make sure we have an interval.
-                interval = options && options.interval ? options.interval : 1,
-
-                // Check if the calendar enabled dates are inverted.
-                isFlippedBase = calendar.item.enable === -1,
-
-                // Check if we have any enabled dates after/before now.
-                hasEnabledBeforeTarget, hasEnabledAfterTarget,
-
-                // The min & max limits.
-                minLimitObject = calendar.item.min,
-                maxLimitObject = calendar.item.max,
-
-                // Check if we’ve reached the limit during shifting.
-                reachedMin, reachedMax,
-
-                // Check if the calendar is inverted and at least one weekday is enabled.
-                hasEnabledWeekdays = isFlippedBase && calendar.item.disable.filter(function (value) {
-
-                    // If there’s a date, check where it is relative to the target.
-                    if ($.isArray(value)) {
-                        var dateTime = calendar.create(value).pick
-                        if (dateTime < dateObject.pick) hasEnabledBeforeTarget = true
-                        else if (dateTime > dateObject.pick) hasEnabledAfterTarget = true
-                    }
-
-                    // Return only integers for enabled weekdays.
-                    return _.isInteger(value)
-                }).length
-                /*,
-
-                        safety = 100*/
+    // Return the compiled object.
+    return {
+      year: isInfiniteValue || value.getFullYear(),
+      month: isInfiniteValue || value.getMonth(),
+      date: isInfiniteValue || value.getDate(),
+      day: isInfiniteValue || value.getDay(),
+      obj: isInfiniteValue || value,
+      pick: isInfiniteValue || value.getTime()
+    }
+  } //DatePicker.prototype.create
 
 
+  /**
+   * Create a range limit object using an array, date object,
+   * literal “true”, or integer relative to another time.
+   */
+  DatePicker.prototype.createRange = function (from, to) {
 
-            // Cases to validate for:
-            // [1] Not inverted and date disabled.
-            // [2] Inverted and some dates enabled.
-            // [3] Not inverted and out of range.
-            //
-            // Cases to **not** validate for:
-            // • Navigating months.
-            // • Not inverted and date enabled.
-            // • Inverted and all dates disabled.
-            // • ..and anything else.
-            if (!options || (!options.nav && !options.defaultValue))
-                if (
-                    /* 1 */
-                    (!isFlippedBase && calendar.disabled(dateObject)) ||
-                    /* 2 */
-                    (isFlippedBase && calendar.disabled(dateObject) && (hasEnabledWeekdays || hasEnabledBeforeTarget || hasEnabledAfterTarget)) ||
-                    /* 3 */
-                    (!isFlippedBase && (dateObject.pick <= minLimitObject.pick || dateObject.pick >= maxLimitObject.pick))
-                ) {
+    var calendar = this,
+      createDate = function (date) {
+        if (date === true || $.isArray(date) || _.isDate(date)) {
+          return calendar.create(date)
+        }
+        return date
+      }
 
+    // Create objects if possible.
+    if (!_.isInteger(from)) {
+      from = createDate(from)
+    }
+    if (!_.isInteger(to)) {
+      to = createDate(to)
+    }
 
-                    // When inverted, flip the direction if there aren’t any enabled weekdays
-                    // and there are no enabled dates in the direction of the interval.
-                    if (isFlippedBase && !hasEnabledWeekdays && ((!hasEnabledAfterTarget && interval > 0) || (!hasEnabledBeforeTarget && interval < 0))) {
-                        interval *= -1
-                    }
+    // Create relative dates.
+    if (_.isInteger(from) && $.isPlainObject(to)) {
+      from = [to.year, to.month, to.date + from];
+    } else if (_.isInteger(to) && $.isPlainObject(from)) {
+      to = [from.year, from.month, from.date + to];
+    }
 
-
-                    // Keep looping until we reach an enabled date.
-                    while ( /*safety &&*/ calendar.disabled(dateObject)) {
-
-                        /*safety -= 1
-                        if ( !safety ) {
-                            throw 'Fell into an infinite loop while validating ' + dateObject.obj + '.'
-                        }*/
+    return {
+      from: createDate(from),
+      to: createDate(to)
+    }
+  } //DatePicker.prototype.createRange
 
 
-                        // If we’ve looped into the next/prev month with a large interval, return to the original date and flatten the interval.
-                        if (Math.abs(interval) > 1 && (dateObject.month < originalDateObject.month || dateObject.month > originalDateObject.month)) {
-                            dateObject = originalDateObject
-                            interval = interval > 0 ? 1 : -1
-                        }
+  /**
+   * Check if a date unit falls within a date range object.
+   */
+  DatePicker.prototype.withinRange = function (range, dateUnit) {
+    range = this.createRange(range.from, range.to)
+    return dateUnit.pick >= range.from.pick && dateUnit.pick <= range.to.pick
+  }
 
 
-                        // If we’ve reached the min/max limit, reverse the direction, flatten the interval and set it to the limit.
-                        if (dateObject.pick <= minLimitObject.pick) {
-                            reachedMin = true
-                            interval = 1
-                            dateObject = calendar.create([
-                    minLimitObject.year,
-                    minLimitObject.month,
-                    minLimitObject.date + (dateObject.pick === minLimitObject.pick ? 0 : -1)
-                ])
-                        } else if (dateObject.pick >= maxLimitObject.pick) {
-                            reachedMax = true
-                            interval = -1
-                            dateObject = calendar.create([
-                    maxLimitObject.year,
-                    maxLimitObject.month,
-                    maxLimitObject.date + (dateObject.pick === maxLimitObject.pick ? 0 : 1)
-                ])
-                        }
+  /**
+   * Check if two date range objects overlap.
+   */
+  DatePicker.prototype.overlapRanges = function (one, two) {
+
+    var calendar = this
+
+    // Convert the ranges into comparable dates.
+    one = calendar.createRange(one.from, one.to)
+    two = calendar.createRange(two.from, two.to)
+
+    return calendar.withinRange(one, two.from) || calendar.withinRange(one, two.to) ||
+      calendar.withinRange(two, one.from) || calendar.withinRange(two, one.to)
+  }
 
 
-                        // If we’ve reached both limits, just break out of the loop.
-                        if (reachedMin && reachedMax) {
-                            break
-                        }
+  /**
+   * Get the date today.
+   */
+  DatePicker.prototype.now = function (type, value, options) {
+    value = new Date()
+    if (options && options.rel) {
+      value.setDate(value.getDate() + options.rel)
+    }
+    return this.normalize(value, options)
+  }
 
 
-                        // Finally, create the shifted date using the interval and keep looping.
-                        dateObject = calendar.create([dateObject.year, dateObject.month, dateObject.date + interval])
-                    }
+  /**
+   * Navigate to next/prev month.
+   */
+  DatePicker.prototype.navigate = function (type, value, options) {
 
-                } //endif
-
-
-                // Return the date object settled on.
-            return dateObject
-        } //DatePicker.prototype.validate
-
-
-    /**
-     * Check if a date is disabled.
-     */
-    DatePicker.prototype.disabled = function (dateToVerify) {
-
-            var
-                calendar = this,
-
-                // Filter through the disabled dates to check if this is one.
-                isDisabledMatch = calendar.item.disable.filter(function (dateToDisable) {
-
-                    // If the date is a number, match the weekday with 0index and `firstDay` check.
-                    if (_.isInteger(dateToDisable)) {
-                        return dateToVerify.day === (calendar.settings.firstDay ? dateToDisable : dateToDisable - 1) % 7
-                    }
-
-                    // If it’s an array or a native JS date, create and match the exact date.
-                    if ($.isArray(dateToDisable) || _.isDate(dateToDisable)) {
-                        return dateToVerify.pick === calendar.create(dateToDisable).pick
-                    }
-
-                    // If it’s an object, match a date within the “from” and “to” range.
-                    if ($.isPlainObject(dateToDisable)) {
-                        return calendar.withinRange(dateToDisable, dateToVerify)
-                    }
-                })
-
-            // If this date matches a disabled date, confirm it’s not inverted.
-            isDisabledMatch = isDisabledMatch.length && !isDisabledMatch.filter(function (dateToDisable) {
-                return $.isArray(dateToDisable) && dateToDisable[3] == 'inverted' ||
-                    $.isPlainObject(dateToDisable) && dateToDisable.inverted
-            }).length
-
-            // Check the calendar “enabled” flag and respectively flip the
-            // disabled state. Then also check if it’s beyond the min/max limits.
-            return calendar.item.enable === -1 ? !isDisabledMatch : isDisabledMatch ||
-                dateToVerify.pick < calendar.item.min.pick ||
-                dateToVerify.pick > calendar.item.max.pick
-
-        } //DatePicker.prototype.disabled
+    var targetDateObject,
+      targetYear,
+      targetMonth,
+      targetDate,
+      isTargetArray = $.isArray(value),
+      isTargetObject = $.isPlainObject(value),
+      viewsetObject = this.item.view
+    /*,
+            safety = 100*/
 
 
-    /**
-     * Parse a string into a usable type.
-     */
-    DatePicker.prototype.parse = function (type, value, options) {
+    if (isTargetArray || isTargetObject) {
 
-            var calendar = this,
-                parsingObject = {}
+      if (isTargetObject) {
+        targetYear = value.year
+        targetMonth = value.month
+        targetDate = value.date
+      } else {
+        targetYear = +value[0]
+        targetMonth = +value[1]
+        targetDate = +value[2]
+      }
 
-            // If it’s already parsed, we’re good.
-            if (!value || typeof value != 'string') {
-                return value
-            }
+      // If we’re navigating months but the view is in a different
+      // month, navigate to the view’s year and month.
+      if (options && options.nav && viewsetObject && viewsetObject.month !== targetMonth) {
+        targetYear = viewsetObject.year
+        targetMonth = viewsetObject.month
+      }
 
-            // We need a `.format` to parse the value with.
-            if (!(options && options.format)) {
-                options = options || {}
-                options.format = calendar.settings.format
-            }
+      // Figure out the expected target year and month.
+      targetDateObject = new Date(targetYear, targetMonth + (options && options.nav ? options.nav : 0), 1)
+      targetYear = targetDateObject.getFullYear()
+      targetMonth = targetDateObject.getMonth()
 
-            // Convert the format into an array and then map through it.
-            calendar.formats.toArray(options.format).map(function (label) {
+      // If the month we’re going to doesn’t have enough days,
+      // keep decreasing the date until we reach the month’s last date.
+      while ( /*safety &&*/ new Date(targetYear, targetMonth, targetDate).getMonth() !== targetMonth) {
+        targetDate -= 1
+        /*safety -= 1
+        if ( !safety ) {
+            throw 'Fell into an infinite loop while navigating to ' + new Date( targetYear, targetMonth, targetDate ) + '.'
+        }*/
+      }
 
-                var
-                // Grab the formatting label.
-                    formattingLabel = calendar.formats[label],
+      value = [targetYear, targetMonth, targetDate]
+    }
 
-                    // The format length is from the formatting label function or the
-                    // label length without the escaping exclamation (!) mark.
-                    formatLength = formattingLabel ? _.trigger(formattingLabel, calendar, [value, parsingObject]) : label.replace(/^!/, '').length
+    return value
+  } //DatePicker.prototype.navigate
 
-                // If there's a format label, split the value up to the format length.
-                // Then add it to the parsing object with appropriate label.
-                if (formattingLabel) {
-                    parsingObject[label] = value.substr(0, formatLength)
-                }
 
-                // Update the value as the substring from format length to end.
-                value = value.substr(formatLength)
-            })
+  /**
+   * Normalize a date by setting the hours to midnight.
+   */
+  DatePicker.prototype.normalize = function (value /*, options*/ ) {
+    value.setHours(0, 0, 0, 0)
+    return value
+  }
 
-            // Compensate for month 0index.
-            return [
-        parsingObject.yyyy || parsingObject.yy,
-        +(parsingObject.mm || parsingObject.m) - 1,
-        parsingObject.dd || parsingObject.d
+
+  /**
+   * Measure the range of dates.
+   */
+  DatePicker.prototype.measure = function (type, value /*, options*/ ) {
+
+    var calendar = this
+
+    // If it’s anything false-y, remove the limits.
+    if (!value) {
+      value = type == 'min' ? -Infinity : Infinity
+    }
+
+    // If it’s a string, parse it.
+    else if (typeof value == 'string') {
+      value = calendar.parse(type, value)
+    }
+
+    // If it's an integer, get a date relative to today.
+    else if (_.isInteger(value)) {
+      value = calendar.now(type, value, {
+        rel: value
+      })
+    }
+
+    return value
+  } ///DatePicker.prototype.measure
+
+
+  /**
+   * Create a viewset object based on navigation.
+   */
+  DatePicker.prototype.viewset = function (type, dateObject /*, options*/ ) {
+    return this.create([dateObject.year, dateObject.month, 1])
+  }
+
+
+  /**
+   * Validate a date as enabled and shift if needed.
+   */
+  DatePicker.prototype.validate = function (type, dateObject, options) {
+
+    var calendar = this,
+
+      // Keep a reference to the original date.
+      originalDateObject = dateObject,
+
+      // Make sure we have an interval.
+      interval = options && options.interval ? options.interval : 1,
+
+      // Check if the calendar enabled dates are inverted.
+      isFlippedBase = calendar.item.enable === -1,
+
+      // Check if we have any enabled dates after/before now.
+      hasEnabledBeforeTarget, hasEnabledAfterTarget,
+
+      // The min & max limits.
+      minLimitObject = calendar.item.min,
+      maxLimitObject = calendar.item.max,
+
+      // Check if we’ve reached the limit during shifting.
+      reachedMin, reachedMax,
+
+      // Check if the calendar is inverted and at least one weekday is enabled.
+      hasEnabledWeekdays = isFlippedBase && calendar.item.disable.filter(function (value) {
+
+        // If there’s a date, check where it is relative to the target.
+        if ($.isArray(value)) {
+          var dateTime = calendar.create(value).pick
+          if (dateTime < dateObject.pick) hasEnabledBeforeTarget = true
+          else if (dateTime > dateObject.pick) hasEnabledAfterTarget = true
+        }
+
+        // Return only integers for enabled weekdays.
+        return _.isInteger(value)
+      }).length
+    /*,
+
+            safety = 100*/
+
+
+
+    // Cases to validate for:
+    // [1] Not inverted and date disabled.
+    // [2] Inverted and some dates enabled.
+    // [3] Not inverted and out of range.
+    //
+    // Cases to **not** validate for:
+    // • Navigating months.
+    // • Not inverted and date enabled.
+    // • Inverted and all dates disabled.
+    // • ..and anything else.
+    if (!options || (!options.nav && !options.defaultValue))
+      if (
+        /* 1 */
+        (!isFlippedBase && calendar.disabled(dateObject)) ||
+        /* 2 */
+        (isFlippedBase && calendar.disabled(dateObject) && (hasEnabledWeekdays || hasEnabledBeforeTarget || hasEnabledAfterTarget)) ||
+        /* 3 */
+        (!isFlippedBase && (dateObject.pick <= minLimitObject.pick || dateObject.pick >= maxLimitObject.pick))
+      ) {
+
+
+        // When inverted, flip the direction if there aren’t any enabled weekdays
+        // and there are no enabled dates in the direction of the interval.
+        if (isFlippedBase && !hasEnabledWeekdays && ((!hasEnabledAfterTarget && interval > 0) || (!hasEnabledBeforeTarget && interval < 0))) {
+          interval *= -1
+        }
+
+
+        // Keep looping until we reach an enabled date.
+        while ( /*safety &&*/ calendar.disabled(dateObject)) {
+
+          /*safety -= 1
+          if ( !safety ) {
+              throw 'Fell into an infinite loop while validating ' + dateObject.obj + '.'
+          }*/
+
+
+          // If we’ve looped into the next/prev month with a large interval, return to the original date and flatten the interval.
+          if (Math.abs(interval) > 1 && (dateObject.month < originalDateObject.month || dateObject.month > originalDateObject.month)) {
+            dateObject = originalDateObject
+            interval = interval > 0 ? 1 : -1
+          }
+
+
+          // If we’ve reached the min/max limit, reverse the direction, flatten the interval and set it to the limit.
+          if (dateObject.pick <= minLimitObject.pick) {
+            reachedMin = true
+            interval = 1
+            dateObject = calendar.create([
+              minLimitObject.year,
+              minLimitObject.month,
+              minLimitObject.date + (dateObject.pick === minLimitObject.pick ? 0 : -1)
+            ])
+          } else if (dateObject.pick >= maxLimitObject.pick) {
+            reachedMax = true
+            interval = -1
+            dateObject = calendar.create([
+              maxLimitObject.year,
+              maxLimitObject.month,
+              maxLimitObject.date + (dateObject.pick === maxLimitObject.pick ? 0 : 1)
+            ])
+          }
+
+
+          // If we’ve reached both limits, just break out of the loop.
+          if (reachedMin && reachedMax) {
+            break
+          }
+
+
+          // Finally, create the shifted date using the interval and keep looping.
+          dateObject = calendar.create([dateObject.year, dateObject.month, dateObject.date + interval])
+        }
+
+      } //endif
+
+
+    // Return the date object settled on.
+    return dateObject
+  } //DatePicker.prototype.validate
+
+
+  /**
+   * Check if a date is disabled.
+   */
+  DatePicker.prototype.disabled = function (dateToVerify) {
+
+    var
+      calendar = this,
+
+      // Filter through the disabled dates to check if this is one.
+      isDisabledMatch = calendar.item.disable.filter(function (dateToDisable) {
+
+        // If the date is a number, match the weekday with 0index and `firstDay` check.
+        if (_.isInteger(dateToDisable)) {
+          return dateToVerify.day === (calendar.settings.firstDay ? dateToDisable : dateToDisable - 1) % 7
+        }
+
+        // If it’s an array or a native JS date, create and match the exact date.
+        if ($.isArray(dateToDisable) || _.isDate(dateToDisable)) {
+          return dateToVerify.pick === calendar.create(dateToDisable).pick
+        }
+
+        // If it’s an object, match a date within the “from” and “to” range.
+        if ($.isPlainObject(dateToDisable)) {
+          return calendar.withinRange(dateToDisable, dateToVerify)
+        }
+      })
+
+    // If this date matches a disabled date, confirm it’s not inverted.
+    isDisabledMatch = isDisabledMatch.length && !isDisabledMatch.filter(function (dateToDisable) {
+      return $.isArray(dateToDisable) && dateToDisable[3] == 'inverted' ||
+        $.isPlainObject(dateToDisable) && dateToDisable.inverted
+    }).length
+
+    // Check the calendar “enabled” flag and respectively flip the
+    // disabled state. Then also check if it’s beyond the min/max limits.
+    return calendar.item.enable === -1 ? !isDisabledMatch : isDisabledMatch ||
+      dateToVerify.pick < calendar.item.min.pick ||
+      dateToVerify.pick > calendar.item.max.pick
+
+  } //DatePicker.prototype.disabled
+
+
+  /**
+   * Parse a string into a usable type.
+   */
+  DatePicker.prototype.parse = function (type, value, options) {
+
+    var calendar = this,
+      parsingObject = {}
+
+    // If it’s already parsed, we’re good.
+    if (!value || typeof value != 'string') {
+      return value
+    }
+
+    // We need a `.format` to parse the value with.
+    if (!(options && options.format)) {
+      options = options || {}
+      options.format = calendar.settings.format
+    }
+
+    // Convert the format into an array and then map through it.
+    calendar.formats.toArray(options.format).map(function (label) {
+
+      var
+        // Grab the formatting label.
+        formattingLabel = calendar.formats[label],
+
+        // The format length is from the formatting label function or the
+        // label length without the escaping exclamation (!) mark.
+        formatLength = formattingLabel ? _.trigger(formattingLabel, calendar, [value, parsingObject]) : label.replace(/^!/, '').length
+
+      // If there's a format label, split the value up to the format length.
+      // Then add it to the parsing object with appropriate label.
+      if (formattingLabel) {
+        parsingObject[label] = value.substr(0, formatLength)
+      }
+
+      // Update the value as the substring from format length to end.
+      value = value.substr(formatLength)
+    })
+
+    // Compensate for month 0index.
+    return [
+      parsingObject.yyyy || parsingObject.yy,
+      +(parsingObject.mm || parsingObject.m) - 1,
+      parsingObject.dd || parsingObject.d
     ]
-        } //DatePicker.prototype.parse
+  } //DatePicker.prototype.parse
 
 
-    /**
-     * Various formats to display the object in.
-     */
-    DatePicker.prototype.formats = (function () {
+  /**
+   * Various formats to display the object in.
+   */
+  DatePicker.prototype.formats = (function () {
 
-            // Return the length of the first word in a collection.
-            function getWordLengthFromCollection(string, collection, dateObject) {
+    // Return the length of the first word in a collection.
+    function getWordLengthFromCollection(string, collection, dateObject) {
 
-                // Grab the first word from the string.
-                // Regex pattern from http://stackoverflow.com/q/150033
-                var word = string.match(/[^\x00-\x7F]+|\w+/)[0]
+      // Grab the first word from the string.
+      // Regex pattern from http://stackoverflow.com/q/150033
+      var word = string.match(/[^\x00-\x7F]+|\w+/)[0]
 
-                // If there's no month index, add it to the date object
-                if (!dateObject.mm && !dateObject.m) {
-                    dateObject.m = collection.indexOf(word) + 1
-                }
+      // If there's no month index, add it to the date object
+      if (!dateObject.mm && !dateObject.m) {
+        dateObject.m = collection.indexOf(word) + 1
+      }
 
-                // Return the length of the word.
-                return word.length
-            }
+      // Return the length of the word.
+      return word.length
+    }
 
-            // Get the length of the first word in a string.
-            function getFirstWordLength(string) {
-                return string.match(/\w+/)[0].length
-            }
+    // Get the length of the first word in a string.
+    function getFirstWordLength(string) {
+      return string.match(/\w+/)[0].length
+    }
 
-            return {
+    return {
 
-                d: function (string, dateObject) {
+      d: function (string, dateObject) {
 
-                    // If there's string, then get the digits length.
-                    // Otherwise return the selected date.
-                    return string ? _.digits(string) : dateObject.date
-                },
-                dd: function (string, dateObject) {
+        // If there's string, then get the digits length.
+        // Otherwise return the selected date.
+        return string ? _.digits(string) : dateObject.date
+      },
+      dd: function (string, dateObject) {
 
-                    // If there's a string, then the length is always 2.
-                    // Otherwise return the selected date with a leading zero.
-                    return string ? 2 : _.lead(dateObject.date)
-                },
-                ddd: function (string, dateObject) {
+        // If there's a string, then the length is always 2.
+        // Otherwise return the selected date with a leading zero.
+        return string ? 2 : _.lead(dateObject.date)
+      },
+      ddd: function (string, dateObject) {
 
-                    // If there's a string, then get the length of the first word.
-                    // Otherwise return the short selected weekday.
-                    return string ? getFirstWordLength(string) : this.settings.weekdaysShort[dateObject.day]
-                },
-                dddd: function (string, dateObject) {
+        // If there's a string, then get the length of the first word.
+        // Otherwise return the short selected weekday.
+        return string ? getFirstWordLength(string) : this.settings.weekdaysShort[dateObject.day]
+      },
+      dddd: function (string, dateObject) {
 
-                    // If there's a string, then get the length of the first word.
-                    // Otherwise return the full selected weekday.
-                    return string ? getFirstWordLength(string) : this.settings.weekdaysFull[dateObject.day]
-                },
-                m: function (string, dateObject) {
+        // If there's a string, then get the length of the first word.
+        // Otherwise return the full selected weekday.
+        return string ? getFirstWordLength(string) : this.settings.weekdaysFull[dateObject.day]
+      },
+      m: function (string, dateObject) {
 
-                    // If there's a string, then get the length of the digits
-                    // Otherwise return the selected month with 0index compensation.
-                    return string ? _.digits(string) : dateObject.month + 1
-                },
-                mm: function (string, dateObject) {
+        // If there's a string, then get the length of the digits
+        // Otherwise return the selected month with 0index compensation.
+        return string ? _.digits(string) : dateObject.month + 1
+      },
+      mm: function (string, dateObject) {
 
-                    // If there's a string, then the length is always 2.
-                    // Otherwise return the selected month with 0index and leading zero.
-                    return string ? 2 : _.lead(dateObject.month + 1)
-                },
-                mmm: function (string, dateObject) {
+        // If there's a string, then the length is always 2.
+        // Otherwise return the selected month with 0index and leading zero.
+        return string ? 2 : _.lead(dateObject.month + 1)
+      },
+      mmm: function (string, dateObject) {
 
-                    var collection = this.settings.monthsShort
+        var collection = this.settings.monthsShort
 
-                    // If there's a string, get length of the relevant month from the short
-                    // months collection. Otherwise return the selected month from that collection.
-                    return string ? getWordLengthFromCollection(string, collection, dateObject) : collection[dateObject.month]
-                },
-                mmmm: function (string, dateObject) {
+        // If there's a string, get length of the relevant month from the short
+        // months collection. Otherwise return the selected month from that collection.
+        return string ? getWordLengthFromCollection(string, collection, dateObject) : collection[dateObject.month]
+      },
+      mmmm: function (string, dateObject) {
 
-                    var collection = this.settings.monthsFull
+        var collection = this.settings.monthsFull
 
-                    // If there's a string, get length of the relevant month from the full
-                    // months collection. Otherwise return the selected month from that collection.
-                    return string ? getWordLengthFromCollection(string, collection, dateObject) : collection[dateObject.month]
-                },
-                yy: function (string, dateObject) {
+        // If there's a string, get length of the relevant month from the full
+        // months collection. Otherwise return the selected month from that collection.
+        return string ? getWordLengthFromCollection(string, collection, dateObject) : collection[dateObject.month]
+      },
+      yy: function (string, dateObject) {
 
-                    // If there's a string, then the length is always 2.
-                    // Otherwise return the selected year by slicing out the first 2 digits.
-                    return string ? 2 : ('' + dateObject.year).slice(2)
-                },
-                yyyy: function (string, dateObject) {
+        // If there's a string, then the length is always 2.
+        // Otherwise return the selected year by slicing out the first 2 digits.
+        return string ? 2 : ('' + dateObject.year).slice(2)
+      },
+      yyyy: function (string, dateObject) {
 
-                    // If there's a string, then the length is always 4.
-                    // Otherwise return the selected year.
-                    return string ? 4 : dateObject.year
-                },
+        // If there's a string, then the length is always 4.
+        // Otherwise return the selected year.
+        return string ? 4 : dateObject.year
+      },
 
-                // Create an array by splitting the formatting string passed.
-                toArray: function (formatString) {
-                    return formatString.split(/(d{1,4}|m{1,4}|y{4}|yy|!.)/g)
-                },
+      // Create an array by splitting the formatting string passed.
+      toArray: function (formatString) {
+        return formatString.split(/(d{1,4}|m{1,4}|y{4}|yy|!.)/g)
+      },
 
-                // Format an object into a string using the formatting options.
-                toString: function (formatString, itemObject) {
-                    var calendar = this
-                    return calendar.formats.toArray(formatString).map(function (label) {
-                        return _.trigger(calendar.formats[label], calendar, [0, itemObject]) || label.replace(/^!/, '')
-                    }).join('')
-                }
-            }
-        })() //DatePicker.prototype.formats
-
-
-
-
-    /**
-     * Check if two date units are the exact.
-     */
-    DatePicker.prototype.isDateExact = function (one, two) {
-
+      // Format an object into a string using the formatting options.
+      toString: function (formatString, itemObject) {
         var calendar = this
+        return calendar.formats.toArray(formatString).map(function (label) {
+          return _.trigger(calendar.formats[label], calendar, [0, itemObject]) || label.replace(/^!/, '')
+        }).join('')
+      }
+    }
+  })() //DatePicker.prototype.formats
 
-        // When we’re working with weekdays, do a direct comparison.
-        if (
-            (_.isInteger(one) && _.isInteger(two)) ||
-            (typeof one == 'boolean' && typeof two == 'boolean')
-        ) {
-            return one === two
-        }
 
-        // When we’re working with date representations, compare the “pick” value.
-        if (
-            (_.isDate(one) || $.isArray(one)) &&
-            (_.isDate(two) || $.isArray(two))
-        ) {
-            return calendar.create(one).pick === calendar.create(two).pick
-        }
 
-        // When we’re working with range objects, compare the “from” and “to”.
-        if ($.isPlainObject(one) && $.isPlainObject(two)) {
-            return calendar.isDateExact(one.from, two.from) && calendar.isDateExact(one.to, two.to)
-        }
 
-        return false
+  /**
+   * Check if two date units are the exact.
+   */
+  DatePicker.prototype.isDateExact = function (one, two) {
+
+    var calendar = this
+
+    // When we’re working with weekdays, do a direct comparison.
+    if (
+      (_.isInteger(one) && _.isInteger(two)) ||
+      (typeof one == 'boolean' && typeof two == 'boolean')
+    ) {
+      return one === two
     }
 
-
-    /**
-     * Check if two date units overlap.
-     */
-    DatePicker.prototype.isDateOverlap = function (one, two) {
-
-        var calendar = this,
-            firstDay = calendar.settings.firstDay ? 1 : 0
-
-        // When we’re working with a weekday index, compare the days.
-        if (_.isInteger(one) && (_.isDate(two) || $.isArray(two))) {
-            one = one % 7 + firstDay
-            return one === calendar.create(two).day + 1
-        }
-        if (_.isInteger(two) && (_.isDate(one) || $.isArray(one))) {
-            two = two % 7 + firstDay
-            return two === calendar.create(one).day + 1
-        }
-
-        // When we’re working with range objects, check if the ranges overlap.
-        if ($.isPlainObject(one) && $.isPlainObject(two)) {
-            return calendar.overlapRanges(one, two)
-        }
-
-        return false
+    // When we’re working with date representations, compare the “pick” value.
+    if (
+      (_.isDate(one) || $.isArray(one)) && (_.isDate(two) || $.isArray(two))
+    ) {
+      return calendar.create(one).pick === calendar.create(two).pick
     }
 
-
-    /**
-     * Flip the “enabled” state.
-     */
-    DatePicker.prototype.flipEnable = function (val) {
-        var itemObject = this.item
-        itemObject.enable = val || (itemObject.enable == -1 ? 1 : -1)
+    // When we’re working with range objects, compare the “from” and “to”.
+    if ($.isPlainObject(one) && $.isPlainObject(two)) {
+      return calendar.isDateExact(one.from, two.from) && calendar.isDateExact(one.to, two.to)
     }
 
-
-    /**
-     * Mark a collection of dates as “disabled”.
-     */
-    DatePicker.prototype.deactivate = function (type, datesToDisable) {
-
-            var calendar = this,
-                disabledItems = calendar.item.disable.slice(0)
+    return false
+  }
 
 
-            // If we’re flipping, that’s all we need to do.
-            if (datesToDisable == 'flip') {
-                calendar.flipEnable()
-            } else if (datesToDisable === false) {
-                calendar.flipEnable(1)
-                disabledItems = []
-            } else if (datesToDisable === true) {
-                calendar.flipEnable(-1)
-                disabledItems = []
+  /**
+   * Check if two date units overlap.
+   */
+  DatePicker.prototype.isDateOverlap = function (one, two) {
+
+    var calendar = this,
+      firstDay = calendar.settings.firstDay ? 1 : 0
+
+    // When we’re working with a weekday index, compare the days.
+    if (_.isInteger(one) && (_.isDate(two) || $.isArray(two))) {
+      one = one % 7 + firstDay
+      return one === calendar.create(two).day + 1
+    }
+    if (_.isInteger(two) && (_.isDate(one) || $.isArray(one))) {
+      two = two % 7 + firstDay
+      return two === calendar.create(one).day + 1
+    }
+
+    // When we’re working with range objects, check if the ranges overlap.
+    if ($.isPlainObject(one) && $.isPlainObject(two)) {
+      return calendar.overlapRanges(one, two)
+    }
+
+    return false
+  }
+
+
+  /**
+   * Flip the “enabled” state.
+   */
+  DatePicker.prototype.flipEnable = function (val) {
+    var itemObject = this.item
+    itemObject.enable = val || (itemObject.enable == -1 ? 1 : -1)
+  }
+
+
+  /**
+   * Mark a collection of dates as “disabled”.
+   */
+  DatePicker.prototype.deactivate = function (type, datesToDisable) {
+
+    var calendar = this,
+      disabledItems = calendar.item.disable.slice(0)
+
+
+    // If we’re flipping, that’s all we need to do.
+    if (datesToDisable == 'flip') {
+      calendar.flipEnable()
+    } else if (datesToDisable === false) {
+      calendar.flipEnable(1)
+      disabledItems = []
+    } else if (datesToDisable === true) {
+      calendar.flipEnable(-1)
+      disabledItems = []
+    }
+
+    // Otherwise go through the dates to disable.
+    else {
+
+      datesToDisable.map(function (unitToDisable) {
+
+        var matchFound
+
+        // When we have disabled items, check for matches.
+        // If something is matched, immediately break out.
+        for (var index = 0; index < disabledItems.length; index += 1) {
+          if (calendar.isDateExact(unitToDisable, disabledItems[index])) {
+            matchFound = true
+            break
+          }
+        }
+
+        // If nothing was found, add the validated unit to the collection.
+        if (!matchFound) {
+          if (
+            _.isInteger(unitToDisable) ||
+            _.isDate(unitToDisable) ||
+            $.isArray(unitToDisable) ||
+            ($.isPlainObject(unitToDisable) && unitToDisable.from && unitToDisable.to)
+          ) {
+            disabledItems.push(unitToDisable)
+          }
+        }
+      })
+    }
+
+    // Return the updated collection.
+    return disabledItems
+  } //DatePicker.prototype.deactivate
+
+
+  /**
+   * Mark a collection of dates as “enabled”.
+   */
+  DatePicker.prototype.activate = function (type, datesToEnable) {
+
+    var calendar = this,
+      disabledItems = calendar.item.disable,
+      disabledItemsCount = disabledItems.length
+
+    // If we’re flipping, that’s all we need to do.
+    if (datesToEnable == 'flip') {
+      calendar.flipEnable()
+    } else if (datesToEnable === true) {
+      calendar.flipEnable(1)
+      disabledItems = []
+    } else if (datesToEnable === false) {
+      calendar.flipEnable(-1)
+      disabledItems = []
+    }
+
+    // Otherwise go through the disabled dates.
+    else {
+
+      datesToEnable.map(function (unitToEnable) {
+
+        var matchFound,
+          disabledUnit,
+          index,
+          isExactRange
+
+        // Go through the disabled items and try to find a match.
+        for (index = 0; index < disabledItemsCount; index += 1) {
+
+          disabledUnit = disabledItems[index]
+
+          // When an exact match is found, remove it from the collection.
+          if (calendar.isDateExact(disabledUnit, unitToEnable)) {
+            matchFound = disabledItems[index] = null
+            isExactRange = true
+            break
+          }
+
+          // When an overlapped match is found, add the “inverted” state to it.
+          else if (calendar.isDateOverlap(disabledUnit, unitToEnable)) {
+            if ($.isPlainObject(unitToEnable)) {
+              unitToEnable.inverted = true
+              matchFound = unitToEnable
+            } else if ($.isArray(unitToEnable)) {
+              matchFound = unitToEnable
+              if (!matchFound[3]) matchFound.push('inverted')
+            } else if (_.isDate(unitToEnable)) {
+              matchFound = [unitToEnable.getFullYear(), unitToEnable.getMonth(), unitToEnable.getDate(), 'inverted']
             }
+            break
+          }
+        }
 
-            // Otherwise go through the dates to disable.
-            else {
-
-                datesToDisable.map(function (unitToDisable) {
-
-                    var matchFound
-
-                    // When we have disabled items, check for matches.
-                    // If something is matched, immediately break out.
-                    for (var index = 0; index < disabledItems.length; index += 1) {
-                        if (calendar.isDateExact(unitToDisable, disabledItems[index])) {
-                            matchFound = true
-                            break
-                        }
-                    }
-
-                    // If nothing was found, add the validated unit to the collection.
-                    if (!matchFound) {
-                        if (
-                            _.isInteger(unitToDisable) ||
-                            _.isDate(unitToDisable) ||
-                            $.isArray(unitToDisable) ||
-                            ($.isPlainObject(unitToDisable) && unitToDisable.from && unitToDisable.to)
-                        ) {
-                            disabledItems.push(unitToDisable)
-                        }
-                    }
-                })
+        // If a match was found, remove a previous duplicate entry.
+        if (matchFound)
+          for (index = 0; index < disabledItemsCount; index += 1) {
+            if (calendar.isDateExact(disabledItems[index], unitToEnable)) {
+              disabledItems[index] = null
+              break
             }
+          }
 
-            // Return the updated collection.
-            return disabledItems
-        } //DatePicker.prototype.deactivate
-
-
-    /**
-     * Mark a collection of dates as “enabled”.
-     */
-    DatePicker.prototype.activate = function (type, datesToEnable) {
-
-            var calendar = this,
-                disabledItems = calendar.item.disable,
-                disabledItemsCount = disabledItems.length
-
-            // If we’re flipping, that’s all we need to do.
-            if (datesToEnable == 'flip') {
-                calendar.flipEnable()
-            } else if (datesToEnable === true) {
-                calendar.flipEnable(1)
-                disabledItems = []
-            } else if (datesToEnable === false) {
-                calendar.flipEnable(-1)
-                disabledItems = []
+        // In the event that we’re dealing with an exact range of dates,
+        // make sure there are no “inverted” dates because of it.
+        if (isExactRange)
+          for (index = 0; index < disabledItemsCount; index += 1) {
+            if (calendar.isDateOverlap(disabledItems[index], unitToEnable)) {
+              disabledItems[index] = null
+              break
             }
+          }
 
-            // Otherwise go through the disabled dates.
-            else {
+        // If something is still matched, add it into the collection.
+        if (matchFound) {
+          disabledItems.push(matchFound)
+        }
+      })
+    }
 
-                datesToEnable.map(function (unitToEnable) {
+    // Return the updated collection.
+    return disabledItems.filter(function (val) {
+      return val != null
+    })
+  } //DatePicker.prototype.activate
 
-                    var matchFound,
-                        disabledUnit,
-                        index,
-                        isExactRange
 
-                    // Go through the disabled items and try to find a match.
-                    for (index = 0; index < disabledItemsCount; index += 1) {
+  /**
+   * Create a string for the nodes in the picker.
+   */
+  DatePicker.prototype.nodes = function (isOpen) {
 
-                        disabledUnit = disabledItems[index]
+    var
+      calendar = this,
+      settings = calendar.settings,
+      calendarItem = calendar.item,
+      nowObject = calendarItem.now,
+      selectedObject = calendarItem.select,
+      highlightedObject = calendarItem.highlight,
+      viewsetObject = calendarItem.view,
+      disabledCollection = calendarItem.disable,
+      minLimitObject = calendarItem.min,
+      maxLimitObject = calendarItem.max,
 
-                        // When an exact match is found, remove it from the collection.
-                        if (calendar.isDateExact(disabledUnit, unitToEnable)) {
-                            matchFound = disabledItems[index] = null
-                            isExactRange = true
-                            break
-                        }
 
-                        // When an overlapped match is found, add the “inverted” state to it.
-                        else if (calendar.isDateOverlap(disabledUnit, unitToEnable)) {
-                            if ($.isPlainObject(unitToEnable)) {
-                                unitToEnable.inverted = true
-                                matchFound = unitToEnable
-                            } else if ($.isArray(unitToEnable)) {
-                                matchFound = unitToEnable
-                                if (!matchFound[3]) matchFound.push('inverted')
-                            } else if (_.isDate(unitToEnable)) {
-                                matchFound = [unitToEnable.getFullYear(), unitToEnable.getMonth(), unitToEnable.getDate(), 'inverted']
-                            }
-                            break
-                        }
-                    }
+      // Create the calendar table head using a copy of weekday labels collection.
+      // * We do a copy so we don't mutate the original array.
+      tableHead = (function (collection, fullCollection) {
 
-                    // If a match was found, remove a previous duplicate entry.
-                    if (matchFound)
-                        for (index = 0; index < disabledItemsCount; index += 1) {
-                            if (calendar.isDateExact(disabledItems[index], unitToEnable)) {
-                                disabledItems[index] = null
-                                break
-                            }
-                        }
+        // If the first day should be Monday, move Sunday to the end.
+        if (settings.firstDay) {
+          collection.push(collection.shift())
+          fullCollection.push(fullCollection.shift())
+        }
 
-                    // In the event that we’re dealing with an exact range of dates,
-                    // make sure there are no “inverted” dates because of it.
-                    if (isExactRange)
-                        for (index = 0; index < disabledItemsCount; index += 1) {
-                            if (calendar.isDateOverlap(disabledItems[index], unitToEnable)) {
-                                disabledItems[index] = null
-                                break
-                            }
-                        }
-
-                    // If something is still matched, add it into the collection.
-                    if (matchFound) {
-                        disabledItems.push(matchFound)
-                    }
-                })
-            }
-
-            // Return the updated collection.
-            return disabledItems.filter(function (val) {
-                return val != null
+        // Create and return the table head group.
+        return _.node(
+          'thead',
+          _.node(
+            'tr',
+            _.group({
+              min: 0,
+              max: DAYS_IN_WEEK - 1,
+              i: 1,
+              node: 'th',
+              item: function (counter) {
+                return [
+                  collection[counter],
+                  settings.klass.weekdays,
+                  'scope=col title="' + fullCollection[counter] + '"'
+                ]
+              }
             })
-        } //DatePicker.prototype.activate
-
-
-    /**
-     * Create a string for the nodes in the picker.
-     */
-    DatePicker.prototype.nodes = function (isOpen) {
-
-            var
-                calendar = this,
-                settings = calendar.settings,
-                calendarItem = calendar.item,
-                nowObject = calendarItem.now,
-                selectedObject = calendarItem.select,
-                highlightedObject = calendarItem.highlight,
-                viewsetObject = calendarItem.view,
-                disabledCollection = calendarItem.disable,
-                minLimitObject = calendarItem.min,
-                maxLimitObject = calendarItem.max,
-
-
-                // Create the calendar table head using a copy of weekday labels collection.
-                // * We do a copy so we don't mutate the original array.
-                tableHead = (function (collection, fullCollection) {
-
-                    // If the first day should be Monday, move Sunday to the end.
-                    if (settings.firstDay) {
-                        collection.push(collection.shift())
-                        fullCollection.push(fullCollection.shift())
-                    }
-
-                    // Create and return the table head group.
-                    return _.node(
-                            'thead',
-                            _.node(
-                                'tr',
-                                _.group({
-                                    min: 0,
-                                    max: DAYS_IN_WEEK - 1,
-                                    i: 1,
-                                    node: 'th',
-                                    item: function (counter) {
-                                        return [
-                                collection[counter],
-                                settings.klass.weekdays,
-                                'scope=col title="' + fullCollection[counter] + '"'
-                            ]
-                                    }
-                                })
-                            )
-                        ) //endreturn
-                })((settings.showWeekdaysFull ? settings.weekdaysFull : settings.weekdaysShort).slice(0), settings.weekdaysFull.slice(0)), //tableHead
-
-
-                // Create the nav for next/prev month.
-                createMonthNav = function (next) {
-
-                    // Otherwise, return the created month tag.
-                    return _.node(
-                            'div',
-                            ' ',
-                            settings.klass['nav' + (next ? 'Next' : 'Prev')] + (
-
-                                // If the focused month is outside the range, disabled the button.
-                                (next && viewsetObject.year >= maxLimitObject.year && viewsetObject.month >= maxLimitObject.month) ||
-                                (!next && viewsetObject.year <= minLimitObject.year && viewsetObject.month <= minLimitObject.month) ?
-                                ' ' + settings.klass.navDisabled : ''
-                            ),
-                            'data-nav=' + (next || -1) + ' ' +
-                            _.ariaAttr({
-                                role: 'button',
-                                controls: calendar.$node[0].id + '_table'
-                            }) + ' ' +
-                            'title="' + (next ? settings.labelMonthNext : settings.labelMonthPrev) + '"'
-                        ) //endreturn
-                }, //createMonthNav
-
-
-                // Create the month label.
-                createMonthLabel = function () {
-
-                    var monthsCollection = settings.showMonthsShort ? settings.monthsShort : settings.monthsFull
-
-                    // If there are months to select, add a dropdown menu.
-                    if (settings.selectMonths) {
-
-                        return _.node('select',
-                            _.group({
-                                min: 0,
-                                max: 11,
-                                i: 1,
-                                node: 'option',
-                                item: function (loopedMonth) {
-
-                                    return [
-
-                                // The looped month and no classes.
-                                monthsCollection[loopedMonth], 0,
-
-                                // Set the value and selected index.
-                                'value=' + loopedMonth +
-                                        (viewsetObject.month == loopedMonth ? ' selected' : '') +
-                                        (
-                                            (
-                                                (viewsetObject.year == minLimitObject.year && loopedMonth < minLimitObject.month) ||
-                                                (viewsetObject.year == maxLimitObject.year && loopedMonth > maxLimitObject.month)
-                                            ) ?
-                                            ' disabled' : ''
-                                )
-                            ]
-                                }
-                            }),
-                            settings.klass.selectMonth, (isOpen ? '' : 'disabled') + ' ' +
-                            _.ariaAttr({
-                                controls: calendar.$node[0].id + '_table'
-                            }) + ' ' +
-                            'title="' + settings.labelMonthSelect + '"'
-                        )
-                    }
-
-                    // If there's a need for a month selector
-                    return _.node('div', monthsCollection[viewsetObject.month], settings.klass.month)
-                }, //createMonthLabel
-
-
-                // Create the year label.
-                createYearLabel = function () {
-
-                    var focusedYear = viewsetObject.year,
-
-                        // If years selector is set to a literal "true", set it to 5. Otherwise
-                        // divide in half to get half before and half after focused year.
-                        numberYears = settings.selectYears === true ? 5 : ~~(settings.selectYears / 2)
-
-                    // If there are years to select, add a dropdown menu.
-                    if (numberYears) {
-
-                        var
-                            minYear = minLimitObject.year,
-                            maxYear = maxLimitObject.year,
-                            lowestYear = focusedYear - numberYears,
-                            highestYear = focusedYear + numberYears
-
-                        // If the min year is greater than the lowest year, increase the highest year
-                        // by the difference and set the lowest year to the min year.
-                        if (minYear > lowestYear) {
-                            highestYear += minYear - lowestYear
-                            lowestYear = minYear
-                        }
-
-                        // If the max year is less than the highest year, decrease the lowest year
-                        // by the lower of the two: available and needed years. Then set the
-                        // highest year to the max year.
-                        if (maxYear < highestYear) {
-
-                            var availableYears = lowestYear - minYear,
-                                neededYears = highestYear - maxYear
-
-                            lowestYear -= availableYears > neededYears ? neededYears : availableYears
-                            highestYear = maxYear
-                        }
-
-                        return _.node('select',
-                            _.group({
-                                min: lowestYear,
-                                max: highestYear,
-                                i: 1,
-                                node: 'option',
-                                item: function (loopedYear) {
-                                    return [
-
-                                // The looped year and no classes.
-                                loopedYear, 0,
-
-                                // Set the value and selected index.
-                                'value=' + loopedYear + (focusedYear == loopedYear ? ' selected' : '')
-                            ]
-                                }
-                            }),
-                            settings.klass.selectYear, (isOpen ? '' : 'disabled') + ' ' + _.ariaAttr({
-                                controls: calendar.$node[0].id + '_table'
-                            }) + ' ' +
-                            'title="' + settings.labelYearSelect + '"'
-                        )
-                    }
-
-                    // Otherwise just return the year focused
-                    return _.node('div', focusedYear, settings.klass.year)
-                } //createYearLabel
-
-
-            // Create and return the entire calendar.
-            return _.node(
-                    'div', (settings.selectYears ? createYearLabel() + createMonthLabel() : createMonthLabel() + createYearLabel()) +
-                    createMonthNav() + createMonthNav(1),
-                    settings.klass.header
-                ) + _.node(
-                    'table',
-                    tableHead +
-                    _.node(
-                        'tbody',
-                        _.group({
-                            min: 0,
-                            max: WEEKS_IN_CALENDAR - 1,
-                            i: 1,
-                            node: 'tr',
-                            item: function (rowCounter) {
-
-                                // If Monday is the first day and the month starts on Sunday, shift the date back a week.
-                                var shiftDateBy = settings.firstDay && calendar.create([viewsetObject.year, viewsetObject.month, 1]).day === 0 ? -7 : 0
-
-                                return [
-                        _.group({
-                                            min: DAYS_IN_WEEK * rowCounter - viewsetObject.day + shiftDateBy + 1, // Add 1 for weekday 0index
-                                            max: function () {
-                                                return this.min + DAYS_IN_WEEK - 1
-                                            },
-                                            i: 1,
-                                            node: 'td',
-                                            item: function (targetDate) {
-
-                                                // Convert the time date from a relative date to a target date.
-                                                targetDate = calendar.create([viewsetObject.year, viewsetObject.month, targetDate + (settings.firstDay ? 1 : 0)])
-
-                                                var isSelected = selectedObject && selectedObject.pick == targetDate.pick,
-                                                    isHighlighted = highlightedObject && highlightedObject.pick == targetDate.pick,
-                                                    isDisabled = disabledCollection && calendar.disabled(targetDate) || targetDate.pick < minLimitObject.pick || targetDate.pick > maxLimitObject.pick,
-                                                    formattedDate = _.trigger(calendar.formats.toString, calendar, [settings.format, targetDate])
-
-                                                return [
-                                    _.node(
-                                                            'div',
-                                                            targetDate.date, (function (klasses) {
-
-                                                                // Add the `infocus` or `outfocus` classes based on month in view.
-                                                                klasses.push(viewsetObject.month == targetDate.month ? settings.klass.infocus : settings.klass.outfocus)
-
-                                                                // Add the `today` class if needed.
-                                                                if (nowObject.pick == targetDate.pick) {
-                                                                    klasses.push(settings.klass.now)
-                                                                }
-
-                                                                // Add the `selected` class if something's selected and the time matches.
-                                                                if (isSelected) {
-                                                                    klasses.push(settings.klass.selected)
-                                                                }
-
-                                                                // Add the `highlighted` class if something's highlighted and the time matches.
-                                                                if (isHighlighted) {
-                                                                    klasses.push(settings.klass.highlighted)
-                                                                }
-
-                                                                // Add the `disabled` class if something's disabled and the object matches.
-                                                                if (isDisabled) {
-                                                                    klasses.push(settings.klass.disabled)
-                                                                }
-
-                                                                return klasses.join(' ')
-                                                            })([settings.klass.day]),
-                                                            'data-pick=' + targetDate.pick + ' ' + _.ariaAttr({
-                                                                role: 'gridcell',
-                                                                label: formattedDate,
-                                                                selected: isSelected && calendar.$node.val() === formattedDate ? true : null,
-                                                                activedescendant: isHighlighted ? true : null,
-                                                                disabled: isDisabled ? true : null
-                                                            })
-                                    ),
-                                    '',
-                                    _.ariaAttr({
-                                                            role: 'presentation'
-                                                        })
-                                ] //endreturn
-                                            }
-                                        })
-                    ] //endreturn
-                            }
-                        })
-                    ),
-                    settings.klass.table,
-                    'id="' + calendar.$node[0].id + '_table' + '" ' + _.ariaAttr({
-                        role: 'grid',
-                        controls: calendar.$node[0].id,
-                        readonly: true
-                    })
-                ) +
-
-                // * For Firefox forms to submit, make sure to set the buttons’ `type` attributes as “button”.
-                _.node(
-                    'div',
-                    _.node('button', settings.today, settings.klass.buttonToday,
-                        'type=button data-pick=' + nowObject.pick +
-                        (isOpen && !calendar.disabled(nowObject) ? '' : ' disabled') + ' ' +
-                        _.ariaAttr({
-                            controls: calendar.$node[0].id
-                        })) +
-                    _.node('button', settings.clear, settings.klass.buttonClear,
-                        'type=button data-clear=1' +
-                        (isOpen ? '' : ' disabled') + ' ' +
-                        _.ariaAttr({
-                            controls: calendar.$node[0].id
-                        })) +
-                    _.node('button', settings.close, settings.klass.buttonClose,
-                        'type=button data-close=true ' +
-                        (isOpen ? '' : ' disabled') + ' ' +
-                        _.ariaAttr({
-                            controls: calendar.$node[0].id
-                        })),
-                    settings.klass.footer
-                ) //endreturn
-        } //DatePicker.prototype.nodes
-
-
-
-
-    /**
-     * The date picker defaults.
-     */
-    DatePicker.defaults = (function (prefix) {
-
-        return {
-
-            // The title label to use for the month nav buttons
-            labelMonthNext: 'Next month',
-            labelMonthPrev: 'Previous month',
-
-            // The title label to use for the dropdown selectors
-            labelMonthSelect: 'Select a month',
-            labelYearSelect: 'Select a year',
-
-            // Months and weekdays
-            monthsFull: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-            monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            weekdaysFull: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-            weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-
-            // Today and clear
-            today: 'Today',
-            clear: 'Clear',
-            close: 'Close',
-
-            // Picker close behavior
-            closeOnSelect: true,
-            closeOnClear: true,
-
-            // The format to show on the `input` element
-            format: 'd mmmm, yyyy',
-
-            // Classes
-            klass: {
-
-                table: prefix + 'table',
-
-                header: prefix + 'header',
-
-                navPrev: prefix + 'nav--prev',
-                navNext: prefix + 'nav--next',
-                navDisabled: prefix + 'nav--disabled',
-
-                month: prefix + 'month',
-                year: prefix + 'year',
-
-                selectMonth: prefix + 'select--month',
-                selectYear: prefix + 'select--year',
-
-                weekdays: prefix + 'weekday',
-
-                day: prefix + 'day',
-                disabled: prefix + 'day--disabled',
-                selected: prefix + 'day--selected',
-                highlighted: prefix + 'day--highlighted',
-                now: prefix + 'day--today',
-                infocus: prefix + 'day--infocus',
-                outfocus: prefix + 'day--outfocus',
-
-                footer: prefix + 'footer',
-
-                buttonClear: prefix + 'button--clear',
-                buttonToday: prefix + 'button--today',
-                buttonClose: prefix + 'button--close'
-            }
+          )
+        ) //endreturn
+      })((settings.showWeekdaysFull ? settings.weekdaysFull : settings.weekdaysShort).slice(0), settings.weekdaysFull.slice(0)), //tableHead
+
+
+      // Create the nav for next/prev month.
+      createMonthNav = function (next) {
+
+        // Otherwise, return the created month tag.
+        return _.node(
+          'div',
+          ' ',
+          settings.klass['nav' + (next ? 'Next' : 'Prev')] + (
+
+            // If the focused month is outside the range, disabled the button.
+            (next && viewsetObject.year >= maxLimitObject.year && viewsetObject.month >= maxLimitObject.month) ||
+            (!next && viewsetObject.year <= minLimitObject.year && viewsetObject.month <= minLimitObject.month) ?
+            ' ' + settings.klass.navDisabled : ''
+          ),
+          'data-nav=' + (next || -1) + ' ' +
+          _.ariaAttr({
+            role: 'button',
+            controls: calendar.$node[0].id + '_table'
+          }) + ' ' +
+          'title="' + (next ? settings.labelMonthNext : settings.labelMonthPrev) + '"'
+        ) //endreturn
+      }, //createMonthNav
+
+
+      // Create the month label.
+      createMonthLabel = function () {
+
+        var monthsCollection = settings.showMonthsShort ? settings.monthsShort : settings.monthsFull
+
+        // If there are months to select, add a dropdown menu.
+        if (settings.selectMonths) {
+
+          return _.node('select',
+            _.group({
+              min: 0,
+              max: 11,
+              i: 1,
+              node: 'option',
+              item: function (loopedMonth) {
+
+                return [
+
+                  // The looped month and no classes.
+                  monthsCollection[loopedMonth], 0,
+
+                  // Set the value and selected index.
+                  'value=' + loopedMonth +
+                  (viewsetObject.month == loopedMonth ? ' selected' : '') +
+                  (
+                    (
+                      (viewsetObject.year == minLimitObject.year && loopedMonth < minLimitObject.month) ||
+                      (viewsetObject.year == maxLimitObject.year && loopedMonth > maxLimitObject.month)
+                    ) ?
+                    ' disabled' : ''
+                  )
+                ]
+              }
+            }),
+            settings.klass.selectMonth, (isOpen ? '' : 'disabled') + ' ' +
+            _.ariaAttr({
+              controls: calendar.$node[0].id + '_table'
+            }) + ' ' +
+            'title="' + settings.labelMonthSelect + '"'
+          )
         }
-    })(Picker.klasses().picker + '__')
+
+        // If there's a need for a month selector
+        return _.node('div', monthsCollection[viewsetObject.month], settings.klass.month)
+      }, //createMonthLabel
+
+
+      // Create the year label.
+      createYearLabel = function () {
+
+        var focusedYear = viewsetObject.year,
+
+          // If years selector is set to a literal "true", set it to 5. Otherwise
+          // divide in half to get half before and half after focused year.
+          numberYears = settings.selectYears === true ? 5 : ~~(settings.selectYears / 2)
+
+        // If there are years to select, add a dropdown menu.
+        if (numberYears) {
+
+          var
+            minYear = minLimitObject.year,
+            maxYear = maxLimitObject.year,
+            lowestYear = focusedYear - numberYears,
+            highestYear = focusedYear + numberYears
+
+          // If the min year is greater than the lowest year, increase the highest year
+          // by the difference and set the lowest year to the min year.
+          if (minYear > lowestYear) {
+            highestYear += minYear - lowestYear
+            lowestYear = minYear
+          }
+
+          // If the max year is less than the highest year, decrease the lowest year
+          // by the lower of the two: available and needed years. Then set the
+          // highest year to the max year.
+          if (maxYear < highestYear) {
+
+            var availableYears = lowestYear - minYear,
+              neededYears = highestYear - maxYear
+
+            lowestYear -= availableYears > neededYears ? neededYears : availableYears
+            highestYear = maxYear
+          }
+
+          return _.node('select',
+            _.group({
+              min: lowestYear,
+              max: highestYear,
+              i: 1,
+              node: 'option',
+              item: function (loopedYear) {
+                return [
+
+                  // The looped year and no classes.
+                  loopedYear, 0,
+
+                  // Set the value and selected index.
+                  'value=' + loopedYear + (focusedYear == loopedYear ? ' selected' : '')
+                ]
+              }
+            }),
+            settings.klass.selectYear, (isOpen ? '' : 'disabled') + ' ' + _.ariaAttr({
+              controls: calendar.$node[0].id + '_table'
+            }) + ' ' +
+            'title="' + settings.labelYearSelect + '"'
+          )
+        }
+
+        // Otherwise just return the year focused
+        return _.node('div', focusedYear, settings.klass.year)
+      } //createYearLabel
+
+
+    // Create and return the entire calendar.
+    return _.node(
+        'div', (settings.selectYears ? createYearLabel() + createMonthLabel() : createMonthLabel() + createYearLabel()) +
+        createMonthNav() + createMonthNav(1),
+        settings.klass.header
+      ) + _.node(
+        'table',
+        tableHead +
+        _.node(
+          'tbody',
+          _.group({
+            min: 0,
+            max: WEEKS_IN_CALENDAR - 1,
+            i: 1,
+            node: 'tr',
+            item: function (rowCounter) {
+
+              // If Monday is the first day and the month starts on Sunday, shift the date back a week.
+              var shiftDateBy = settings.firstDay && calendar.create([viewsetObject.year, viewsetObject.month, 1]).day === 0 ? -7 : 0
+
+              return [
+                _.group({
+                  min: DAYS_IN_WEEK * rowCounter - viewsetObject.day + shiftDateBy + 1, // Add 1 for weekday 0index
+                  max: function () {
+                    return this.min + DAYS_IN_WEEK - 1
+                  },
+                  i: 1,
+                  node: 'td',
+                  item: function (targetDate) {
+
+                    // Convert the time date from a relative date to a target date.
+                    targetDate = calendar.create([viewsetObject.year, viewsetObject.month, targetDate + (settings.firstDay ? 1 : 0)])
+
+                    var isSelected = selectedObject && selectedObject.pick == targetDate.pick,
+                      isHighlighted = highlightedObject && highlightedObject.pick == targetDate.pick,
+                      isDisabled = disabledCollection && calendar.disabled(targetDate) || targetDate.pick < minLimitObject.pick || targetDate.pick > maxLimitObject.pick,
+                      formattedDate = _.trigger(calendar.formats.toString, calendar, [settings.format, targetDate])
+
+                    return [
+                      _.node(
+                        'div',
+                        targetDate.date, (function (klasses) {
+
+                          // Add the `infocus` or `outfocus` classes based on month in view.
+                          klasses.push(viewsetObject.month == targetDate.month ? settings.klass.infocus : settings.klass.outfocus)
+
+                          // Add the `today` class if needed.
+                          if (nowObject.pick == targetDate.pick) {
+                            klasses.push(settings.klass.now)
+                          }
+
+                          // Add the `selected` class if something's selected and the time matches.
+                          if (isSelected) {
+                            klasses.push(settings.klass.selected)
+                          }
+
+                          // Add the `highlighted` class if something's highlighted and the time matches.
+                          if (isHighlighted) {
+                            klasses.push(settings.klass.highlighted)
+                          }
+
+                          // Add the `disabled` class if something's disabled and the object matches.
+                          if (isDisabled) {
+                            klasses.push(settings.klass.disabled)
+                          }
+
+                          return klasses.join(' ')
+                        })([settings.klass.day]),
+                        'data-pick=' + targetDate.pick + ' ' + _.ariaAttr({
+                          role: 'gridcell',
+                          label: formattedDate,
+                          selected: isSelected && calendar.$node.val() === formattedDate ? true : null,
+                          activedescendant: isHighlighted ? true : null,
+                          disabled: isDisabled ? true : null
+                        })
+                      ),
+                      '',
+                      _.ariaAttr({
+                        role: 'presentation'
+                      })
+                    ] //endreturn
+                  }
+                })
+              ] //endreturn
+            }
+          })
+        ),
+        settings.klass.table,
+        'id="' + calendar.$node[0].id + '_table' + '" ' + _.ariaAttr({
+          role: 'grid',
+          controls: calendar.$node[0].id,
+          readonly: true
+        })
+      ) +
+
+      // * For Firefox forms to submit, make sure to set the buttons’ `type` attributes as “button”.
+      _.node(
+        'div',
+        _.node('button', settings.today, settings.klass.buttonToday,
+          'type=button data-pick=' + nowObject.pick +
+          (isOpen && !calendar.disabled(nowObject) ? '' : ' disabled') + ' ' +
+          _.ariaAttr({
+            controls: calendar.$node[0].id
+          })) +
+        _.node('button', settings.clear, settings.klass.buttonClear,
+          'type=button data-clear=1' +
+          (isOpen ? '' : ' disabled') + ' ' +
+          _.ariaAttr({
+            controls: calendar.$node[0].id
+          })) +
+        _.node('button', settings.close, settings.klass.buttonClose,
+          'type=button data-close=true ' +
+          (isOpen ? '' : ' disabled') + ' ' +
+          _.ariaAttr({
+            controls: calendar.$node[0].id
+          })),
+        settings.klass.footer
+      ) //endreturn
+  } //DatePicker.prototype.nodes
+
+
+
+
+  /**
+   * The date picker defaults.
+   */
+  DatePicker.defaults = (function (prefix) {
+
+    return {
+
+      // The title label to use for the month nav buttons
+      labelMonthNext: 'Next month',
+      labelMonthPrev: 'Previous month',
+
+      // The title label to use for the dropdown selectors
+      labelMonthSelect: 'Select a month',
+      labelYearSelect: 'Select a year',
+
+      // Months and weekdays
+      monthsFull: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      weekdaysFull: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+
+      // Today and clear
+      today: 'Today',
+      clear: 'Clear',
+      close: 'Close',
+
+      // Picker close behavior
+      closeOnSelect: true,
+      closeOnClear: true,
+
+      // The format to show on the `input` element
+      format: 'd mmmm, yyyy',
+
+      // Classes
+      klass: {
+
+        table: prefix + 'table',
+
+        header: prefix + 'header',
+
+        navPrev: prefix + 'nav--prev',
+        navNext: prefix + 'nav--next',
+        navDisabled: prefix + 'nav--disabled',
+
+        month: prefix + 'month',
+        year: prefix + 'year',
+
+        selectMonth: prefix + 'select--month',
+        selectYear: prefix + 'select--year',
+
+        weekdays: prefix + 'weekday',
+
+        day: prefix + 'day',
+        disabled: prefix + 'day--disabled',
+        selected: prefix + 'day--selected',
+        highlighted: prefix + 'day--highlighted',
+        now: prefix + 'day--today',
+        infocus: prefix + 'day--infocus',
+        outfocus: prefix + 'day--outfocus',
+
+        footer: prefix + 'footer',
+
+        buttonClear: prefix + 'button--clear',
+        buttonToday: prefix + 'button--today',
+        buttonClose: prefix + 'button--close'
+      }
+    }
+  })(Picker.klasses().picker + '__')
 
 
 
 
 
-    /**
-     * Extend the picker to add the date picker.
-     */
-    Picker.extend('pickadate', DatePicker)
+  /**
+   * Extend the picker to add the date picker.
+   */
+  Picker.extend('pickadate', DatePicker)
 
 
 }));
 
 $.extend($.fn.pickadate.defaults, {
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15, // Creates a dropdown of 15 years to control year,
+  selectMonths: true, // Creates a dropdown to control month
+  selectYears: 15, // Creates a dropdown of 15 years to control year,
 
-      onRender: function () {
-      var $pickerInstance = this.$root;
+  onRender: function () {
+    var $pickerInstance = this.$root;
 
-          var year = this.get('highlight', 'yyyy');
-          var day = this.get('highlight', 'dd');
-          var month = this.get('highlight', 'mmm');
-          var labelday = this.get('highlight', 'dddd');
+    var year = this.get('highlight', 'yyyy');
+    var day = this.get('highlight', 'dd');
+    var month = this.get('highlight', 'mmm');
+    var labelday = this.get('highlight', 'dddd');
 
-          $pickerInstance.find('.picker__header').prepend('<div class="picker__date-display"><div class="picker__weekday-display">' + labelday + '</div><div class="picker__month-display"><div>' + month + '</div></div><div class="picker__day-display"><div>' + day + '</div></div><div    class="picker__year-display"><div>' + year + '</div></div></div>');
-      }
-  });
+    $pickerInstance.find('.picker__header').prepend('<div class="picker__date-display"><div class="picker__weekday-display">' + labelday + '</div><div class="picker__month-display"><div>' + month + '</div></div><div class="picker__day-display"><div>' + day + '</div></div><div    class="picker__year-display"><div>' + year + '</div></div></div>');
+  }
+});
 
 /*!
  * ClockPicker v0.0.7 (http://weareoutman.github.io/clockpicker/)
@@ -21141,6 +21255,21 @@ $.extend($.fn.pickadate.defaults, {
 	function createSvgElement(name) {
 		return document.createElementNS(svgNS, name);
 	}
+
+  function debounce(func, wait, immediate) {
+    var timeout;
+    return function() {
+        var context = this, args = arguments;
+        var later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+}
 
 	function leadingZero(num) {
 		return (num < 10 ? '0' : '') + num;
@@ -21290,7 +21419,7 @@ $.extend($.fn.pickadate.defaults, {
 		this.spanMinutes.click($.proxy(this.toggleView, this, 'minutes'));
 
 		// Show or toggle
-		input.on('focus.clockpicker click.clockpicker', $.proxy(this.show, this));
+		input.on('focus.clockpicker click.clockpicker', debounce( $.proxy(this.show, this),300));
 
 		// Build ticks
 		var tickTpl = $('<div class="clockpicker-tick"></div>'),
@@ -21584,16 +21713,16 @@ ClockPicker.prototype.parseInputValue = function(){
 		this.locate();
 		this.isShown = true;
 		// Hide when clicking or tabbing on any element except the clock and input
-		$doc.on('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id, function(e) {
+		$doc.on('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id, debounce(function(e) {
 			var target = $(e.target);
 			if (target.closest(self.popover.find('.picker__wrap')).length === 0 && target.closest(self.input).length === 0)
 				self.hide();
-		});
+		}, 300));
 		// Hide when ESC is pressed
-		$doc.on('keyup.clockpicker.' + this.id, function(e){
+		$doc.on('keyup.clockpicker.' + this.id, debounce( function(e){
 			if (e.keyCode === 27)
 				self.hide();
-		});
+		},300));
 		raiseCallback(this.options.afterShow);
 	};
 	// Hide popover
@@ -26644,68 +26773,182 @@ function jarallaxVideo() {
 /******/ ]);
 "use strict";
 
-$.fn.mdb_autocomplete = function (options) {
-  // Default options
-  var defaults = {
-    data: {}
-  };
-  var ENTER_CHAR_CODE = 13; // Get options
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  options = $.extend(defaults, options);
-  return this.each(function () {
-    // text input
-    var $input = $(this);
-    var $autocomplete; // assign data from options
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-    var data = options.data;
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-    if (Object.keys(data).length) {
-      $autocomplete = $('<ul class="mdb-autocomplete-wrap"></ul>');
-      $autocomplete.insertAfter($(this));
-    } // Listen if key was pressed
+(function ($) {
+  var INPUT_DATA = {};
+  var DATA_COLOR = '';
+  var BUTTON_X_COLOR = '';
+  var BUTTON_X_BLUR_COLOR = '#ced4da';
+  var INPUT_FOCUS = '1px solid #4285f4';
+  var INPUT_BLUR = '1px solid #ced4da';
+  var INPUT_FOCUS_SHADOW = '0 1px 0 0 #4285f4';
+  var INPUT_BLUR_SHADOW = '';
+  var ENTER_CHAR_CODE = 13;
 
+  var mdbAutocomplete =
+  /*#__PURE__*/
+  function () {
+    function mdbAutocomplete(input, options) {
+      _classCallCheck(this, mdbAutocomplete);
 
-    $input.on('keyup', function (e) {
-      // get value from input
-      var q = $input.val();
-      $autocomplete.empty(); // check if input isn't empty
+      this.defaults = {
+        data: INPUT_DATA,
+        dataColor: DATA_COLOR,
+        xColor: BUTTON_X_COLOR,
+        xBlurColor: BUTTON_X_BLUR_COLOR,
+        inputFocus: INPUT_FOCUS,
+        inputBlur: INPUT_BLUR,
+        inputFocusShadow: INPUT_FOCUS_SHADOW,
+        inputBlurShadow: INPUT_BLUR_SHADOW
+      };
+      this.$input = input;
+      this.options = this.assignOptions(options);
+      this.$clearButton = $('.mdb-autocomplete-clear');
+      this.$autocompleteWrap = $('<ul class="mdb-autocomplete-wrap"></ul>');
+      this.init();
+    }
 
-      if (q.length) {
-        for (var item in data) {
-          // check if item contains value that we're looking for
-          if (data[item].toLowerCase().indexOf(q.toLowerCase()) !== -1) {
-            var option = $("<li>".concat(data[item], "</li>"));
-            $autocomplete.append(option);
-          }
+    _createClass(mdbAutocomplete, [{
+      key: "init",
+      value: function init() {
+        this.setData();
+        this.inputFocus();
+        this.inputBlur();
+        this.inputKeyupData();
+        this.inputLiClick();
+        this.clearAutocomplete();
+      }
+    }, {
+      key: "assignOptions",
+      value: function assignOptions(newOptions) {
+        return $.extend({}, this.defaults, newOptions);
+      }
+    }, {
+      key: "setData",
+      value: function setData() {
+        if (Object.keys(this.options.data).length) {
+          this.$autocompleteWrap.insertAfter(this.$input);
         }
       }
+    }, {
+      key: "inputFocus",
+      value: function inputFocus() {
+        var _this = this;
 
-      if (e.which === ENTER_CHAR_CODE) {
-        $autocomplete.children(':first').trigger('click');
-        $autocomplete.empty();
+        this.$input.on('focus', function () {
+          _this.$input.css('border-bottom', _this.options.inputFocus);
+
+          _this.$input.css('box-shadow', _this.options.inputFocusShadow);
+        });
       }
+    }, {
+      key: "inputBlur",
+      value: function inputBlur() {
+        var _this2 = this;
 
-      if (q.length === 0) {
-        $('.mdb-autocomplete-clear').css('visibility', 'hidden');
-      } else {
-        $('.mdb-autocomplete-clear').css('visibility', 'visible');
+        this.$input.on('blur', function () {
+          _this2.$input.css('border-bottom', _this2.options.inputBlur);
+
+          _this2.$input.css('box-shadow', _this2.options.inputBlurShadow);
+        });
       }
-    });
-    $autocomplete.on('click', 'li', function () {
-      // Set input value after click
-      $input.val($(this).text()); // Clear autocomplete
+    }, {
+      key: "inputKeyupData",
+      value: function inputKeyupData() {
+        var _this3 = this;
 
-      $autocomplete.empty();
+        this.$input.on('keyup', function (e) {
+          var $inputValue = _this3.$input.val();
+
+          _this3.$autocompleteWrap.empty();
+
+          if ($inputValue.length) {
+            for (var item in _this3.options.data) {
+              if (_this3.options.data[item].toLowerCase().indexOf($inputValue.toLowerCase()) !== -1) {
+                var option = $("<li>".concat(_this3.options.data[item], "</li>"));
+
+                _this3.$autocompleteWrap.append(option);
+              }
+            }
+          }
+
+          if (e.which === ENTER_CHAR_CODE) {
+            _this3.$autocompleteWrap.children(':first').trigger('click');
+
+            _this3.$autocompleteWrap.empty();
+          }
+
+          if ($inputValue.length === 0) {
+            _this3.$input.parent().find('.mdb-autocomplete-clear').css('visibility', 'hidden');
+          } else {
+            _this3.$input.parent().find('.mdb-autocomplete-clear').css('visibility', 'visible');
+          }
+
+          _this3.$autocompleteWrap.children().css('color', _this3.options.dataColor);
+        });
+      }
+    }, {
+      key: "inputLiClick",
+      value: function inputLiClick() {
+        var _this4 = this;
+
+        this.$autocompleteWrap.on('click', 'li', function (e) {
+          e.preventDefault();
+
+          _this4.$input.val($(e.target).text());
+
+          _this4.$autocompleteWrap.empty();
+        });
+      }
+    }, {
+      key: "clearAutocomplete",
+      value: function clearAutocomplete() {
+        var _this5 = this;
+
+        this.$clearButton.on('click', function (e) {
+          e.preventDefault();
+          var $this = $(e.currentTarget);
+          $this.parent().find('.mdb-autocomplete').val('');
+          $this.css('visibility', 'hidden');
+
+          _this5.$autocompleteWrap.empty();
+
+          $this.parent().find('label').removeClass('active');
+        });
+      }
+    }, {
+      key: "changeSVGcolors",
+      value: function changeSVGcolors() {
+        if (this.$input.hasClass('mdb-autocomplete')) {
+          this.$input.on('click keyup', function (e) {
+            e.preventDefault();
+            $(e.target).parent().find('.mdb-autocomplete-clear').find('svg').css('fill', xColor);
+          });
+          this.$input.on('blur', function (e) {
+            e.preventDefault();
+            $(e.target).parent().find('.mdb-autocomplete-clear').find('svg').css('fill', xBlurColor);
+          });
+        }
+      }
+    }]);
+
+    return mdbAutocomplete;
+  }();
+
+  $.fn.mdbAutocomplete = function (options) {
+    return this.each(function () {
+      new mdbAutocomplete($(this), options);
     });
-    $('.mdb-autocomplete-clear').on('click', function (e) {
-      e.preventDefault();
-      $input.val('');
-      $(this).css('visibility', 'hidden');
-      $autocomplete.empty();
-      $(this).parent().find('label').removeClass('active');
-    });
-  });
-};
+  }; //deprecated, delete soon
+
+
+  $.fn.mdb_autocomplete = $.fn.mdbAutocomplete;
+})(jQuery);
 /*
     Enhanced Bootstrap Modals
     https://mdbootstrap.com

@@ -64,6 +64,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }
     }, {
+      key: "debounce",
+      value: function debounce(func, wait, immediate) {
+        var timeout;
+        return function () {
+          var context = this,
+              args = arguments;
+
+          var later = function later() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+          };
+
+          var callNow = immediate && !timeout;
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+          if (callNow) func.apply(context, args);
+        };
+      }
+    }, {
       key: "_removeMaterialWrapper",
       value: function _removeMaterialWrapper() {
         var currentUuid = this.$nativeSelect.data('select-id');
@@ -235,7 +254,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         MaterialSelect.mutationObservers.push(observer);
         var $saveSelectBtn = this.$nativeSelect.parent().find('button.btn-save');
         $saveSelectBtn.on('click', this._onSaveSelectBtnClick);
-        this.$materialSelect.on('focus', this._onMaterialSelectFocus.bind(this));
+        this.$materialSelect.on('focus', this.debounce(this._onMaterialSelectFocus.bind(this), 300));
         this.$materialSelect.on('click', this._onMaterialSelectClick.bind(this));
         this.$materialSelect.on('blur', this._onMaterialSelectBlur.bind(this));
         this.$materialSelect.on('keydown', this._onMaterialSelectKeydown.bind(this));
@@ -626,7 +645,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         for (var i = 0; i < itemsCount; i++) {
           var text = this.$nativeSelect.find('option').eq(this.valuesSelected[i]).text();
-          value += ",".concat(text);
+          value += ", ".concat(text);
         }
 
         if (itemsCount >= 5) {

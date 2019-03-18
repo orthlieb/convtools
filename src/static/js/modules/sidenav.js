@@ -15,6 +15,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   var MENU_RIGHT_MIN_BORDER = -0.3;
   var MENU_RIGHT_MAX_BORDER = 0.5;
   var MENU_VELOCITY_OFFSET = 10;
+  var MENU_TIME_DURATION_OPEN = 300;
+  var MENU_TIME_DURATION_CLOSE = 200;
+  var MENU_TIME_DURATION_OVERLAY_OPEN = 50;
+  var MENU_TIME_DURATION_OVERLAY_CLOSE = 200;
+  var MENU_EASING_OPEN = 'easeOutQuad';
+  var MENU_EASING_CLOSE = 'easeOutCubic';
+  var SHOW_OVERLAY = true;
+  var SHOW_CLOSE_BUTTON = false;
 
   var SideNav =
   /*#__PURE__*/
@@ -23,11 +31,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _classCallCheck(this, SideNav);
 
       this.defaults = {
-        MENU_WIDTH: MENU_WIDTH,
+        menuWidth: MENU_WIDTH,
         edge: 'left',
-        closeOnClick: false
+        closeOnClick: false,
+        breakpoint: SN_BREAKPOINT,
+        timeDurationOpen: MENU_TIME_DURATION_OPEN,
+        timeDurationClose: MENU_TIME_DURATION_CLOSE,
+        timeDurationOverlayOpen: MENU_TIME_DURATION_OVERLAY_OPEN,
+        timeDurationOverlayClose: MENU_TIME_DURATION_OVERLAY_CLOSE,
+        easingOpen: MENU_EASING_OPEN,
+        easingClose: MENU_EASING_CLOSE,
+        showOverlay: SHOW_OVERLAY,
+        showCloseButton: SHOW_CLOSE_BUTTON
       };
       this.$element = element;
+      this.$elementCloned = element.clone().css({
+        display: 'inline-block',
+        lineHeight: '24px'
+      });
       this.options = this.assignOptions(options);
       this.menuOut = false;
       this.lastTouchVelocity = {
@@ -54,6 +75,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.closeOnClick();
         this.openOnClick();
         this.bindTouchEvents();
+        this.showCloseButton();
       }
     }, {
       key: "bindTouchEvents",
@@ -61,6 +83,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         var _this = this;
 
         this.$dragTarget.on('click', function () {
+          _this.removeMenu();
+        });
+        this.$elementCloned.on('click', function () {
           _this.removeMenu();
         });
         this.$dragTarget.on('touchstart', function (e) {
@@ -94,8 +119,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
         if (this.options.edge === 'left') {
-          if (touchX > this.options.MENU_WIDTH) {
-            touchX = this.options.MENU_WIDTH;
+          if (touchX > this.options.menuWidth) {
+            touchX = this.options.menuWidth;
           } else if (touchX < 0) {
             touchX = 0;
           }
@@ -121,8 +146,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
         if (this.options.edge === 'left') {
-          if (touchX > this.options.MENU_WIDTH) {
-            touchX = this.options.MENU_WIDTH;
+          if (touchX > this.options.menuWidth) {
+            touchX = this.options.menuWidth;
           } else if (touchX < 0) {
             touchX = 0;
           }
@@ -135,13 +160,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       key: "translateSidenavX",
       value: function translateSidenavX(touchX) {
         if (this.options.edge === 'left') {
-          var isRightDirection = touchX >= this.options.MENU_WIDTH / MENU_WIDTH_HALF;
+          var isRightDirection = touchX >= this.options.menuWidth / MENU_WIDTH_HALF;
           this.menuOut = isRightDirection;
-          this.$menu.css('transform', "translateX(".concat(touchX - this.options.MENU_WIDTH, "px)"));
+          this.$menu.css('transform', "translateX(".concat(touchX - this.options.menuWidth, "px)"));
         } else {
-          var isLeftDirection = touchX < window.innerWidth - this.options.MENU_WIDTH / MENU_WIDTH_HALF;
+          var isLeftDirection = touchX < window.innerWidth - this.options.menuWidth / MENU_WIDTH_HALF;
           this.menuOut = isLeftDirection;
-          var rightPos = touchX - this.options.MENU_WIDTH / MENU_WIDTH_HALF;
+          var rightPos = touchX - this.options.menuWidth / MENU_WIDTH_HALF;
 
           if (rightPos < 0) {
             rightPos = 0;
@@ -156,9 +181,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         var overlayPercentage;
 
         if (this.options.edge === 'left') {
-          overlayPercentage = touchX / this.options.MENU_WIDTH;
+          overlayPercentage = touchX / this.options.menuWidth;
         } else {
-          overlayPercentage = Math.abs((touchX - window.innerWidth) / this.options.MENU_WIDTH);
+          overlayPercentage = Math.abs((touchX - window.innerWidth) / this.options.menuWidth);
         }
 
         this.$sidenavOverlay.velocity({
@@ -166,7 +191,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           duration: 10,
           queue: false,
-          easing: 'easeOutQuad'
+          easing: this.options.easingOpen
         });
       }
     }, {
@@ -174,11 +199,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       value: function buildSidenavOverlay() {
         var _this2 = this;
 
-        this.$sidenavOverlay = $('<div id="sidenav-overlay"></div>');
-        this.$sidenavOverlay.css('opacity', 0).on('click', function () {
-          _this2.removeMenu();
-        });
-        this.$body.append(this.$sidenavOverlay);
+        if (this.options.showOverlay === true) {
+          this.$sidenavOverlay = $('<div id="sidenav-overlay"></div>');
+          this.$sidenavOverlay.css('opacity', 0).on('click', function () {
+            _this2.removeMenu();
+          });
+          this.$body.append(this.$sidenavOverlay);
+        }
       }
     }, {
       key: "disableScrolling",
@@ -199,8 +226,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.lastTouchVelocity.x.endPosition = touch.clientX;
         var velocityX = this.calculateTouchVelocityX();
         var touchX = touch.clientX;
-        var leftPos = touchX - this.options.MENU_WIDTH;
-        var rightPos = touchX - this.options.MENU_WIDTH / MENU_WIDTH_HALF;
+        var leftPos = touchX - this.options.menuWidth;
+        var rightPos = touchX - this.options.menuWidth / MENU_WIDTH_HALF;
 
         if (leftPos > 0) {
           leftPos = 0;
@@ -220,7 +247,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.showSidenavOverlay();
           } else if (!this.menuOut || velocityX > MENU_LEFT_MIN_BORDER) {
             this.enableScrolling();
-            this.translateMenuX([-1 * this.options.MENU_WIDTH - MENU_VELOCITY_OFFSET, leftPos], '200');
+            this.translateMenuX([-1 * this.options.menuWidth - MENU_VELOCITY_OFFSET, leftPos], '200');
             this.hideSidenavOverlay();
           }
 
@@ -239,7 +266,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         } else if (!this.menuOut || velocityX < MENU_RIGHT_MIN_BORDER) {
           this.enableScrolling();
-          this.translateMenuX([this.options.MENU_WIDTH + MENU_VELOCITY_OFFSET, rightPos], '200');
+          this.translateMenuX([this.options.menuWidth + MENU_VELOCITY_OFFSET, rightPos], '200');
           this.hideSidenavOverlay();
           this.$dragTarget.css({
             width: '10px',
@@ -264,8 +291,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         var velocityX = e.gesture.velocityX;
         var touchX = e.gesture.center.x;
-        var leftPos = touchX - this.options.MENU_WIDTH;
-        var rightPos = touchX - this.options.MENU_WIDTH / MENU_WIDTH_HALF;
+        var leftPos = touchX - this.options.menuWidth;
+        var rightPos = touchX - this.options.menuWidth / MENU_WIDTH_HALF;
 
         if (leftPos > 0) {
           leftPos = 0;
@@ -285,7 +312,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.showSidenavOverlay();
           } else if (!this.menuOut || velocityX > MENU_LEFT_MIN_BORDER) {
             this.enableScrolling();
-            this.translateMenuX([-1 * this.options.MENU_WIDTH - MENU_VELOCITY_OFFSET, leftPos], '200');
+            this.translateMenuX([-1 * this.options.menuWidth - MENU_VELOCITY_OFFSET, leftPos], '200');
             this.hideSidenavOverlay();
           }
 
@@ -304,7 +331,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         } else if (!this.menuOut || velocityX < MENU_RIGHT_MIN_BORDER) {
           this.enableScrolling();
-          this.translateMenuX([this.options.MENU_WIDTH + MENU_VELOCITY_OFFSET, rightPos], '200');
+          this.translateMenuX([this.options.menuWidth + MENU_VELOCITY_OFFSET, rightPos], '200');
           this.hideSidenavOverlay();
           this.$dragTarget.css({
             width: '10px',
@@ -321,7 +348,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           duration: typeof duration === 'string' ? Number(duration) : duration,
           queue: false,
-          easing: 'easeOutQuad'
+          easing: this.options.easingOpen
         });
       }
     }, {
@@ -330,9 +357,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.$sidenavOverlay.velocity({
           opacity: 0
         }, {
-          duration: 200,
+          duration: this.options.timeDurationOverlayClose,
           queue: false,
-          easing: 'easeOutQuad',
+          easing: this.options.easingOpen,
           complete: function complete() {
             $(this).remove();
           }
@@ -345,9 +372,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.$sidenavOverlay.velocity({
           opacity: 1
         }, {
-          duration: 50,
+          duration: this.options.timeDurationOverlayOpen,
           queue: false,
-          easing: 'easeOutQuad'
+          easing: this.options.easingOpen
         });
       }
     }, {
@@ -371,9 +398,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
             _this3.removeMenu();
           } else {
-            _this3.$sidenavOverlay = $('<div id="sidenav-overlay"></div>');
+            _this3.menuOut = true;
 
-            _this3.$body.append(_this3.$sidenavOverlay);
+            if (_this3.options.showOverlay === true) {
+              _this3.$sidenavOverlay = $('<div id="sidenav-overlay"></div>');
+
+              _this3.$body.append(_this3.$sidenavOverlay);
+            } else {
+              _this3.showCloseButton();
+            }
 
             var translateX = [];
 
@@ -386,9 +419,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             _this3.$menu.velocity({
               translateX: translateX
             }, {
-              duration: 300,
+              duration: _this3.options.timeDurationOpen,
               queue: false,
-              easing: 'easeOutQuad'
+              easing: _this3.options.easingOpen
             });
 
             _this3.$sidenavOverlay.on('click', function () {
@@ -405,6 +438,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         if (this.options.closeOnClick === true) {
           this.$menu.on('click', 'a:not(.collapsible-header)', function () {
             _this4.removeMenu();
+          });
+        }
+      }
+    }, {
+      key: "showCloseButton",
+      value: function showCloseButton() {
+        if (this.options.showCloseButton === true) {
+          this.$menu.prepend(this.$elementCloned);
+          this.$menu.find('.logo-wrapper').css({
+            borderTop: '1px solid rgba(153,153,153,.3)'
           });
         }
       }
@@ -426,12 +469,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
 
         if (this.$menu.hasClass('fixed')) {
-          if (window.innerWidth > SN_BREAKPOINT) {
+          if (window.innerWidth > this.options.breakpoint) {
             this.$menu.css('transform', 'translateX(0)');
           }
 
           $(window).resize(function () {
-            if (window.innerWidth > SN_BREAKPOINT) {
+            if (window.innerWidth > _this5.options.breakpoint) {
               if (_this5.$sidenavOverlay.length) {
                 _this5.removeMenu(true);
               } else {
@@ -450,9 +493,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       value: function setMenuWidth() {
         var $sidenavBg = $("#".concat(this.$menu.attr('id'))).find('> .sidenav-bg');
 
-        if (this.options.MENU_WIDTH !== MENU_WIDTH) {
-          this.$menu.css('width', this.options.MENU_WIDTH);
-          $sidenavBg.css('width', this.options.MENU_WIDTH);
+        if (this.options.menuWidth !== MENU_WIDTH) {
+          this.$menu.css('width', this.options.menuWidth);
+          $sidenavBg.css('width', this.options.menuWidth);
         }
       }
     }, {
@@ -472,14 +515,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.$menu.velocity({
           translateX: this.options.edge === 'left' ? '-100%' : '100%'
         }, {
-          duration: 200,
+          duration: this.options.timeDurationClose,
           queue: false,
-          easing: 'easeOutCubic',
+          easing: this.options.easingClose,
           complete: function complete() {
             if (restoreMenu === true) {
               _this6.$menu.removeAttr('style');
 
-              _this6.$menu.css('width', _this6.options.MENU_WIDTH);
+              _this6.$menu.css('width', _this6.options.menuWidth);
             }
           }
         });
@@ -493,7 +536,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }, {
       key: "hide",
       value: function hide() {
-        this.$sidenavOverlay.trigger('click');
+        this.trigger('click');
       }
     }]);
 
@@ -506,3 +549,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     });
   };
 })(jQuery);
+
+$(function () {
+  $("#toggle").click(function () {
+    if ($("#slide-out").hasClass('slim')) {
+      $("#slide-out").removeClass('slim');
+      $(".sv-slim-icon").removeClass('fa-angle-double-right').addClass('fa-angle-double-left');
+    } else {
+      $("#slide-out").addClass('slim');
+      $(".sv-slim-icon").removeClass('fa-angle-double-left').addClass('fa-angle-double-right');
+    }
+  });
+});
