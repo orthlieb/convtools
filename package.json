@@ -8,7 +8,7 @@
     "ajv": "^6.5.3",
     "del": "^3.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-nunjucks-render": "^2.2.2",
+    "gulp-nunjucks-render": "^2.2.3",
     "gulp-render-nunjucks": "^2.0.1",
     "gulp-sass": "^4.0.1",
     "gulp-sftp-clean": "^0.1.7",

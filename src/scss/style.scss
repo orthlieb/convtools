@@ -115,11 +115,7 @@ $contact-us-color: #5961A8;
   }
 
   .navbar-text {
-    margin-left: 15px !important;
-  }
-
-  .fixed-sn nav {
-    margin-left: 15rem;
+    margin-left: 255px !important;
   }
 
   .fixed-sn nav .button-collapse {
@@ -129,10 +125,22 @@ $contact-us-color: #5961A8;
   .fixed-sn main {
     margin-left: 15rem;
   }
+
+  .page-footer {
+    margin-left: 240px;
+    padding-left: 50px !important;
+  }
 }
 
 @media only screen and (min-width: 993px) {
   .fixed-sn main {
     padding-top: 3.5rem;
+  }
+}
+
+@media only screen and (min-width: 1441px) {
+  // Bug in MDB that adds padding back in when over 1441px
+  .fixed-sn nav {
+    margin-left: 0px;
   }
 }

@@ -1,0 +1,34 @@
+{% macro build(params) %}
+  <!-- params = { cards: [ { imageURL, title, text, buttonIcon, buttonText, buttonURL }] } -->
+
+  <!-- Card deck -->
+  <div class="card-deck mx-1 mt-1">
+    {% for i in range(0, params.length) %}
+      <!-- Card -->
+      <div class="card mb-4">
+        <!-- Card Image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="{{params[i].imageURL}}">
+          <a href="{{params[i].buttonURL}}">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <!-- /Card Image -->
+        <!-- Card Content -->
+        <div class="card-body">
+          <!--Title-->
+          <h5 class="card-title">{{params[i].title}}</h5>
+          <!--Text-->
+          <p class="card-text">{{params[i].text}}</p>
+          <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+          <a type="button" class="btn btn-light-blue btn-md" href="{{params[i].buttonURL}}">
+            {{params[i].buttonText}}
+          </a>
+        </div>
+        <!-- /Card Content -->
+      </div>
+    <!-- /Card -->
+    {% endfor %}
+  </div>
+  <!-- /Card Deck -->
+{% endmacro %}

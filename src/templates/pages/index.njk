@@ -10,54 +10,69 @@
   <!-- params = { icon: 'fas fa-crown', title: 'Courageous Conversation', id: 'courageous' } -->
 
   <main class="pt-5 pb-5">
-    <div class="d-flex justify-content-around flex-wrap grid-container">
-      <a class="waves-effect waves-light normal-to-noble-button flex-item" href="normal-to-noble.html">
-        <i class="fas fa-chess-knight fa-4x"></i>
-        <p></p>
-        Normal to Noble
-      </a>
-      <a class="waves-effect waves-light courageous-button flex-item" href="courageous.html">
-        <i class="fas fa-crown fa-4x"></i>
-        <p></p>
-        Courageous Conversation
-      </a>
-      <a class="waves-effect waves-light comforting-button flex-item" href="comforting.html">
-        <i class="fas fa-hand-holding-heart fa-4x"></i>
-        <p></p>
-        Comforting Conversation
-      </a>
-      <a class="waves-effect waves-light connecting-button flex-item" href="connecting.html">
-        <i class="fas fa-plug fa-4x"></i>
-        <p></p>
-        Connecting Conversation
-      </a>
-      <a class="waves-effect waves-light collaborating-button flex-item" href="collaborating.html">
-        <i class="fas fa-users fa-4x"></i>
-        <p></p>
-        Collaborating Conversation
-      </a>
-      <a class="waves-effect waves-light conciliatory-button flex-item" href="conciliatory.html">
-        <i class="fas fa-dove fa-4x"></i>
-        <p></p>
-        Conciliatory Conversation
-      </a>
-      <a class="waves-effect waves-light prayers-button flex-item" href="prayers.html">
-        <i class="fas fa-praying-hands fa-4x"></i>
-        <p></p>
-        Prayers
-      </a>
-      <a class="waves-effect waves-light character-button flex-item" href="character.html">
-        <i class="fa fa-compass fa-4x"></i>
-        <p></p>
-        Character
-      </a>
-      <a class="waves-effect waves-light contact-us-button flex-item" href="contact-us.html">
-        <i class="fa fa-envelope fa-4x"></i>
-        <p></p>
-        Contact Us
-      </a>
 
-    </div>
+    {% import 'macros/carddeck.njk' as carddeck %}
+    <!-- params = [{ imageURL, title, text, buttonText, buttonURL }] -->
+    {{carddeck.build([
+      {
+        imageURL: "./img/normal-to-noble/normal-to-noble-cover.jpg",
+        title: "Normal To Noble",
+        text: "Breaking the normal cycle to walk the noble path",
+        buttonText: "Read more",
+        buttonURL: "./normal-to-noble.html"
+      }, {
+        imageURL: "./img/courageous/courageous-cover.jpg",
+        title: "Courageous Conversation",
+        text: "Course correct and reconnect quickly in conflict",
+        buttonText: "Read more",
+        buttonURL: "./courageous.html"
+      }
+    ])}}
+    {{carddeck.build([
+      {
+        imageURL: "./img/comforting/comforting-cover.jpg",
+        title: "Comforting Conversation",
+        text: "Move from adversity to joy",
+        buttonText: "Read more",
+        buttonURL: "./comforting.html"
+      }, {
+          imageURL: "./img/connecting/connecting-cover.jpg",
+          title: "Connecting Conversation",
+          text: "Make a lasting and deep soul impression",
+          buttonText: "Read more",
+          buttonURL: "./connecting.html"
+      }
+    ])}}
+    {{carddeck.build([
+      {
+        imageURL: "./img/collaborating/collaborating-cover.jpg",
+        title: "Collaborating Conversation",
+        text: "Making the best decisions in one accord",
+        buttonText: "Read more",
+        buttonURL: "./collaborating.html"
+      }, {
+        imageURL: "./img/conciliatory/conciliatory-cover.jpg",
+        title: "Conciliatory Conversation",
+        text: "How to apologize and bring lasting reconciliation",
+        buttonText: "Read more",
+        buttonURL: "./conciliatory.html"
+      }
+    ])}}
+    {{carddeck.build([
+      {
+        imageURL: "./img/prayers/prayers-cover.jpg",
+        title: "Inspirational Prayers",
+        text: "Prayers to strengthen your identity and your spirit",
+        buttonText: "Read more",
+        buttonURL: "./prayers.html"
+      }, {
+        imageURL: "./img/character/character-cover.jpg",
+        title: "About Character",
+        text: "The 49 character qualities of Christ and our spiritual transformation",
+        buttonText: "Read more",
+        buttonURL: "./character.html"
+      }
+    ])}}
   </main>
   <footer class="page-footer font-small fixed-bottom">
     <!-- Footer Elements -->
@@ -67,7 +82,10 @@
         <!-- Grid column -->
         <div class="col-md-12 py-1">
           <div class="mb-5 flex-center">
-
+            <!-- Contact Us -->
+            <a href="./contact-us.html">
+              <i class="fas fa-envelope fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
+            </a>
             <!-- Facebook -->
             <a href="https://www.facebook.com/relate2020/">
               <i class="fab fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
