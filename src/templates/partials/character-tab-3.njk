@@ -1,11 +1,14 @@
-<h4 class="comforting-text">Grouped Character Qualities</h4>
-<p>Often, failures in our character manifest themselves in our lives in negative ways. If you are struggling in a particular area, identify it in the table below and touch it to jump to a list of Christ's qualities that you should study in order to
-  overcome that failure.
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Grouped Character Qualities</h4>
+      <p>Often, failures in our character manifest themselves in our lives in negative ways. If you are struggling in a particular area, identify it in the table below and touch it to jump to a list of Christ's qualities that you should study in order to
+        overcome that failure.
+      </p>
 
-  <!-- params = { cards: 'comforting-great', titles: [ '1. What can you be grateful for', ...] } -->
-  {% import 'macros/accordian.njk' as accordian %}
-  {{ accordian.build({
+      <!-- params = { cards: 'comforting-great', titles: [ '1. What can you be grateful for', ...] } -->
+      {% import 'macros/accordian.njk' as accordian %}
+      {{ accordian.build({
     cards: 'character-groups',
     titles: [
       'Anger',
@@ -17,5 +20,6 @@
       'Envy'
     ]
   }) }}
-  <img src="img/character/TreeRoots.jpg" alt="Tree and Roots" class="w-100">
+    </div>
+  </div>
 </div>
