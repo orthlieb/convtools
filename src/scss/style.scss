@@ -129,6 +129,7 @@ $contact-us-color: #5961A8;
   .page-footer {
     margin-left: 240px;
     padding-left: 50px !important;
+    padding-right: 50px !important;
   }
 }
 
@@ -143,4 +144,9 @@ $contact-us-color: #5961A8;
   .fixed-sn nav {
     margin-left: 0px;
   }
+
+  .navbar-text {
+    margin-left: 15px !important;
+  }
+
 }
