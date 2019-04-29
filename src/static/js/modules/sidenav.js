@@ -31,7 +31,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _classCallCheck(this, SideNav);
 
       this.defaults = {
-        menuWidth: MENU_WIDTH,
+        MENU_WIDTH: MENU_WIDTH,
         edge: 'left',
         closeOnClick: false,
         breakpoint: SN_BREAKPOINT,
@@ -70,12 +70,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     _createClass(SideNav, [{
       key: "init",
       value: function init() {
-        this.setMenuWidth();
+        this.setMENU_WIDTH();
         this.setMenuTranslation();
         this.closeOnClick();
         this.openOnClick();
         this.bindTouchEvents();
         this.showCloseButton();
+        this.inputOnClick();
       }
     }, {
       key: "bindTouchEvents",
@@ -119,8 +120,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
         if (this.options.edge === 'left') {
-          if (touchX > this.options.menuWidth) {
-            touchX = this.options.menuWidth;
+          if (touchX > this.options.MENU_WIDTH) {
+            touchX = this.options.MENU_WIDTH;
           } else if (touchX < 0) {
             touchX = 0;
           }
@@ -146,8 +147,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
         if (this.options.edge === 'left') {
-          if (touchX > this.options.menuWidth) {
-            touchX = this.options.menuWidth;
+          if (touchX > this.options.MENU_WIDTH) {
+            touchX = this.options.MENU_WIDTH;
           } else if (touchX < 0) {
             touchX = 0;
           }
@@ -160,13 +161,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       key: "translateSidenavX",
       value: function translateSidenavX(touchX) {
         if (this.options.edge === 'left') {
-          var isRightDirection = touchX >= this.options.menuWidth / MENU_WIDTH_HALF;
+          var isRightDirection = touchX >= this.options.MENU_WIDTH / MENU_WIDTH_HALF;
           this.menuOut = isRightDirection;
-          this.$menu.css('transform', "translateX(".concat(touchX - this.options.menuWidth, "px)"));
+          this.$menu.css('transform', "translateX(".concat(touchX - this.options.MENU_WIDTH, "px)"));
         } else {
-          var isLeftDirection = touchX < window.innerWidth - this.options.menuWidth / MENU_WIDTH_HALF;
+          var isLeftDirection = touchX < window.innerWidth - this.options.MENU_WIDTH / MENU_WIDTH_HALF;
           this.menuOut = isLeftDirection;
-          var rightPos = touchX - this.options.menuWidth / MENU_WIDTH_HALF;
+          var rightPos = touchX - this.options.MENU_WIDTH / MENU_WIDTH_HALF;
 
           if (rightPos < 0) {
             rightPos = 0;
@@ -181,9 +182,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         var overlayPercentage;
 
         if (this.options.edge === 'left') {
-          overlayPercentage = touchX / this.options.menuWidth;
+          overlayPercentage = touchX / this.options.MENU_WIDTH;
         } else {
-          overlayPercentage = Math.abs((touchX - window.innerWidth) / this.options.menuWidth);
+          overlayPercentage = Math.abs((touchX - window.innerWidth) / this.options.MENU_WIDTH);
         }
 
         this.$sidenavOverlay.velocity({
@@ -226,8 +227,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.lastTouchVelocity.x.endPosition = touch.clientX;
         var velocityX = this.calculateTouchVelocityX();
         var touchX = touch.clientX;
-        var leftPos = touchX - this.options.menuWidth;
-        var rightPos = touchX - this.options.menuWidth / MENU_WIDTH_HALF;
+        var leftPos = touchX - this.options.MENU_WIDTH;
+        var rightPos = touchX - this.options.MENU_WIDTH / MENU_WIDTH_HALF;
 
         if (leftPos > 0) {
           leftPos = 0;
@@ -247,7 +248,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.showSidenavOverlay();
           } else if (!this.menuOut || velocityX > MENU_LEFT_MIN_BORDER) {
             this.enableScrolling();
-            this.translateMenuX([-1 * this.options.menuWidth - MENU_VELOCITY_OFFSET, leftPos], '200');
+            this.translateMenuX([-1 * this.options.MENU_WIDTH - MENU_VELOCITY_OFFSET, leftPos], '200');
             this.hideSidenavOverlay();
           }
 
@@ -266,7 +267,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         } else if (!this.menuOut || velocityX < MENU_RIGHT_MIN_BORDER) {
           this.enableScrolling();
-          this.translateMenuX([this.options.menuWidth + MENU_VELOCITY_OFFSET, rightPos], '200');
+          this.translateMenuX([this.options.MENU_WIDTH + MENU_VELOCITY_OFFSET, rightPos], '200');
           this.hideSidenavOverlay();
           this.$dragTarget.css({
             width: '10px',
@@ -291,8 +292,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         var velocityX = e.gesture.velocityX;
         var touchX = e.gesture.center.x;
-        var leftPos = touchX - this.options.menuWidth;
-        var rightPos = touchX - this.options.menuWidth / MENU_WIDTH_HALF;
+        var leftPos = touchX - this.options.MENU_WIDTH;
+        var rightPos = touchX - this.options.MENU_WIDTH / MENU_WIDTH_HALF;
 
         if (leftPos > 0) {
           leftPos = 0;
@@ -312,7 +313,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.showSidenavOverlay();
           } else if (!this.menuOut || velocityX > MENU_LEFT_MIN_BORDER) {
             this.enableScrolling();
-            this.translateMenuX([-1 * this.options.menuWidth - MENU_VELOCITY_OFFSET, leftPos], '200');
+            this.translateMenuX([-1 * this.options.MENU_WIDTH - MENU_VELOCITY_OFFSET, leftPos], '200');
             this.hideSidenavOverlay();
           }
 
@@ -331,7 +332,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         } else if (!this.menuOut || velocityX < MENU_RIGHT_MIN_BORDER) {
           this.enableScrolling();
-          this.translateMenuX([this.options.menuWidth + MENU_VELOCITY_OFFSET, rightPos], '200');
+          this.translateMenuX([this.options.MENU_WIDTH + MENU_VELOCITY_OFFSET, rightPos], '200');
           this.hideSidenavOverlay();
           this.$dragTarget.css({
             width: '10px',
@@ -398,8 +399,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
             _this3.removeMenu();
           } else {
-            _this3.menuOut = true;
-
             if (_this3.options.showOverlay === true) {
               _this3.$sidenavOverlay = $('<div id="sidenav-overlay"></div>');
 
@@ -473,6 +472,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.$menu.css('transform', 'translateX(0)');
           }
 
+          this.$menu.find('input[type=text]').on('touchstart', function (e) {
+            _this5.$menu.addClass('transform-fix-input');
+          });
           $(window).resize(function () {
             if (window.innerWidth > _this5.options.breakpoint) {
               if (_this5.$sidenavOverlay.length) {
@@ -489,14 +491,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }
     }, {
-      key: "setMenuWidth",
-      value: function setMenuWidth() {
+      key: "setMENU_WIDTH",
+      value: function setMENU_WIDTH() {
         var $sidenavBg = $("#".concat(this.$menu.attr('id'))).find('> .sidenav-bg');
 
-        if (this.options.menuWidth !== MENU_WIDTH) {
-          this.$menu.css('width', this.options.menuWidth);
-          $sidenavBg.css('width', this.options.menuWidth);
+        if (this.options.MENU_WIDTH !== MENU_WIDTH) {
+          this.$menu.css('width', this.options.MENU_WIDTH);
+          $sidenavBg.css('width', this.options.MENU_WIDTH);
         }
+      }
+    }, {
+      key: "inputOnClick",
+      value: function inputOnClick() {
+        var _this6 = this;
+
+        this.$menu.find('input[type=text]').on('touchstart', function (e) {
+          _this6.$menu.css('transform', 'translateX(0)');
+        });
       }
     }, {
       key: "assignOptions",
@@ -506,7 +517,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }, {
       key: "removeMenu",
       value: function removeMenu(restoreMenu) {
-        var _this6 = this;
+        var _this7 = this;
 
         this.$body.css({
           overflow: '',
@@ -520,12 +531,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           easing: this.options.easingClose,
           complete: function complete() {
             if (restoreMenu === true) {
-              _this6.$menu.removeAttr('style');
+              _this7.$menu.removeAttr('style');
 
-              _this6.$menu.css('width', _this6.options.menuWidth);
+              _this7.$menu.css('width', _this7.options.MENU_WIDTH);
             }
           }
         });
+
+        if (this.$menu.hasClass('transform-fix-input')) {
+          this.$menu.removeClass('transform-fix-input');
+        }
+
         this.hideSidenavOverlay();
       }
     }, {
