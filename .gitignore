@@ -2,3 +2,4 @@
 node_modules/
 app/www/
 app/platforms/
+src/static/yarn-error.log
