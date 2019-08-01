@@ -64,7 +64,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       this.$dropdownIcon = this.options.BSinputText ? '' : $('<span class="caret">&#9660;</span>');
       this.$searchInput = null;
       this.$toggleAll = $("<li class=\"select-toggle-all\"><span><input type=\"checkbox\" class=\"form-check-input\"><label>".concat(this.selectAllLabel, "</label></span></li>"));
-      this.$addOptionBtn = $('<i class="select-add-option fas fa-plus"></i>');
+      this.$addOptionBtn = $('<i class="select-add-option fad fa-plus"></i>');
       this.mainLabel = this.$nativeSelect.next('.mdb-main-label');
       this.$validFeedback = $("<div class=\"valid-feedback\">".concat(this.options.validFeedback || 'Good choice', "</div>"));
       this.$invalidFeedback = $("<div class=\"invalid-feedback\">".concat(this.options.invalidFeedback || 'Bad choice', "</div>"));
@@ -339,7 +339,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         var disabled = $nativeSelectChild.is(':disabled') ? 'disabled' : '';
         var optgroupClass = type === 'optgroup-option' ? 'optgroup-option' : '';
         var iconUrl = $nativeSelectChild.data('icon');
-        var fas = $nativeSelectChild.data('fas') ? "<i class=\"fa-pull-right m-2 fas fa-".concat($nativeSelectChild.data('fas'), " ").concat([...this.options.fasClasses].join(''), "\"></i> ") : '';
+        var fad = $nativeSelectChild.data('fas') ? "<i class=\"fa-pull-right m-2 fad fa-".concat($nativeSelectChild.data('fas'), " ").concat([...this.options.fasClasses].join(''), "\"></i> ") : '';
         var far = $nativeSelectChild.data('far') ? "<i class=\"fa-pull-right m-2 far fa-".concat($nativeSelectChild.data('far'), " ").concat([...this.options.farClasses].join(''), "\"></i> ") : '';
         var fab = $nativeSelectChild.data('fab') ? "<i class=\"fa-pull-right m-2 fab fa-".concat($nativeSelectChild.data('fab'), " ").concat([...this.options.fabClasses].join(''), "\"></i> ") : '';
         var classes = $nativeSelectChild.attr('class');

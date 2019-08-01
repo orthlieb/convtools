@@ -440,7 +440,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           html += " <img src=\"".concat(elem.image, "\"> ");
         }
 
-        html += '<i class="close fas fa-times"></i>';
+        html += '<i class="close fad fa-times"></i>';
         html += '</div>';
         return html;
       }

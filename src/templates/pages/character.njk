@@ -9,7 +9,7 @@
 
   <!-- Adds the nav macro -->
   {% import 'macros/nav.njk' as nav %}
-  {{ nav.build({ icon: 'fas fa-compass', title: title, id: id }) }}
+  {{ nav.build({ icon: 'fad fa-compass', title: title, id: id }) }}
 
   <!--- Content for this page -->
   <main>
@@ -17,13 +17,13 @@
     {{ tabs.build({
     tabfile: id,
     tabs: [{
-      icon: 'fas fa-star-of-life',
+      icon: 'fad fa-star-of-life',
       title: 'Intro'
     }, {
-      icon: 'fas fa-book',
+      icon: 'fad fa-book',
       title: 'Definitions'
     }, {
-      icon: 'fas fa-layer-group',
+      icon: 'fad fa-layer-group',
       title: 'Groupings'
     }]
   }) }}

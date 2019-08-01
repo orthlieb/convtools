@@ -8,7 +8,7 @@
 
   <!-- Adds the nav macro -->
   {% import 'macros/nav.njk' as nav %}
-  {{ nav.build({ icon: 'fas fa-users', title: title, id: id }) }}
+  {{ nav.build({ icon: 'fad fa-users', title: title, id: id }) }}
 
   <!--- Content for this page -->
   <main>
@@ -16,10 +16,10 @@
     {{ tabs.build({
       tabfile: id,
       tabs: [{
-        icon: 'fas fa-star-of-life',
+        icon: 'fad fa-star-of-life',
         title: 'Intro'
       }, {
-        icon: 'fas fa-question',
+        icon: 'fad fa-question',
         title: 'Questions'
       }]
     }) }}

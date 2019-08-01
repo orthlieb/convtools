@@ -6,8 +6,8 @@
 
   <!-- Adds the nav macro -->
   {% import 'macros/nav.njk' as nav %}
-  {{ nav.build({ title: title, id: id, icon: 'fas fa-question'}) }}
-  <!-- params = { icon: 'fas fa-crown', title: 'Courageous Conversation', id: 'courageous' } -->
+  {{ nav.build({ title: title, id: id, icon: 'fad fa-question'}) }}
+  <!-- params = { icon: 'fad fa-crown', title: 'Courageous Conversation', id: 'courageous' } -->
 
   <main class="mt-4 pt-5 pb-5 px-3">
     {% import 'macros/quiztree.njk' as quiztree %}
@@ -38,7 +38,7 @@
         id: 'connecting',
         style: 'btn-dark-green',
         title: 'You want to use the following conversation:',
-        icon: 'fas fa-crown',
+        icon: 'fad fa-crown',
         label: 'Connecting',
         href: 'connecting.html'
       }, {
@@ -46,7 +46,7 @@
         id: 'collaborating',
         style: 'btn-deep-purple',
         title: 'You want to use the following conversation:',
-        icon: 'fas fa-users',
+        icon: 'fad fa-users',
         label: 'Collaborating',
         href: 'collaborating.html'
       }, {
@@ -54,7 +54,7 @@
         id: 'comforting',
         style: 'btn-info',
         title: 'You want to use the following conversation:',
-        icon: 'fas fa-hand-holding-heart',
+        icon: 'fad fa-hand-holding-heart',
         label: 'Comforting',
         href: 'comforting.html'
       }, {
@@ -62,7 +62,7 @@
         id: 'courageous',
         style: 'btn-danger',
         title: 'You want to use the following conversation:',
-        icon: 'fas fa-crown',
+        icon: 'fad fa-crown',
         label: 'Courageous',
         href: 'courageous.html'
       }, {
@@ -70,7 +70,7 @@
         id: 'conciliatory',
         style: 'btn-indigo',
         title: 'You want to use the following conversation:',
-        icon: 'fas fa-dove',
+        icon: 'fad fa-dove',
         label: 'Conciliatory',
         href: 'conciliatory.html'
       }

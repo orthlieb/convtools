@@ -7,7 +7,7 @@
 {% block content %}
   <!-- Adds the nav macro -->
   {% import 'macros/nav.njk' as nav %}
-  {{ nav.build({ icon: 'fas fa-hand-holding-heart', title: title, id: id }) }}
+  {{ nav.build({ icon: 'fad fa-hand-holding-heart', title: title, id: id }) }}
 
   <!--- Content for this page -->
   <main>
@@ -15,16 +15,16 @@
     {{ tabs.build({
     tabfile: id,
     tabs: [{
-      icon: 'fas fa-star-of-life',
+      icon: 'fad fa-star-of-life',
       title: 'Intro'
     }, {
-      icon: 'fas fa-question',
+      icon: 'fad fa-question',
       title: 'Questions'
     }, {
-      icon: 'fas fa-grin-alt',
+      icon: 'fad fa-grin-alt',
       title: 'Great Response'
     }, {
-      icon: 'fas fa-tags',
+      icon: 'fad fa-tags',
       title: 'Names of God'
     }]
   }) }}

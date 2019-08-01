@@ -9,7 +9,7 @@
 
   <!-- Adds the nav macro -->
   {% import 'macros/nav.njk' as nav %}
-  {{ nav.build({ icon: 'fas fa-crown', title: title, id: id }) }}
+  {{ nav.build({ icon: 'fad fa-crown', title: title, id: id }) }}
 
   <!--- Content for this page -->
   <main>
@@ -17,19 +17,19 @@
     {{ tabs.build({
     tabfile: id,
     tabs: [{
-      icon: 'fas fa-star-of-life',
+      icon: 'fad fa-star-of-life',
       title: 'Intro'
     }, {
-      icon: 'fas fa-handshake-alt',
+      icon: 'fad fa-handshake-alt',
       title: 'Agreements'
     }, {
-      icon: 'fas fa-praying-hands',
+      icon: 'fad fa-praying-hands',
       title: 'Prayer'
     }, {
-      icon: 'fas fa-question',
+      icon: 'fad fa-question',
       title: 'Questions'
     }, {
-      icon: 'fas fa-theater-masks',
+      icon: 'fad fa-theater-masks',
       title: 'Emotions'
     }]
   }) }}
