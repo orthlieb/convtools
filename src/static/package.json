@@ -1,9 +1,10 @@
 {
   "name": "relatematters-convtools",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Relationship Matters Conversation Tools",
   "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-pro": "^5.9.0"
+  "dependencies": {},
+  "devDependencies": {
+    "@fortawesome/fontawesome-pro": "^5.13.0"
   }
 }
